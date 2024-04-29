@@ -1,3 +1,4 @@
+/*
 package com.project.retil.settings.interceptor;
 
 import com.project.retil.settings.constant.LogConst;
@@ -9,18 +10,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+*/
 /**
  * 사용자의 로그인 상태 체크. HandlerInterceptor 인터페이스의 구현 클래스
- */
+ *//*
+
 @Slf4j
 public class UserLoginCheckInterceptor implements HandlerInterceptor {
 
-    /**
+    */
+/**
      * 핸들러 호출 전 실행
      * 요청 URI와 추적 ID를 로그로 출력, 세션 체크
      * 세션에 로그인 정보가 없다면 사용자를 리다이렉트, 요청 중단
      * 세션에 로그인 정보가 있다면 요청 처리를 계속 진행
-     */
+     *//*
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
@@ -47,3 +52,4 @@ public class UserLoginCheckInterceptor implements HandlerInterceptor {
         return true;
     }
 }
+*/

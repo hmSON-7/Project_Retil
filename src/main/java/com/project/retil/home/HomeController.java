@@ -18,25 +18,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class HomeController {
 
-    /**
-     * <pre>
-     * 세션에 로그인 정보가 없으면 home View 렌더링
-     * 세션에 로그인한 정보가 있다면 loginHome 렌더링
-     * </pre>
-     *
-     * @param userSessionDto 세션을 통해 가져온 멤버 정보로 만약 로그인 하지 않았으면 null
-     * @return 로그인한 사용자인 경우 loginHome, 로그인 하지 않은 사용자인 경우 home
-     */
     @GetMapping("/")
-    public String home(@Login UserSessionDTO userSessionDto, Model model) {
-        log.debug("[{}] 홈페이지", MDC.get(LogConst.TRACE_ID));
+    public String home() {
 
-        if (userSessionDto == null) {
-            return "greetings";
-        }
+        return "index.html";
+    }
 
-        model.addAttribute("UserSessionDto", userSessionDto);
-
-        return "index";
+    @GetMapping("/login")
+    public String login() {
+        return "loginForm.html";
     }
 }
