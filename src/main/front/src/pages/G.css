@@ -1,0 +1,62 @@
+.graph-container {
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .graph-svg {
+    width: 800px;
+    height: 100px;
+  }
+
+  @keyframes curveAnimation {
+    0% {
+      d: path("M-35,25 Q-20,0 -5,25");
+    }
+    100% {
+      d: path("M-35,25 Q-20,0 -5,25");
+    }
+  }
+  
+  .animation-path {
+    animation: curveAnimation 2s forwards;
+  }
+  @keyframes curveAnimation2 {
+    0% {
+      d: path("M-35,25 Q-20,0 -5,25");
+    }
+    100% {
+      d: path("M-35,25 Q20,-10 40,25");
+    }
+  }
+  
+  .animation-path2 {
+    animation: curveAnimation2 2s forwards;
+  }
+  
+  @keyframes curveAnimation3 {
+    0% {
+      d: path("M-35,25 Q-20,0 -5,25");
+    }
+    100% {
+      d: path("M-35,25 Q20,-10 100,25");
+    }
+  }
+  
+  .animation-path3 {
+    animation: curveAnimation3 3s forwards;
+  }
+
+  @keyframes curveAnimation4 {
+    0% {
+      d: path("M-35,25 Q-20,0 -5,25");
+    }
+    100% {
+      d: path("M-35,25 Q20,-10 180,25");
+    }
+  }
+  
+  .animation-path4 {
+    animation: curveAnimation4 3s forwards;
+  }
+  
