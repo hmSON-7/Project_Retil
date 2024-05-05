@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-class User_Rank {
+public class User_Rank {
 
 	//유저의 랭크이다.
 	@Id

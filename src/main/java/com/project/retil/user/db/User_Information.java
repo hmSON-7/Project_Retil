@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-class User_Information {
+public class User_Information {
 
 	// 유저의 모든 정보 , (회원가입 할 때 쓰인다.)
 	@Id
@@ -35,5 +35,4 @@ class User_Information {
 		this.profileImage = "";
 		this.accountConnection = 0;
 	}
-
 }
