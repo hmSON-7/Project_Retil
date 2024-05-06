@@ -1,6 +1,6 @@
-package com.project.retil.settings.validator;
+package com.project.Retil.settings.validator;
 
-import com.project.retil.user.db.dto.JoinRequestDTO;
+import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

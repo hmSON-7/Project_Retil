@@ -1,9 +1,9 @@
-package com.project.retil.user.service;
+package com.project.Retil.userAccount.service;
 
-import com.project.retil.user.db.UserRepository;
-import com.project.retil.user.db.User_Information;
-import com.project.retil.user.db.dto.JoinRequestDTO;
-import com.project.retil.user.db.dto.LoginRequestDTO;
+import com.project.Retil.userAccount.Entity.UserRepository;
+import com.project.Retil.userAccount.Entity.User_Information;
+import com.project.Retil.userAccount.dto.JoinRequestDTO;
+import com.project.Retil.userAccount.dto.LoginRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -33,6 +33,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean isEmailUnique(String email){
 		return  userRepository.existsByEmail(email);
+	}
+
+	@Override
+	public User_Information join(JoinRequestDTO joinRequest) {
+		return null;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.project.retil.user.db;
+package com.project.Retil.userAccount.Entity;
 
 
 import jakarta.persistence.*;

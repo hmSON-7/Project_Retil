@@ -1,5 +1,5 @@
 
-package com.project.retil.user.db.dto;
+package com.project.Retil.userAccount.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
