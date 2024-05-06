@@ -1,9 +1,8 @@
-package com.project.retil.service;
+package com.project.retil.user.service;
 
 import com.project.retil.user.db.User_Information;
 import com.project.retil.user.db.dto.JoinRequestDTO;
 import com.project.retil.user.db.dto.LoginRequestDTO;
-import org.springframework.stereotype.Service;
 
 public interface UserService {
 	User_Information signUp(JoinRequestDTO joinRequestDto);
