@@ -1,4 +1,4 @@
-package com.project.retil.settings.constant;
+package com.project.Retil.settings.constant;
 
 /**
  * 로그 관련 상수를 정의하는 추상 클래스

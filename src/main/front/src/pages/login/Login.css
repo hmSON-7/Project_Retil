@@ -1,0 +1,162 @@
+
+.login{
+    width: 430px;
+    height: 500px;
+    margin : 0 auto;
+    background: white;
+    border: 2px solid rgba(255,255,255,.2);
+    color: gray;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 100px;
+    box-shadow: 0 0 5px gray;
+}
+
+.login h1{
+    font-size : 36px;
+    text-align: center;
+}
+.login h1 img{
+    width: 50px;
+    height: 40px;
+ 
+}
+.login .input-box{
+    position : relative;
+    width: 83.4%;
+    height: px;
+    margin: 30px 0;
+    
+
+}
+.input-box input{
+    width : 100%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 16px;
+    color: gray;
+    padding: 20px 45px 20px 20px;
+}
+.input-box input::placeholder{
+    color: gray;
+}
+.input-box .icon{
+    position: absolute;
+    right: -30px;
+    transform: translateY(-225%);
+    font-size: 17px;
+}
+.remember-signup{
+    position: relative;
+    
+    font-size: 14px;
+    margin: -15px 0 15px;
+    font-weight: 600;
+}
+.login.redmember-signup label input{
+    accent-color: red;
+    margin-right: 4px;
+}
+.remember-signup a{
+    color: gray;
+    text-decoration: none;
+}
+.remember-signup .L-signup{
+    position: relative;
+    left: 361px;
+    bottom: 17px;
+}
+.remember-signup a:hover{
+    text-decoration: underline;
+}
+.login button{
+    width: 100%;
+    height: 45px;
+    background-color: #878787;
+    border: none;
+    outline:none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px ragba(0,0,0, .1);
+    cursor: pointer;
+    font-size:16px;
+    color: ragb(77,172,228);
+    font-weight: 700
+}
+.login .active{
+    background-color: rgb(77, 173,228);
+}
+.login .inactive{
+    background-color: #878787;
+
+}
+.login .active:hover{
+    box-shadow: 0 0 6px gray;
+
+}
+.login .active:active{  /*버튼 딸깍효과*/
+    box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB, inset .3rem .4rem .8rem #BEC5D0; 
+  
+}
+
+.login .forgot-link{
+    font-size: 14px;
+    margin:0px 0px 0px 340.5px;
+    margin-top: 20px 0 15px;
+
+}
+.forgot-link {
+    position: relative;
+    right: 8px;
+    top: 15px;
+    color: gray;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+.forgot-link div :hover{
+    text-decoration: underline;
+}
+
+/* 모달 영역 설정 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 설정 */
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+  }
+  
+  /* 모달 설정 */
+  .modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 내용을 수직 가운데 정렬 */
+    align-items: center; /* 내용을 수평 가운데 정렬 */
+    max-width: 80%; /* 모달 최대 너비 지정 */
+    text-align: center; /* 내부 텍스트 가운데 정렬 */
+  }
+  
+.modal-close-button {
+    padding: 10px 20px;
+    background-color:rgb(77, 173, 228); /* 버튼 배경 컬러 지정 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* 위쪽 여백 추가 */
+  }
+  
+.modal-close-button:hover {
+    background-color: rgb(63, 138, 182); /* 호버 시 배경 컬러 변경 */
+  }

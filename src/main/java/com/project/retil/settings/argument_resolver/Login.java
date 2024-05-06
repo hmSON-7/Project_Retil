@@ -1,4 +1,4 @@
-package com.project.retil.settings.argument_resolver;
+package com.project.Retil.settings.argument_resolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

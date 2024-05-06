@@ -1,4 +1,4 @@
-package com.project.retil.home;
+package com.project.Retil.home;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

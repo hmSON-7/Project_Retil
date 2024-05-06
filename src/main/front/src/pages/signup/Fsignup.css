@@ -1,0 +1,39 @@
+
+.fsignup{
+    
+    width: 430px;
+    height: 100vh; /* 화면의 높이를 100%로 설정 */
+    margin: 0 auto;
+    
+    border: 0.5px solid black;
+  
+    padding: 0px 20px;
+    display: flex; /* 수직 중앙 정렬을 위해 flexbox 사용 */
+    flex-direction: column; /* 내부 요소를 수직으로 배치 */
+    justify-content: center; /* 수직 정렬 */
+}
+.fsignup h2{
+    position: relative;
+    top: 50px;
+    font-size : 30px;
+    text-align: center;
+
+}
+
+.fsignup button{
+    position: relative;
+    left: 110px;
+    top: 50px;
+    width: 50%;
+    height: 45px;
+    background-color: rgb(63, 138, 182); ;
+    border: none;
+    outline:none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px ragba(0,0,0, .1);
+    cursor: pointer;
+    font-size:16px;
+    color: ragb(77,172,228);
+    font-weight: 700
+
+}

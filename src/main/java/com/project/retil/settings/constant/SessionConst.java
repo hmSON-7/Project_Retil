@@ -1,4 +1,4 @@
-package com.project.retil.settings.constant;
+package com.project.Retil.settings.constant;
 
 /**
  * 세션에서 사용하는 상수를 정의하는 추상 클래스
