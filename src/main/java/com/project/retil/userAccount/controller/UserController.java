@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 	private final UserService userService;
