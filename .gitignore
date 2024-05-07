@@ -94,7 +94,7 @@ fabric.properties
 
 # SonarQube Plugin
 # https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
-.idea/**/sonarIssues.xml
+.idea/**/sonarIssues.xmlgi
 
 # Markdown Navigator plugin
 # https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
@@ -202,7 +202,7 @@ bin/
 ### VS Code ###
 .vscode/
 
-src/main/resources/application-properties
+src/main/resources/application.properties
 /src/main/resources/application-db.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,windows,intellij
