@@ -22,7 +22,7 @@ public class UserController {
 	private final UserService userService;
 	@PostMapping("/join")
 	public ResponseEntity<RedirectView> join(@RequestBody JoinRequestDTO joinRequest) {
-		User_Information newUser = userService.join(joinRequest);
+		User_Information newUser = userService.signUp(joinRequest);
 		if (newUser != null ) {
 			RedirectView redirectView = new RedirectView("/login", true);
 			return ResponseEntity.status(HttpStatus.OK).body(redirectView);
