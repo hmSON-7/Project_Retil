@@ -1,5 +1,6 @@
-package com.project.Retil.userAccount.Entity;
+package com.project.Retil.userAccount.Repository;
 
+import com.project.Retil.userAccount.Entity.User_Information;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.ArrayList;

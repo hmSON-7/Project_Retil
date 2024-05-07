@@ -1,9 +1,9 @@
 /*
-package com.project.retil.settings.config;
+package com.project.Retil.settings.config;
 
-import com.project.retil.settings.argument_resolver.LoginUserArgumentResolver;
-import com.project.retil.settings.interceptor.LogInterceptor;
-import com.project.retil.settings.interceptor.UserLoginCheckInterceptor;
+import com.project.Retil.settings.argument_resolver.LoginUserArgumentResolver;
+import com.project.Retil.settings.interceptor.LogInterceptor;
+import com.project.Retil.settings.interceptor.UserLoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

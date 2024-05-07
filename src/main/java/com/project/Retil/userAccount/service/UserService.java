@@ -11,8 +11,6 @@ public interface UserService {
 
 	boolean isEmailUnique(String email);
 
-	User_Information join(JoinRequestDTO joinRequest);
-
 	//변수 객체는 유저인포메이션 매개변수는
 	// DTO 를 넣어라 그런데 회원가입 기능이까
 	//회원가입 관련된걸로 넣어야함
