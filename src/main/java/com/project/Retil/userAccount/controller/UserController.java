@@ -1,8 +1,8 @@
 package com.project.Retil.userAccount.controller;
 
+import com.project.Retil.settings.argument_resolver.Login;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,14 +32,12 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<User_Information> login(@RequestBody LoginRequestDTO loginRequest) {
+	public ResponseEntity<User_Information> login(@RequestBody LoginRequestDTO loginRequest,
+												  @Login UserSessionDTO session) {
 		User_Information user = userService.login(loginRequest);
 
-		if (user != null) 	{
-			// UserSessionDTO session = user.getEmail();
-			return ResponseEntity.status(HttpStatus.OK).body(user);
-		} else {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
+		return (user != null) ?
+			ResponseEntity.status(HttpStatus.OK).body(user) :
+		    ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}
 }
