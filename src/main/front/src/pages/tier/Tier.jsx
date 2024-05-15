@@ -1,5 +1,4 @@
-import "./Tier.css";
-import MainP from "../mainprofilpage/Mainp";
+import "../tier/Tier.css";
 import Progressbar from "./Progressbar";
 import Ranking from "./Ranking";
 import { useState, useEffect } from "react";
