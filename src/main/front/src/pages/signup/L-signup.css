@@ -1,0 +1,170 @@
+/* 전체 컨테이너 설정 */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 컨테이너 안의 요소들을 수직 중앙 정렬 */
+}
+
+/* 헤더 요소 설정 */
+.signup-header {
+  display: flex;
+  align-items: center; /* 헤더 요소를 수직 중앙 정렬 */
+  margin-bottom: 10px; /* 하단 여백 추가 */
+}
+
+/* 로고 이미지 설정 */
+.logo-image {
+  width: 60px;
+  height: 50px;
+}
+/* 에러 및 일치 메시지 */
+.password-match, .password-mismatch, .input-error, .input-Emailerror {
+  color: red;
+  font-size: 14px;
+  margin-left: 16px;
+}
+.password-match {
+  color: rgb(77, 173, 228); /* 일치할 때 색상 오버라이드 */
+}
+
+/* 회원가입 폼 설정 */
+.signup-form {
+  width: 100%;
+  max-width: 400px; /* 최대 너비 지정 */
+  padding: 50px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px gray;
+}
+
+/* 회원가입 세부 내용 설정 */
+.signup-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* 요소들 사이의 간격 지정 */
+}
+
+/* 입력 컨테이너 설정 */
+.input-container {
+  position: relative; /* 상대 위치 설정 */
+}
+
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+}
+
+.input-icon {
+  position: absolute;
+  right: 10px; /* 오른쪽 여백 추가 */
+  width: 30px;
+  height: 30px;
+}
+
+/* 입력 필드 설정 */
+.signup-form input[type="text"] {
+  padding: 20px;
+  border: 1px solid #000000; /* 테두리 컬러 */
+  border-radius: 8px;
+  margin-bottom: -10px;
+  text-align: left; /* 가운데 정렬 */
+   /* 전체 너비에서 아이콘 너비 빼기 */
+  box-sizing: border-box; /* 패딩 포함하여 너비 설정 */
+  font-size: 16px;
+  width: 100%;
+}
+.signup-form input[type="password"] {
+  padding: 20px;
+  border: 1px solid #000000; /* 테두리 컬러 */
+  border-radius: 8px;
+  margin-bottom: -40px;
+  text-align: left; /* 가운데 정렬 */
+  width: 100%; /* 전체 너비에서 아이콘 너비 빼기 */
+  box-sizing: border-box; /* 패딩 포함하여 너비 설정 */
+  font-size: 16px;
+}
+
+/* 회원가입 버튼 설정 */
+.signup-button {
+  padding: 17px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.signup-button.active {
+  background-color: rgb(77, 173, 228); /* 활성화된 경우의 배경색 */
+  color: #fff; /* 텍스트 색상 */
+}
+
+.signup-button:disabled {
+  background-color: #ebebeb; /* 비활성화된 경우의 배경색 */
+  color: #878787; /* 텍스트 색상 */
+  cursor: not-allowed; /* 커서 모양 변경 */
+}
+
+/* 이용약관 동의 섹션 설정 */
+.terms-agreement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* 요소들 사이의 간격 지정 */
+}
+
+/* 이용약관 체크박스 설정 */
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 요소들을 수직 중앙 정렬 */
+}
+
+/* 이용약관 체크박스의 실제 입력 요소 설정 */
+.terms-checkbox input[type="checkbox"] {
+  margin-right: 10px; /* 오른쪽 여백 추가 */
+}
+
+/* 이용약관 링크 설정 */
+.terms-links a {
+  text-decoration: none;
+  color: #000000; /* 기본 텍스트 컬러 */
+}
+
+/* 이용약관 링크 호버 설정 */
+.terms-links a:hover {
+  text-decoration: underline;
+}
+.password-mismatch,.password-match,.input-error {
+  margin-top: 41px;
+}
+
+.input-Emailerror {
+  margin-top: 12px;
+}
+.input-title{
+  margin-left: 8px;
+  font-weight: bold
+}
+.input-container#email-container .input-icon,
+.input-container#nickname-container .input-icon{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  border-top-right-radius: 5px; /* 아이콘의 왼쪽 여백 조절 */
+  width: 30px;
+  height: 30px;
+}
+.input-container#password-container .input-icon,
+.input-container#confirmPassword-container .input-icon{
+  position: absolute;
+  top: 50%;
+  transform: translateY(0%);
+  border-top-right-radius: 5px; /* 아이콘의 왼쪽 여백 조절 */
+  width: 30px;
+  height: 30px;
+}
