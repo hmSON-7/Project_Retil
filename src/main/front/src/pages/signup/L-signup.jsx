@@ -5,7 +5,7 @@ import userIcon from '/images/ico/smile.png';
 import emailIcon from '/images/ico/mail.png';
 import passwordIcon from '/images/ico/password.png';
 import './L-signup.css';
-
+import axios from 'axios';
 function Signup() {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -47,18 +47,30 @@ function Signup() {
     }
   }, [nickname, email, password, confirmPassword, agreeTerms, agreePrivacy]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (nickname && email && validateEmail(email) && password && confirmPassword && passwordMatch && agreeTerms && agreePrivacy) {
-      console.log('회원가입 요청을 보냅니다.');
-      // 여기에 실제 회원가입 로직을 추가할 수 있습니다.
+      try {
+        const response = await axios.post('http://localhost:8080/api/users/join', {
+          nickname: nickname,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+          // 필요한 다른 필드 추가
+        });
+        console.log('회원가입 요청을 보냅니다.', response.data);
 
-      // 회원가입 성공 시 페이지 이동
-      navigate('/Fsignup'); // props에서 history 객체 사용
+        // 회원가입 성공 시 페이지 이동
+        navigate('/fsignup'); // props에서 history 객체 사용
+      } catch (error) {
+        console.error('회원가입 요청 중 에러 발생:', error);
+        // 에러 처리 (예: 사용자에게 에러 메시지 표시)
+      }
     } else {
       console.log('필수 정보를 모두 입력하세요.');
     }
   };
+
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
