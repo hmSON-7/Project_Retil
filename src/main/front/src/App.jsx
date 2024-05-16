@@ -1,22 +1,18 @@
 //import logo from './logo.svg';
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-/*import Login from "./pages/login/Login.jsx";
-import Firstmain from "./pages/Firstmain.jsx";
-import List from "./pages/list/List.jsx";
-import Today from "./pages/Today/Today.jsx";
-import Gong from "./pages/Gong.jsx";
-import Mainp from "./pages/mainprofilpage/Mainp.jsx";
-import Memo from "./pages/memo/Memo.jsx";
-import Signup from "./pages/signup/L-signup.jsx";
-import PwSearch from "./pages/login/L-pwSearch.jsx";
-import Repw from "./pages/login/Repw.jsx";
-import Fsignup from "./pages/signup/Fsignup.jsx";
-import LsignupC from "./pages/signup/L-signupC.jsx";
-import Myp from "./pages/myprofilpage/Myp.jsx";*/
-
-//import Findid from './pages/Findid';
-//import Findpw from './pages/Findpw';
+import Login from "../src/pages/login/Login";
+import Firstmain from "./pages/Firstmain";
+import List from "./pages/list/List";
+import Today from "./pages/Today/Today";
+import Gong from "./pages/Gong";
+import Memo from "./pages/memo/Memo";
+import Signup from "./pages/signup/L-signup";
+import PwSearch from "./pages/login/L-pwSearch";
+import Repw from "./pages/login/Repw";
+import Fsignup from "./pages/signup/Fsignup";
+import Mypage from "./pages/mainprofilpage/Mypage";
+import Tier from "./pages/tier/Tier";
 
 function App() {
   return (
@@ -27,16 +23,13 @@ function App() {
         <Route path="gong" element={<Gong />} />
         <Route path="list" element={<List />} />
         <Route path="today" element={<Today />} />
-        <Route path="mainp" element={<Mainp />} />
         <Route path="memo" element={<Memo />} />
         <Route path="signup" element={<Signup />} />
         <Route path="pwSearch" element={<PwSearch />} />
         <Route path="repw" element={<Repw />} />
         <Route path="fsignup" element={<Fsignup />} />
-        <Route path="L-signupC" element={<LsignupC />} />
-        <Route path="myp" element={<Myp />} />
-        {/*<Route path="/findid" element={<Findid />} />
-        <Route path="/findpw" element={<Findpw />} /> */}
+        <Route path="mypage" element={<Mypage />} />
+        <Route path="tier" element={<Tier />} />
       </Routes>
     </div>
   );

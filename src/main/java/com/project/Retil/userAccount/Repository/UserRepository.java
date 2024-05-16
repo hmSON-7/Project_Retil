@@ -2,13 +2,12 @@ package com.project.Retil.userAccount.Repository;
 
 import com.project.Retil.userAccount.Entity.User_Information;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+@Repository
+public interface UserRepository extends JpaRepository<User_Information, Long> {
 
-public interface UserRepository extends JpaRepository<User_Information, Long>{
-	@Override
-	ArrayList<User_Information> findAll();
-	boolean existsByEmail(String email);
+    User_Information findByEmail(String email);
 
-	User_Information findByEmail(String email);
+    boolean existsByEmail(String email);
 }
