@@ -25,7 +25,7 @@ function Login() {
 
   const buttonOnClick = () => {
     axios
-      .post("http://localhost:8080/api/users/login", { email: id, password: pw }) // URL 수정
+      .post("http://localhost:8080/users/login", { email: id, password: pw }) // URL 수정
       .then((response) => {
         setMessage(`${response.data.nickname} 님 환영합니다!`); // 로그인 성공 시 닉네임을 포함한 메시지를 출력
         navigate("/mypage"); // 홈 페이지로 이동

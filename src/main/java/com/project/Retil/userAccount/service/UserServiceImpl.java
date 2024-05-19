@@ -1,7 +1,7 @@
 package com.project.Retil.userAccount.service;
 
-import com.project.Retil.userAccount.Repository.UserRepository;
 import com.project.Retil.userAccount.Entity.User_Information;
+import com.project.Retil.userAccount.Repository.UserRepository;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -39,11 +40,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User_Information login(LoginRequestDTO loginRequestDto) {
-        User_Information user = userRepository.findByEmail(loginRequestDto.getEmail());
+        Optional<User_Information> findUser = userRepository.findByEmail(loginRequestDto.getEmail());
 
-        if (user == null) {
+        if (findUser.isEmpty()) {
             throw new RuntimeException("계정이 존재하지 않습니다.");
         }
+        User_Information user = findUser.get();
         if (!passwordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
@@ -53,10 +55,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User_Information pwchange(String email) {
-        User_Information user = userRepository.findByEmail(email);
-        if (user == null) {
+        Optional<User_Information> findUser = userRepository.findByEmail(email);
+        if (findUser.isEmpty()) {
             throw new RuntimeException("해당 이메일로 등록된 계정이 없습니다.");
         }
+
+        User_Information user = findUser.get();
         // 비밀번호 재설정 이메일 발송 로직 구현
         String token = UUID.randomUUID().toString(); // 임시 토큰 생성
         // 이메일 발송 로직 추가 필요
