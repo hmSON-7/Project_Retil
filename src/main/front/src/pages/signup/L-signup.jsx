@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate} from 'react-router-dom'; // withRouter import 추가
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from './SignupModal';
 import userIcon from '/images/ico/smile.png';
 import emailIcon from '/images/ico/mail.png';
 import passwordIcon from '/images/ico/password.png';
 import './L-signup.css';
 import axios from 'axios';
+
 function Signup() {
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
@@ -20,7 +21,8 @@ function Signup() {
   const [showTermsModal, setShowTermsModal] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
   const validateEmail = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return regex.test(email);
@@ -36,7 +38,6 @@ function Signup() {
 
     setPasswordMatch(isPasswordMatch);
 
-    // 회원가입 버튼 활성화 여부 업데이트
     const signupButton = document.querySelector('.signup-button');
     if (signupButton) {
       if (isNicknameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid && isPasswordMatch && isAllChecked) {
@@ -52,25 +53,26 @@ function Signup() {
     if (nickname && email && validateEmail(email) && password && confirmPassword && passwordMatch && agreeTerms && agreePrivacy) {
       try {
         const response = await axios.post('http://localhost:8080/api/users/join', {
-          nickname: nickname,
-          email: email,
-          password: password,
-          confirmPassword: confirmPassword,
-          // 필요한 다른 필드 추가
+          nickname,
+          email,
+          password,
         });
+        
         console.log('회원가입 요청을 보냅니다.', response.data);
 
-        // 회원가입 성공 시 페이지 이동
-        navigate('/fsignup'); // props에서 history 객체 사용
+        if (response.data && response.data.token) {
+          localStorage.setItem('token', response.data.token);
+          navigate('/fsignup');
+        } else {
+          console.error('토큰이 응답에 없습니다.');
+        }
       } catch (error) {
         console.error('회원가입 요청 중 에러 발생:', error);
-        // 에러 처리 (예: 사용자에게 에러 메시지 표시)
       }
     } else {
       console.log('필수 정보를 모두 입력하세요.');
     }
   };
-
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
@@ -92,7 +94,6 @@ function Signup() {
     const value = e.target.value;
     setPassword(value);
 
-    // 비밀번호 유효성 검사
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,20})/;
     const isValidPassword = passwordRegex.test(value);
 
@@ -211,7 +212,6 @@ function Signup() {
           >
             회원가입
           </button>
-
           <div className="terms-agreement">
             <div className="terms-checkbox">
               <input type="checkbox" id="agreeAll" checked={agreeAll} onChange={handleAgreeAll} />
@@ -259,4 +259,4 @@ function Signup() {
   );
 }
 
-export default Signup; // withRouter로 감싸주기
+export default Signup;
