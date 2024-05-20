@@ -4,9 +4,11 @@ import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
 
+import java.util.Optional;
+
 public interface UserService {
 	User_Information signUp(JoinRequestDTO joinRequestDto);
-	User_Information login(LoginRequestDTO LoginRequestDto);
+	Optional<User_Information> login(LoginRequestDTO LoginRequestDto);
 	User_Information pwchange(String email); // 보류
 
 	boolean isEmailUnique(String email);

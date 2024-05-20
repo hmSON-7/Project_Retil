@@ -31,6 +31,9 @@ public class User_Information {
     @Column
     private String profileImage;
 
+    @Column(nullable = true)
+    private String resetToken;
+
     public User_Information(String nickname, String email, String password) {
         this.email = email;
         this.password = password;
@@ -39,3 +42,4 @@ public class User_Information {
         this.accountConnection = 0;
     }
 }
+

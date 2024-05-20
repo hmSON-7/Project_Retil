@@ -31,8 +31,8 @@ public class EmailService {
 			MimeMessage message = createMessage(to, token); // 메일 생성
 			javaMailSender.send(message); // 메일 발송
 		} catch (MessagingException e) {
-			log.error("Failed to send email", e); // 에러 로그 기록
-			throw new RuntimeException("Failed to send email", e); // 런타임 예외 발생
+			log.error("Failed to send email"); // 에러 로그 기록
+			throw new RuntimeException("Failed to send email"); // 런타임 예외 발생
 		}
 		return token; // 생성된 토큰 반환
 	}
