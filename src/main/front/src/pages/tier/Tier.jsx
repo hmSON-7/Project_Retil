@@ -1,4 +1,5 @@
-import "../tier/Tier.css";
+import "./Tier.css";
+import MainP from "../mainprofilpage/Mainp";
 import Progressbar from "./Progressbar";
 import Ranking from "./Ranking";
 import { useState, useEffect } from "react";
@@ -26,13 +27,26 @@ const mData = [
     time: fourHoursLater.getTime(),
     rank: 2,
   },
+  {
+    id: 3,
+    nickname: "똥쟁이",
+    time: sixHoursLater.getTime(),
+    rank: 1,
+  },
 ];
-const myData = { id: 3, nickname: "나다", time: 6, rank: 3 };
+
+const myData = {
+  id: 3,
+  nickname: "똥쟁이",
+  time: sixHoursLater.getTime(),
+  rank: 1,
+};
 
 //여기까지
 
 // -------------------------
 function Tier() {
+  const [myRank, setMyRank] = useState(myData);
   const [rank, setRank] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -72,12 +86,13 @@ function Tier() {
     <div className="tier">
       <MainP />
 
-      <div className="my_Tier">
-        <div className="myTier">🏅</div>
-        <div className="myRank">{myData.nickname}</div>
-        <div className="myTime">~~까지{myData.time}시간 남았습니다.</div>
-        {/* 지금은 ~~시간이라고 했지만 나중에 디비에서 시간 데이터를 받으면 더 생각해 보아야할듯 ex) ~~분 ~~시간 남았습니다로 해야할듯 */}
-        <Progressbar />
+      <div className="myTier">
+        <div className="my_rank">{myRank.rank}등</div>
+        <div className="my_tier">대충 티어 아이콘임</div>
+        <div className="my_progress">
+          <Progressbar />
+        </div>
+        <div className="my_studyTime">총 공부량 {myRank.time}</div>
       </div>
 
       <p>순위</p>

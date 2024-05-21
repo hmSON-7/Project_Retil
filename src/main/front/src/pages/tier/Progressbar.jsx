@@ -19,7 +19,6 @@ function Progressbar() {
             width: `${filled}%`,
             background: "#a66cff",
             transition: "width 0.1s",
-            zIndex: 2,
           }}
         ></div>
         <span className="progressPercent">{filled}%</span>
