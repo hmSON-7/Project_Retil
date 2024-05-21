@@ -1,0 +1,35 @@
+.main_content{
+    width: 100%;
+    min-width: 1400px;
+    margin: 0 auto;
+    
+}
+.main_top{
+    display: flex;
+    position: relative;
+    top: 200px;
+    justify-content:space-around ;
+    margin:0 auto;
+    width: 80%;
+    height: 100%;
+
+
+}
+
+.main_top .main_graph{
+    width: 40%;
+}
+.main_graph span{
+    position: relative;
+    bottom:10px;
+
+}
+
+.main_top .main_profile{
+    width: 40%;
+}
+
+.main_profile span{
+    position: relative;
+    bottom: 10px;
+}
