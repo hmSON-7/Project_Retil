@@ -1,8 +1,4 @@
-.Progressbar{
-    position: relative;
-    z-index: 2 ;
-    top: 30px;
-}
+
 .progressbar{
     position: relative;
     overflow: hidden;
