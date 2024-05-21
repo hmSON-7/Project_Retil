@@ -63,8 +63,10 @@ function Memo() {
             editorClassName="editor-class"
             toolbarClassName="toolbar-class"
           />
-          <span>{inputCount}</span>
-          <span>/2048 자</span>
+          <div className="limit">
+            <span>{inputCount}</span>
+            <span>/2048 자</span>
+          </div>
         </div>
       </form>
     </div>
