@@ -1,6 +1,7 @@
 package com.project.Retil.til.controller;
 
-import com.project.Retil.til.service.TilService;
+import com.project.Retil.til.dto.TilCreateDTO;
+import com.project.Retil.til.entity.Til;
 import com.project.Retil.til.service.TilServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

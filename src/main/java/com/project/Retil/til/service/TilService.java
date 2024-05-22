@@ -1,5 +1,8 @@
 package com.project.Retil.til.service;
 
+import com.project.Retil.til.dto.TilCreateDTO;
+import com.project.Retil.til.entity.Til;
+
 import java.util.ArrayList;
 
 public interface TilService {

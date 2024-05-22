@@ -44,4 +44,10 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    // 3. 비밀번호 변경을 위한 이메일 인증
+
+    // 4. 이메일 인증 성공 시 비밀번호 변경
+
+    // 5. 회원 삭제
 }
