@@ -5,15 +5,20 @@ import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
 
 public interface UserService {
+	// 1. 회원가입
 	User_Information signUp(JoinRequestDTO joinRequestDto);
+
+	// 2. 로그인
 	User_Information login(LoginRequestDTO LoginRequestDto);
-	User_Information pwchange(String email); // 보류
 
-	boolean isEmailUnique(String email);
+	// 3. 비밀번호 변경을 위한 이메일 인증
+	String requestPwChange(String email);
 
-	//변수 객체는 유저인포메이션 매개변수는
-	// DTO 를 넣어라 그런데 회원가입 기능이까
-	//회원가입 관련된걸로 넣어야함
+	// 4. 비밀번호 변경
+	User_Information pwChange(String password);
+
+	// 5. 회원 삭제
+	void deleteUser(String password);
 }
 
 

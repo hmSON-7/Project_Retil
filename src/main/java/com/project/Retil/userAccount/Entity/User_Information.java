@@ -31,11 +31,15 @@ public class User_Information {
     @Column
     private String profileImage;
 
+    @Column
+    private String setToken;
+
     public User_Information(String nickname, String email, String password) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.profileImage = "";
         this.accountConnection = 0;
+        this.setToken = "";
     }
 }
