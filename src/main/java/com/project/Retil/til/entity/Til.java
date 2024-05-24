@@ -16,7 +16,7 @@ public class Til {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tilNum; // 에디터 번호(자동 생성)
+    private Long id; // 에디터 번호(자동 생성)
 
 
     @ManyToOne

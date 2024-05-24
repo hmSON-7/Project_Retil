@@ -15,9 +15,6 @@ public class User_Rank {
 
 	//유저의 랭크이다.
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User_Information user;

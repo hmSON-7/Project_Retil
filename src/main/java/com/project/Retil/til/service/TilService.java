@@ -14,7 +14,7 @@ public interface TilService {
     ArrayList<Til> showListInSubject(Long user_id, String subjectName);
 
     // 3. TIL 단일 조회
-    Til show(Long til_num);
+    Til show(Long id);
 
     // 4. TIL 작성(임시 저장)
 
@@ -22,7 +22,7 @@ public interface TilService {
     Til save(TilCreateDTO tilCreateDto, Long user_id);
 
     // 6. TIL 삭제
-    Til delete(Long user_id, Long til_num);
+    Til delete(Long user_id, Long til_id);
 
     // 7. 과목 저장
     TilSubject addSubject(Long user_id, String subjectName);

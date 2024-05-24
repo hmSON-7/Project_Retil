@@ -39,8 +39,8 @@ public class TilServiceImpl implements TilService {
     }
 
     @Override
-    public Til show(Long til_num) {
-        return tilRepository.findById(til_num).orElse(null);
+    public Til show(Long id) {
+        return tilRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -70,8 +70,8 @@ public class TilServiceImpl implements TilService {
     }
 
     @Override
-    public Til delete(Long user_id, Long til_num) {
-        Til target = tilRepository.findById(til_num).orElse(null);
+    public Til delete(Long user_id, Long til_id) {
+        Til target = tilRepository.findById(til_id).orElse(null);
 
         if(target == null) {
             return null;
