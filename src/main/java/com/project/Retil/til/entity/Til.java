@@ -18,6 +18,11 @@ public class Til {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tilNum; // 에디터 번호(자동 생성)
 
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "subject")
+    private TilSubject tilSubject;
+
     @Column(nullable = false)
     private String title;
 
@@ -25,16 +30,21 @@ public class Til {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(nullable = false, name = "user_id")
     private User_Information user;
 
     @Column
     private LocalDateTime saveTime;
 
-    public Til(String title, String content, User_Information user) {
+    @Column
+    private boolean bookMark;
+
+    public Til(TilSubject tilSubject, String title, String content, User_Information user) {
+        this.tilSubject = tilSubject;
         this.title = title;
         this.content = content;
         this.user = user;
         this.saveTime = LocalDateTime.now();
+        this.bookMark = false;
     }
 }

@@ -2,6 +2,7 @@ package com.project.Retil.til.service;
 
 import com.project.Retil.til.dto.TilCreateDTO;
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.til.entity.TilSubject;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ public interface TilService {
     ArrayList<Til> showList(Long user_id);
 
     // 2. 과목별 리스트 조회
+    ArrayList<Til> showListInSubject(Long user_id, String subjectName);
 
     // 3. TIL 단일 조회
     Til show(Long til_num);
@@ -21,4 +23,7 @@ public interface TilService {
 
     // 6. TIL 삭제
     Til delete(Long user_id, Long til_num);
+
+    // 7. 과목 저장
+    TilSubject addSubject(Long user_id, String subjectName);
 }

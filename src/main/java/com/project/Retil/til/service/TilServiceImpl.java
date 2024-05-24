@@ -2,7 +2,9 @@ package com.project.Retil.til.service;
 
 import com.project.Retil.til.dto.TilCreateDTO;
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.til.entity.TilSubject;
 import com.project.Retil.til.repository.TilRepository;
+import com.project.Retil.til.repository.TilSubjectRepository;
 import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,11 +18,24 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class TilServiceImpl implements TilService {
     private final TilRepository tilRepository;
+    private final TilSubjectRepository tilSubjectRepository;
     private final UserRepository userRepository;
 
     @Override
     public ArrayList<Til> showList(Long userId) {
         return tilRepository.findAllById(userId);
+    }
+
+    @Override
+    public ArrayList<Til> showListInSubject(Long user_id, String subjectName) {
+        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllById(user_id);
+        for(TilSubject s : subjectList) {
+            if(s.getSubjectName().equals(subjectName)) {
+                return tilRepository.findAllBySubject(s);
+            }
+        }
+
+        return null;
     }
 
     @Override
@@ -30,8 +45,22 @@ public class TilServiceImpl implements TilService {
 
     @Override
     public Til save(TilCreateDTO tilCreateDto, Long user_id) {
+        TilSubject subject = null;
         User_Information user = userRepository.findById(user_id).orElse(null);
+        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllById(user_id);
+        for(TilSubject s : subjectList) {
+            if(s.getSubjectName().equals(tilCreateDto.getSubjectName())) {
+                subject = s;
+                break;
+            }
+        }
+
+        if(subject == null) {
+            return null;
+        }
+
         Til til = new Til(
+                subject,
                 tilCreateDto.getTitle(),
                 tilCreateDto.getContent(),
                 user
@@ -53,5 +82,18 @@ public class TilServiceImpl implements TilService {
 
         tilRepository.delete(target);
         return target;
+    }
+
+    @Override
+    public TilSubject addSubject(Long user_id, String subjectName) {
+        User_Information user = userRepository.findById(user_id).orElse(null);
+
+        if(user == null) return null;
+
+        TilSubject subject = new TilSubject(
+                subjectName, user
+        );
+
+        return tilSubjectRepository.save(subject);
     }
 }

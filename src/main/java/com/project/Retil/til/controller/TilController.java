@@ -2,6 +2,7 @@ package com.project.Retil.til.controller;
 
 import com.project.Retil.til.dto.TilCreateDTO;
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.til.entity.TilSubject;
 import com.project.Retil.til.service.TilServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,10 @@ public class TilController {
     }
 
     // 2. TIL 과목별 리스트 조회
+    @GetMapping("/{subject_id}")
+    public List<Til> showListInSubject(@PathVariable Long user_id, String subjectName) {
+        return tilService.showListInSubject(user_id, subjectName);
+    }
 
     // 3. TIL 에디터 보기
     @GetMapping("/{til_num}")
@@ -32,11 +37,16 @@ public class TilController {
         return tilService.show(til_num);
     }
 
-    // 4. TIL 작성 내용 임시 저장
+    // 4. TIL 작성 내용 임시 저장 : 공부 시간만 가져와 저장 ( 미완성. 유저 랭크 객체 먼저 만들어야 함 )
+    @PostMapping("/write/temp")
+    public ResponseEntity<Til> tempSave(@PathVariable Long user_id,
+                                        @RequestBody int time) {
+        return null;
+    }
 
     // 5. TIL 작성 완료 후 저장
     @PostMapping("/write")
-    public ResponseEntity<Til> save(@RequestBody TilCreateDTO tilCreateDto,
+    public ResponseEntity<Til> save(@RequestBody TilCreateDTO tilCreateDto, int time,
                                     @PathVariable Long user_id) {
         Til created = tilService.save(tilCreateDto, user_id);
         return (created != null) ?
@@ -51,6 +61,16 @@ public class TilController {
         Til deleted = tilService.delete(user_id, til_num);
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 7. 과목 등록
+    @PostMapping("/")
+    public ResponseEntity<TilSubject> addSubject(@PathVariable Long user_id,
+                                                 @RequestBody String subjectName) {
+        TilSubject addedSubject = tilService.addSubject(user_id, subjectName);
+        return (addedSubject != null) ?
+                ResponseEntity.status(HttpStatus.OK).body(addedSubject) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
