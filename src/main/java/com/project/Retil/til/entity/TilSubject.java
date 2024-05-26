@@ -13,10 +13,8 @@ import lombok.NoArgsConstructor;
 public class TilSubject {
 
     @Id
-    private String subjectId;
-
-    @Column
-    private int subjectNum = 0;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String subjectName;
@@ -26,8 +24,6 @@ public class TilSubject {
     private User_Information user;
 
     public TilSubject(String subjectName, User_Information user) {
-        this.subjectNum++;
-        this.subjectId = user.getNickname() + "-" + subjectNum;
         this.subjectName = subjectName;
         this.user = user;
     }

@@ -21,23 +21,44 @@ public class TilServiceImpl implements TilService {
     private final TilSubjectRepository tilSubjectRepository;
     private final UserRepository userRepository;
 
+    /**
+     * 1. TIL 리스트 출력
+     * 유저의 id 값을 받아 해당 유저에 대한 TIL 전체를 리스트로 반환
+     * @param user_id 사용자의 id
+     * @return 해당 유저에 대한 TIL 전체 리스트
+     */
     @Override
-    public ArrayList<Til> showList(Long userId) {
-        return tilRepository.findAllById(userId);
+    public ArrayList<Til> showList(Long user_id) {
+        User_Information user = userRepository.findById(user_id).orElse(null);
+        return user != null ? tilRepository.findAllByUser(user) : null;
     }
 
+    /**
+     * 2. 선택된 subject에 대한 TIL 리스트만 출력
+     * @param user_id 사용자 id
+     * @param subjectName 사용자가 선택한 과목 이름
+     * @return 선택된 과목에 대한 리스트만 출력
+     */
     @Override
     public ArrayList<Til> showListInSubject(Long user_id, String subjectName) {
-        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllById(user_id);
-        for(TilSubject s : subjectList) {
-            if(s.getSubjectName().equals(subjectName)) {
-                return tilRepository.findAllBySubject(s);
+        User_Information user = userRepository.findById(user_id).orElse(null);
+        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
+        if(user != null && subjectList != null) {
+            for(TilSubject s : subjectList) {
+                if(s.getSubjectName().equals(subjectName)) {
+                    return tilRepository.findAllByTilSubject(s);
+                }
             }
         }
 
         return null;
     }
 
+    /**
+     * 3. TIL 내용 출력
+     * @param id
+     * @return
+     */
     @Override
     public Til show(Long id) {
         return tilRepository.findById(id).orElse(null);
@@ -47,7 +68,7 @@ public class TilServiceImpl implements TilService {
     public Til save(TilCreateDTO tilCreateDto, Long user_id) {
         TilSubject subject = null;
         User_Information user = userRepository.findById(user_id).orElse(null);
-        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllById(user_id);
+        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
         for(TilSubject s : subjectList) {
             if(s.getSubjectName().equals(tilCreateDto.getSubjectName())) {
                 subject = s;

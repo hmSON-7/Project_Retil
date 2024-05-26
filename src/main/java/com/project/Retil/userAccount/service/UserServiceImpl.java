@@ -73,4 +73,9 @@ public class UserServiceImpl implements UserService {
     public User_Information pwChange(String password) {
         return null;
     }
+
+    @Override
+    public void deleteUser(String password) {
+
+    }
 }

@@ -20,7 +20,7 @@ public class Til {
 
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "subject")
+    @JoinColumn(nullable = false, name = "subject_id")
     private TilSubject tilSubject;
 
     @Column(nullable = false)

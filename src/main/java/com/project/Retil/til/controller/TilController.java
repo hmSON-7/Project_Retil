@@ -26,14 +26,15 @@ public class TilController {
     }
 
     // 2. TIL 과목별 리스트 조회
-    @GetMapping("/{subject_id}")
-    public List<Til> showListInSubject(@PathVariable Long user_id, String subjectName) {
+    @GetMapping("/{subjectName}")
+    public List<Til> showListInSubject(@PathVariable Long user_id,
+                                       @PathVariable String subjectName) {
         return tilService.showListInSubject(user_id, subjectName);
     }
 
     // 3. TIL 에디터 보기
     @GetMapping("/{til_num}")
-    public Til show(@PathVariable Long til_num) {
+    public Til show(@PathVariable Long til_num, @PathVariable String user_id) {
         return tilService.show(til_num);
     }
 
