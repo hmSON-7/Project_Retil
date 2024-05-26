@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @AllArgsConstructor
@@ -25,9 +23,9 @@ public class User_Rank {
 	@Column
 	private String userRank; //랭크
 
-	public User_Rank(User_Information user) {
+	public User_Rank(User_Information user, Long time, String userRank) {
 		this.user = user;
-		this.totalStudyTime = 0L;
-		this.userRank = "unRanked";
+		this.totalStudyTime = time;
+		this.userRank = userRank;
 	}
 }

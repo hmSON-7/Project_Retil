@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.awt.*;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -23,8 +25,12 @@ public class TilSubject {
     @JoinColumn(nullable = false, name = "user_id")
     private User_Information user;
 
-    public TilSubject(String subjectName, User_Information user) {
+    @Column
+    private Color color; // 확정 아님
+
+    public TilSubject(String subjectName, User_Information user, Color color) {
         this.subjectName = subjectName;
         this.user = user;
+        this.color = color;
     }
 }

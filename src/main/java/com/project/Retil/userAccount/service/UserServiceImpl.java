@@ -1,6 +1,7 @@
 package com.project.Retil.userAccount.service;
 
 import com.project.Retil.userAccount.Entity.User_Information;
+import com.project.Retil.userAccount.Entity.User_Rank;
 import com.project.Retil.userAccount.Repository.UserRepository;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
@@ -37,6 +38,9 @@ public class UserServiceImpl implements UserService {
         );
 
         User_Information savedUser = userRepository.save(user);
+
+        User_Rank userRank = new User_Rank(savedUser, 0L, "unRanked");
+
         log.info("신규 유저가 회원 가입 하였습니다: " + savedUser.getEmail()); // 로그 추가
         return savedUser;
     }
