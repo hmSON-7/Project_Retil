@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
     // 4. 비밀번호 변경(미완성)
     @Override
     public User_Information pwChange(Long user_id, String password) {
-        User_Information requestedUser = userRepository.findById(user_id).orElse(null);
+        User_Information requestedUser = findUser(user_id);
         if(requestedUser == null) return null;
 
         requestedUser = new User_Information(
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
     // 5. 사용자 계정 삭제
     @Override
     public User_Information deleteUser(Long user_id, String password) {
-        User_Information target = userRepository.findById(user_id).orElse(null);
+        User_Information target = findUser(user_id);
         if(target == null) return null;
 
         if (!passwordEncoder.matches(target.getPassword(), password)) {
@@ -106,5 +106,11 @@ public class UserServiceImpl implements UserService {
 
         userRepository.delete(target);
         return target;
+    }
+
+    // 6. 회원 정보 반환
+    @Override
+    public User_Information findUser(Long user_id) {
+        return userRepository.findById(user_id).orElse(null);
     }
 }

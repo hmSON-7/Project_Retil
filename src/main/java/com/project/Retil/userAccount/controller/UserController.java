@@ -4,6 +4,7 @@ import com.project.Retil.settings.security.JwtUtil;
 import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
+import com.project.Retil.userAccount.dto.TokenResponseDTO;
 import com.project.Retil.userAccount.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,11 +35,11 @@ public class UserController {
 
     // 2. 사용자 로그인
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequest) {
+    public ResponseEntity<TokenResponseDTO> login(@RequestBody LoginRequestDTO loginRequest) {
         User_Information user = userService.login(loginRequest);
         if (user != null) {
             String token = jwtUtil.generateToken(user.getEmail(), user.getId());
-            return ResponseEntity.status(HttpStatus.OK).body(token);
+            return ResponseEntity.status(HttpStatus.OK).body(new TokenResponseDTO(token, user.getId()));
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -74,5 +75,11 @@ public class UserController {
         return deleted != null ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 6. 마이 페이지
+    @GetMapping("/{user_id}/my_page")
+    public User_Information showMyPage(@PathVariable Long user_id) {
+        return userService.findUser(user_id);
     }
 }

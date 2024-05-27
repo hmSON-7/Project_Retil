@@ -19,6 +19,9 @@ public interface UserService {
 
 	// 5. 회원 삭제
 	User_Information deleteUser(Long user_id, String password);
+
+	// 6. 회원 정보 반환
+	User_Information findUser(Long user_id);
 }
 
 

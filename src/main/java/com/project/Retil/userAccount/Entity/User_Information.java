@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -26,7 +28,7 @@ public class User_Information {
     private String nickname;
 
     @Column
-    private int accountConnection; //계정 연결(현재 보류)
+    private LocalDateTime latestPwChange;
 
     @Column
     private String profileImage;
@@ -39,7 +41,7 @@ public class User_Information {
         this.password = password;
         this.nickname = nickname;
         this.profileImage = "";
-        this.accountConnection = 0;
+        this.latestPwChange = LocalDateTime.now();
         this.setToken = "";
     }
 }
