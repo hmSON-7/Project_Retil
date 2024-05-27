@@ -17,13 +17,15 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private int expirationTime;
 
-    public String generateToken(String email) {
+    public String generateToken(String email, Long userId) {
         return Jwts.builder()
-            .setSubject(email)
-            .setIssuedAt(new Date())
-            .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-            .signWith(SignatureAlgorithm.HS256, secretKey)
-            .compact();
+                .setSubject("Your Token")
+                .claim("email", email)
+                .claim("id", userId)  // id 값을 추가로 페이로드에 넣음
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
+                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .compact();
     }
 
     public String extractUsername(String token) {

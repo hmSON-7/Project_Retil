@@ -43,7 +43,7 @@ public class EmailService {
         MimeMessage message = javaMailSender.createMimeMessage();
         message.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(to));
         message.setSubject("당신의 비밀번호 초기화 인증 번호입니다");
-        message.setText("비밀번호 초기화 인증 번호: " + token, "utf-8", "html");
+        message.setText("Code : " + token, "utf-8", "html");
         try {
             message.setFrom(new InternetAddress(fromEmail, "Admin"));
         } catch (UnsupportedEncodingException e) {

@@ -13,7 +13,7 @@
     "@draft-js-plugins/editor": "^4.1.4",
     "@draft-js-plugins/inline-toolbar": "^4.2.1",
     "@emotion/react": "^11.11.4",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "core-js": "^3.37.0",
     "draft-convert": "^2.1.13",
     "draft-js": "^0.11.7",
@@ -38,6 +38,6 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "vite": "^5.2.11"
+    "vite": "^5.2.0"
   }
 }

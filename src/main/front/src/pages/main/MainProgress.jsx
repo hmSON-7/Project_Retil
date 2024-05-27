@@ -1,30 +1,30 @@
+import "./MainProgress.css";
 import { useState, useEffect } from "react";
-import "./Progressbar.css";
-function Progressbar() {
+
+const MainProgress = () => {
   const [filled, setFilled] = useState(0);
 
   useEffect(() => {
     if (filled < 100) {
-      // 스프링부트에서 시간 값을 가져오면 여기를 수정해야할듯
       setTimeout(() => setFilled((prev) => (prev += 2)), 50);
     }
   });
-
   return (
-    <div className="Progressbar">
-      <div className="progressbar">
+    <div className="profile_Progress">
+      <div className="time_Progress">
         <div
           style={{
             height: "100%",
             width: `${filled}%`,
-            background: "#a66cff",
+            background: "rgb(77, 173,228)",
             transition: "width 0.1s",
+            zIndex: 2,
           }}
         ></div>
-        <span className="progressPercent">{filled}%</span>
+        <span className="progress_Percent">{filled}%</span>
       </div>
     </div>
   );
-}
+};
 
-export default Progressbar;
+export default MainProgress;

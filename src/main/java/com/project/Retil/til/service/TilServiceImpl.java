@@ -76,28 +76,29 @@ public class TilServiceImpl implements TilService {
     }
 
     @Override
-    public User_Rank timeSave(Long user_id, Long time) {
-        User_Information user = userRepository.findById(user_id).orElse(null);
+    public User_Rank timeSave(User_Information user, Long time, TilSubject subject) {
         if(user == null) return null;
 
         User_Rank userRank = userRankRepository.findByUser(user);
-        time += userRank.getTotalStudyTime();
-        String rank = switchRank(time);
-        userRank = new User_Rank(user, time, rank);
+        Long totalTime = time + userRank.getTotalStudyTime();
+        Long subjectTime = time + subject.getStudyTime();
+        String rank = switchRank(totalTime);
+        userRank = new User_Rank(user, totalTime, rank);
+
+        subject = new TilSubject(
+                subject.getSubjectName(),
+                subject.getUser(),
+                subject.getColor(),
+                subjectTime
+        );
+
         return userRankRepository.save(userRank);
     }
 
     @Override
     public Til save(TilCreateDTO tilCreateDto, Long user_id, Long time) {
-        TilSubject subject = null;
         User_Information user = userRepository.findById(user_id).orElse(null);
-        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
-        for(TilSubject s : subjectList) {
-            if(s.getSubjectName().equals(tilCreateDto.getSubjectName())) {
-                subject = s;
-                break;
-            }
-        }
+        TilSubject subject = searchSubject(tilCreateDto.getSubjectName(), user);
 
         if(subject == null) {
             return null;
@@ -110,7 +111,7 @@ public class TilServiceImpl implements TilService {
                 user
         );
 
-        timeSave(user_id, time);
+        timeSave(user, time, subject);
 
         return tilRepository.save(til);
     }
@@ -138,10 +139,22 @@ public class TilServiceImpl implements TilService {
 
         Color selected = Color.decode(color);
         TilSubject subject = new TilSubject(
-                subjectName, user, selected
+                subjectName, user, selected, 0L
         );
 
         return tilSubjectRepository.save(subject);
+    }
+
+    @Override
+    public TilSubject searchSubject(String subjectName, User_Information user) {
+        ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
+        for(TilSubject s : subjectList) {
+            if(s.getSubjectName().equals(subjectName)) {
+                return s;
+            }
+        }
+
+        return null;
     }
 
     public String switchRank(Long time) {

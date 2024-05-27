@@ -28,9 +28,13 @@ public class TilSubject {
     @Column
     private Color color; // 확정 아님
 
-    public TilSubject(String subjectName, User_Information user, Color color) {
+    @Column
+    private Long studyTime;
+
+    public TilSubject(String subjectName, User_Information user, Color color, Long studyTime) {
         this.subjectName = subjectName;
         this.user = user;
         this.color = color;
+        this.studyTime = studyTime;
     }
 }

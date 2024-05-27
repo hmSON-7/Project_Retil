@@ -3,8 +3,8 @@
 .categorySelect{
     position : relative;
     left : 141px;
-    bottom : 115px;
-    width: 50%; /* 예시로 고정 너비를 설정하였으니 필요에 따라 조절해주세요. */
+    bottom : 113.5px;
+    width: 60%; /* 예시로 고정 너비를 설정하였으니 필요에 따라 조절해주세요. */
     height: 1rem;
     margin-bottom: 0px; /* 각 요소 사이의 간격 조절 */
     background: white;
