@@ -1,6 +1,7 @@
 package com.project.Retil.til.service;
 
 import com.project.Retil.til.dto.TilCreateDTO;
+import com.project.Retil.til.dto.TilListDTO;
 import com.project.Retil.til.entity.Til;
 import com.project.Retil.til.entity.TilSubject;
 import com.project.Retil.til.repository.TilRepository;
@@ -33,13 +34,12 @@ public class TilServiceImpl implements TilService {
      * @return 사용자 id로 찾은 TIL 리스트를 작성 일자 순으로 정렬해서 반환
      */
     @Override
-    public ArrayList<Til> showList(Long user_id) {
+    public ArrayList<TilListDTO> showList(Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         if(user == null) return null;
 
         ArrayList<Til> tilList = tilRepository.findAllByUser(user);
-        tilList.sort(Comparator.comparing(Til::getSaveTime).reversed());
-        return tilList;
+        return makeList(tilList);
     }
 
     /**
@@ -49,20 +49,36 @@ public class TilServiceImpl implements TilService {
      * @return 선택된 과목에 대한 리스트만 작성 일자 순으로 정렬해서 출력
      */
     @Override
-    public ArrayList<Til> showListInSubject(Long user_id, String subjectName) {
+    public ArrayList<TilListDTO> showListInSubject(Long user_id, String subjectName) {
         User_Information user = userRepository.findById(user_id).orElse(null);
+        if(user == null) throw new RuntimeException("존재하지 않는 사용자입니다.");
+
         ArrayList<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
-        if(user != null && subjectList != null) {
-            for(TilSubject s : subjectList) {
-                if(s.getSubjectName().equals(subjectName)) {
-                    ArrayList<Til> tilList = tilRepository.findAllByTilSubject(s);
-                    tilList.sort(Comparator.comparing(Til::getSaveTime).reversed());
-                    return tilList;
-                }
+        if(subjectList == null) throw new RuntimeException("아직 과목이 없습니다.");
+
+        TilSubject subject = null;
+        for(TilSubject s : subjectList) {
+            if(s.getSubjectName().equals(subjectName)) {
+                subject = s; break;
             }
         }
 
-        return null;
+        ArrayList<Til> tilList = tilRepository.findAllByTilSubject(subject);
+        return makeList(tilList);
+    }
+
+    public ArrayList<TilListDTO> makeList(ArrayList<Til> tilList) {
+        ArrayList<TilListDTO> requestedList = new ArrayList<>();
+        for(Til til : tilList) {
+            requestedList.add(new TilListDTO(
+                    til.getBookmark(),
+                    til.getTilSubject().getSubjectName(),
+                    til.getTitle(),
+                    til.getSaveTime()
+            ));
+        }
+        requestedList.sort(Comparator.comparing(TilListDTO::getSaveTime).reversed());
+        return requestedList;
     }
 
     /**
@@ -108,7 +124,8 @@ public class TilServiceImpl implements TilService {
                 subject,
                 tilCreateDto.getTitle(),
                 tilCreateDto.getContent(),
-                user
+                user,
+                false
         );
 
         timeSave(user, time, subject);
@@ -158,15 +175,15 @@ public class TilServiceImpl implements TilService {
     }
 
     public String switchRank(Long time) {
-        if(time < 3600) {
+        if(time < 3600000) {
             return "unRanked";
-        } else if(time < 3600 * 10) {
+        } else if(time < 3600000 * 10) {
             return "Bronze";
-        } else if(time < 3600 * 50) {
+        } else if(time < 3600000 * 50) {
             return "Silver";
-        } else if(time < 3600 * 100) {
+        } else if(time < 3600000 * 100) {
             return "Gold";
-        } else if(time < 3600 * 500) {
+        } else if(time < 3600000 * 500) {
             return "Platinum";
         } else {
             return "Diamond";

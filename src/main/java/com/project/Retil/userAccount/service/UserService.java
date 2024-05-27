@@ -15,7 +15,7 @@ public interface UserService {
 	String sendMail(String email);
 
 	// 4. 비밀번호 변경
-	User_Information pwChange(Long user_id, String password);
+	User_Information pwChange(String email, String password);
 
 	// 5. 회원 삭제
 	User_Information deleteUser(Long user_id, String password);

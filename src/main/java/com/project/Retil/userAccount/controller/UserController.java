@@ -4,6 +4,7 @@ import com.project.Retil.settings.security.JwtUtil;
 import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
+import com.project.Retil.userAccount.dto.MyPageDTO;
 import com.project.Retil.userAccount.dto.TokenResponseDTO;
 import com.project.Retil.userAccount.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,7 @@ public class UserController {
     public ResponseEntity<TokenResponseDTO> login(@RequestBody LoginRequestDTO loginRequest) {
         User_Information user = userService.login(loginRequest);
         if (user != null) {
+
             String token = jwtUtil.generateToken(user.getEmail(), user.getId());
             return ResponseEntity.status(HttpStatus.OK).body(new TokenResponseDTO(token, user.getId()));
         } else {
@@ -56,8 +58,8 @@ public class UserController {
 
     // 4. 비밀번호 변경
     @PostMapping("/{email}/pw_change")
-    public ResponseEntity<RedirectView> pwChange(@PathVariable Long email,
-                                           @RequestBody String password) {
+    public ResponseEntity<RedirectView> pwChange(@PathVariable String email,
+                                                 @RequestBody String password) {
         User_Information user = userService.pwChange(email, password);
         if (user != null) {
             RedirectView redirectView = new RedirectView("/login", true);
@@ -79,7 +81,24 @@ public class UserController {
 
     // 6. 마이 페이지
     @GetMapping("/{user_id}/my_page")
-    public User_Information showMyPage(@PathVariable Long user_id) {
-        return userService.findUser(user_id);
+    public MyPageDTO showMyPage(@PathVariable Long user_id) {
+        User_Information user =  userService.findUser(user_id);
+        return new MyPageDTO(
+                user.getNickname(),
+                user.getEmail(),
+                user.getLatestPwChange()
+        );
+    }
+
+    // 7. 닉네임 수정
+    @PatchMapping("/{user_id}/my_page/nickname")
+    public MyPageDTO nicknameChange(@PathVariable Long user_id,
+                                    @RequestBody String newNickname) {
+        User_Information user =  userService.findUser(user_id);
+        return new MyPageDTO(
+                newNickname,
+                user.getEmail(),
+                user.getLatestPwChange()
+        );
     }
 }

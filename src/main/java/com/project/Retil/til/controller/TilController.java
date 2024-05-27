@@ -1,6 +1,7 @@
 package com.project.Retil.til.controller;
 
 import com.project.Retil.til.dto.TilCreateDTO;
+import com.project.Retil.til.dto.TilListDTO;
 import com.project.Retil.til.entity.Til;
 import com.project.Retil.til.entity.TilSubject;
 import com.project.Retil.til.service.TilServiceImpl;
@@ -25,14 +26,14 @@ public class TilController {
 
     // 1. TIL 전체 리스트 조회
     @GetMapping("/")
-    public List<Til> showList(@PathVariable Long user_id) {
+    public List<TilListDTO> showList(@PathVariable Long user_id) {
         return tilService.showList(user_id);
     }
 
     // 2. TIL 과목별 리스트 조회
     @GetMapping("/{subjectName}")
-    public List<Til> showListInSubject(@PathVariable Long user_id,
-                                       @PathVariable String subjectName) {
+    public List<TilListDTO> showListInSubject(@PathVariable Long user_id,
+                                              @PathVariable String subjectName) {
         return tilService.showListInSubject(user_id, subjectName);
     }
 

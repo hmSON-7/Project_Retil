@@ -37,14 +37,14 @@ public class Til {
     private LocalDateTime saveTime;
 
     @Column
-    private boolean bookMark;
+    private Boolean bookmark;
 
-    public Til(TilSubject tilSubject, String title, String content, User_Information user) {
+    public Til(TilSubject tilSubject, String title, String content, User_Information user, Boolean check) {
         this.tilSubject = tilSubject;
         this.title = title;
         this.content = content;
         this.user = user;
         this.saveTime = LocalDateTime.now();
-        this.bookMark = false;
+        this.bookmark = check;
     }
 }

@@ -81,17 +81,18 @@ public class UserServiceImpl implements UserService {
 
     // 4. 비밀번호 변경(미완성)
     @Override
-    public User_Information pwChange(Long user_id, String password) {
-        User_Information requestedUser = findUser(user_id);
-        if(requestedUser == null) return null;
+    public User_Information pwChange(String email, String password) {
+        Optional<User_Information> requestedUser = userRepository.findByEmail(email);
+        if(requestedUser.isEmpty()) return null;
 
-        requestedUser = new User_Information(
-                requestedUser.getNickname(),
-                requestedUser.getEmail(),
+        User_Information user = requestedUser.get();
+        user = new User_Information(
+                user.getNickname(),
+                user.getEmail(),
                 passwordEncoder.encode(password)
         );
 
-        return userRepository.save(requestedUser);
+        return userRepository.save(user);
     }
 
     // 5. 사용자 계정 삭제
