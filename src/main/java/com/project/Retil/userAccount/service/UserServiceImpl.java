@@ -1,6 +1,8 @@
 package com.project.Retil.userAccount.service;
 
 import com.project.Retil.userAccount.Entity.User_Information;
+import com.project.Retil.userAccount.Entity.User_Rank;
+import com.project.Retil.userAccount.Repository.UserRankRepository;
 import com.project.Retil.userAccount.Repository.UserRepository;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
@@ -18,9 +20,11 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final UserRankRepository userRankRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final EmailService emailService;
 
+    // 1. 사용자 회원가입
     @Override
     @Transactional
     public User_Information signUp(JoinRequestDTO joinRequestDto) {
@@ -37,10 +41,15 @@ public class UserServiceImpl implements UserService {
         );
 
         User_Information savedUser = userRepository.save(user);
+
+        User_Rank userRank = new User_Rank(savedUser, 0L, "unRanked");
+        userRankRepository.save(userRank);
+
         log.info("신규 유저가 회원 가입 하였습니다: " + savedUser.getEmail()); // 로그 추가
         return savedUser;
     }
 
+    // 2. 사용자 로그인
     @Override
     public User_Information login(LoginRequestDTO loginRequestDto) {
         Optional<User_Information> findUser = userRepository.findByEmail(loginRequestDto.getEmail());
@@ -56,9 +65,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    // 3. 비밀번호 변경 요청. 요청시 이메일로 코드 전송
     @Override
     @Transactional
-    public String requestPwChange(String email) {
+    public String sendMail(String email) {
         // 이메일 찾기
         Optional<User_Information> findUser = userRepository.findByEmail(email);
         if (findUser.isEmpty()) {
@@ -69,8 +79,39 @@ public class UserServiceImpl implements UserService {
         return emailService.sendSimpleMessage(email);
     }
 
+    // 4. 비밀번호 변경(미완성)
     @Override
-    public User_Information pwChange(String password) {
-        return null;
+    public User_Information pwChange(String email, String password) {
+        Optional<User_Information> requestedUser = userRepository.findByEmail(email);
+        if(requestedUser.isEmpty()) return null;
+
+        User_Information user = requestedUser.get();
+        user = new User_Information(
+                user.getNickname(),
+                user.getEmail(),
+                passwordEncoder.encode(password)
+        );
+
+        return userRepository.save(user);
+    }
+
+    // 5. 사용자 계정 삭제
+    @Override
+    public User_Information deleteUser(Long user_id, String password) {
+        User_Information target = findUser(user_id);
+        if(target == null) return null;
+
+        if (!passwordEncoder.matches(target.getPassword(), password)) {
+            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+        }
+
+        userRepository.delete(target);
+        return target;
+    }
+
+    // 6. 회원 정보 반환
+    @Override
+    public User_Information findUser(Long user_id) {
+        return userRepository.findById(user_id).orElse(null);
     }
 }

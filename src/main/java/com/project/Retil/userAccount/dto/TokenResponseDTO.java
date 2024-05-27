@@ -1,7 +1,6 @@
-package com.project.Retil.til.dto;
+package com.project.Retil.userAccount.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +10,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TilCreateDTO {
+public class TokenResponseDTO {
     @NotEmpty
-    private String subjectName;
-
+    private String token;
     @NotEmpty
-    private String title;
-
-    @NotEmpty
-    @Size(min = 5)
-    private String content;
+    private Long id;
 }

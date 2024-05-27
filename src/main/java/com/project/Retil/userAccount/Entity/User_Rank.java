@@ -5,15 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User_Rank {
 
-	//유저의 랭크이다.
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,15 +19,13 @@ public class User_Rank {
 	@JoinColumn(name = "user_id")
 	private User_Information user;
 	@Column
-	private LocalDateTime accumulateTime;
+	private Long totalStudyTime; // 총 공부 시간
 	@Column
 	private String userRank; //랭크
 
-	//한명의 회원에는 한개의 랭크가 주어진다.
-	//한명의 회원에는 한개의 회원 아이디가 주어진다.
-	public User_Rank(User_Information user) {
+	public User_Rank(User_Information user, Long time, String userRank) {
 		this.user = user;
-		this.accumulateTime = null;
-		this.userRank = "";
+		this.totalStudyTime = time;
+		this.userRank = userRank;
 	}
 }

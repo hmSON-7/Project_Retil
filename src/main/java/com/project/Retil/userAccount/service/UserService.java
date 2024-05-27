@@ -12,13 +12,16 @@ public interface UserService {
 	User_Information login(LoginRequestDTO LoginRequestDto);
 
 	// 3. 비밀번호 변경을 위한 이메일 인증
-	String requestPwChange(String email);
+	String sendMail(String email);
 
 	// 4. 비밀번호 변경
-	User_Information pwChange(String password);
+	User_Information pwChange(String email, String password);
 
 	// 5. 회원 삭제
-	void deleteUser(String password);
+	User_Information deleteUser(Long user_id, String password);
+
+	// 6. 회원 정보 반환
+	User_Information findUser(Long user_id);
 }
 
 
