@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Slf4j
@@ -42,7 +43,8 @@ public class UserServiceImpl implements UserService {
 
         User_Information savedUser = userRepository.save(user);
 
-        User_Rank userRank = new User_Rank(savedUser, 0L, "unRanked");
+        User_Rank userRank = new User_Rank
+                (savedUser, 0L, 0L, LocalDate.now(), "unRanked");
         userRankRepository.save(userRank);
 
         log.info("신규 유저가 회원 가입 하였습니다: " + savedUser.getEmail()); // 로그 추가
@@ -113,5 +115,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User_Information findUser(Long user_id) {
         return userRepository.findById(user_id).orElse(null);
+    }
+
+    @Override
+    public User_Rank findUserRank(User_Information user) {
+        return userRankRepository.findByUser(user);
     }
 }

@@ -15,8 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -98,8 +100,10 @@ public class TilServiceImpl implements TilService {
         User_Rank userRank = userRankRepository.findByUser(user);
         Long totalTime = time + userRank.getTotalStudyTime();
         Long subjectTime = time + subject.getStudyTime();
+        Long todayTime = Objects.equals(userRank.getLatestAccessed(), LocalDate.now()) ?
+                time + userRank.getTodayStudyTime() : time;
         String rank = switchRank(totalTime);
-        userRank = new User_Rank(user, totalTime, rank);
+        userRank = new User_Rank(user, totalTime, todayTime, LocalDate.now(), rank);
 
         subject = new TilSubject(
                 subject.getSubjectName(),

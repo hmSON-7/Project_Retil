@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -18,14 +20,24 @@ public class User_Rank {
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User_Information user;
+
 	@Column
 	private Long totalStudyTime; // 총 공부 시간
+
+	@Column
+	private Long todayStudyTime; // 당일 공부 시간
+
+	@Column
+	private LocalDate latestAccessed; // 최근 접속 시간
+
 	@Column
 	private String userRank; //랭크
 
-	public User_Rank(User_Information user, Long time, String userRank) {
+	public User_Rank(User_Information user, Long totalTime, Long todayTime, LocalDate accessed, String userRank) {
 		this.user = user;
-		this.totalStudyTime = time;
+		this.totalStudyTime = totalTime;
+		this.todayStudyTime = todayTime;
+		this.latestAccessed = accessed;
 		this.userRank = userRank;
 	}
 }
