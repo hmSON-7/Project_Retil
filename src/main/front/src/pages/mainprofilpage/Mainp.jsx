@@ -21,6 +21,9 @@ function Mainp() {
           <li>
             <Link to="/tier">티어</Link>
           </li>
+          <li>
+            <Link to="/group">group</Link>
+          </li>
         </ul>
 
         <Link to={"/Mypage"}>

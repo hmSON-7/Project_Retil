@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Mypage.css';
 import picon from '/images/ico/picon.png';
 import check from '/images/ico/check.png';
-/*import Modal from './MypageModal';*/
+import Modal from './MypageModal';
 
 function Mypage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,21 +19,23 @@ function Mypage() {
     setIsModalOpen(false);
   };
 
-  const handleDeleteProfile = () => {
-    if (window.confirm('확인을 누르면 회원 정보가 삭제됩니다.')) {
-      axios
-        .delete(`${process.env.REACT_APP_PROXY_URL}/members/${parsed.memberId}`, {
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-          },
-        })
-        .then(() => {
-          localStorage.clear();
-          alert('그동안 이용해주셔서 감사합니다.');
-          window.location.href = '/'; // 페이지 리디렉션
-        })
-        .catch((err) => alert(err.response.data.message));
-    }
+  const handleDeleteProfile = (password) => {
+    axios
+      .delete(`${process.env.REACT_APP_PROXY_URL}/members/${parsed.memberId}`, {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
+          'Content-Type': 'application/json'
+        },
+        data: {
+          password: password
+        }
+      })
+      .then(() => {
+        localStorage.clear();
+        alert('그동안 이용해주셔서 감사합니다.');
+        window.location.href = '/'; // 페이지 리디렉션
+      })
+      .catch((err) => alert(err.response.data.message));
   };
 
   const handleNicknameChange = (event) => {
@@ -62,23 +64,10 @@ function Mypage() {
         <img className="check" src={check} alt="check" />
         {isEditing ? ( // 수정 중일 때 입력 폼 표시
           <input
-          type="text"
-          value={nickname}
-          onChange={handleNicknameChange}
-          style={{
-            color: '#000000', // 글자 색상
-            fontSize: '28px', // 글자 크기
-            fontWeight: 500, // 글자 두께
-            width: '266px', // 너비
-            height: '40px', // 높이
-            position: 'absolute', // 위치 지정
-            left: '35%', // 가로 위치 중앙 정렬
-            top: '55%', // 세로 위치 중앙 정렬
-            padding: '5px', // 내부 여백
-            textAlign: 'center', // 텍스트 가운데 정렬
-            border: '1px solid #d9d9d9', // 테두리 스타일
-            borderRadius: '5px', // 테두리 둥글기
-          }}
+            type="text"
+            className="nickname-input"
+            value={nickname}
+            onChange={handleNicknameChange}
           />
         ) : (
           <div className="name">{nickname}</div> // 수정 중이 아닐 때 닉네임 표시

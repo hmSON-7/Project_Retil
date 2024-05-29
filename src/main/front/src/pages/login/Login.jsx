@@ -24,58 +24,58 @@ function Login() {
   const valid = validation(id, pw);
   const buttonOnClick = () => {
     axios
-        .post("http://localhost:8080/users/login", { email: id, password: pw })
-        .then((response) => {
-          const {token, id} = response.data; // 서버에서 받은 토큰
-          console.log(response.data);
-          // 토큰을 로컬 스토리지에 저장
-          localStorage.setItem("token", token);
-          localStorage.setItem("user_id", id);
-          console.log(id);
+      .post(`http://localhost:8080/users/login`, { email: id, password: pw })
+      .then((response) => {
+        const {token, id} = response.data; // 서버에서 받은 토큰
+        console.log(response.data);
+        // 토큰을 로컬 스토리지에 저장
+        localStorage.setItem("token", token);
+        localStorage.setItem("user_id", id);
+        console.log(id);
 
 
-          // 환영 메시지 설정
-          setMessage("로그인 성공!");
+        // 환영 메시지 설정
+        setMessage("로그인 성공!");
 
-          // 마이페이지로 이동
-          navigate("/main");
-        })
-        .catch((error) => {
-          const errorMsg = error.response ? error.response.data : "로그인 실패";
-          setMessage(errorMsg);
-          console.error(error);
-        });
+        // 마이페이지로 이동
+        navigate("/main");
+      })
+      .catch((error) => {
+        const errorMsg = error.response ? error.response.data : "로그인 실패";
+        setMessage(errorMsg);
+        console.error(error);
+      });
   };
   return (
-      <div className="login">
-        <Link to={"/"}>
-          {" "}
-          <h1>
-            <img src="./images/ico/retil.png" />
-          </h1>
-        </Link>
+    <div className="login">
+      <Link to={"/"}>
+        {" "}
+        <h1>
+          <img src="./images/ico/retil.png" />
+        </h1>
+      </Link>
 
         <div className="input-box">
           <input
-              type="text"
-              name="id"
-              value={id}
-              onChange={(event) => {
-                setId(event.target.value);
-              }}
-              placeholder="이메일을 입력하세요"
+            type="text"
+            name="id"
+            value={id}
+            onChange={(event) => {
+              setId(event.target.value);
+            }}
+            placeholder="이메일을 입력하세요"
           />
           <FaUser className="icon" />
         </div>
         <div className="input-box">
           <input
-              type="password"
-              name="password"
-              value={pw}
-              onChange={(event) => {
-                setPw(event.target.value);
-              }}
-              placeholder="비밀번호를 입력하세요"
+            type="password"
+            name="password"
+            value={pw}
+            onChange={(event) => {
+              setPw(event.target.value);
+            }}
+            placeholder="비밀번호를 입력하세요"
           />
           <FaLock className="icon" />
         </div>
@@ -90,10 +90,10 @@ function Login() {
           </div>
         </div>
         <button
-            className={valid ? "active" : "inactive"}
-            disabled={!valid}
-            onClick={buttonOnClick}
-            type="submit"
+          className={valid ? "active" : "inactive"}
+          disabled={!valid}
+          onClick={buttonOnClick}
+          type="submit"
         >
           로그인
         </button>
@@ -103,7 +103,7 @@ function Login() {
             <Link to={"/pwSearch"}>비밀번호 찾기</Link>
           </div>
         </div>
-      </div>
+    </div>
   );
 }
 

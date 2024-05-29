@@ -1,5 +1,7 @@
 package com.project.Retil.userAccount.service;
 
+import com.project.Retil.til.entity.TilSubject;
+import com.project.Retil.til.repository.TilSubjectRepository;
 import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.Entity.User_Rank;
 import com.project.Retil.userAccount.Repository.UserRankRepository;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserRankRepository userRankRepository;
+    private final TilSubjectRepository tilSubjectRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final EmailService emailService;
 
@@ -46,6 +50,11 @@ public class UserServiceImpl implements UserService {
         User_Rank userRank = new User_Rank
                 (savedUser, 0L, 0L, LocalDate.now(), "unRanked");
         userRankRepository.save(userRank);
+
+        TilSubject tilSubject = new TilSubject(
+                  "folder1", user, Color.WHITE, 0L
+        );
+        tilSubjectRepository.save(tilSubject);
 
         log.info("신규 유저가 회원 가입 하였습니다: " + savedUser.getEmail()); // 로그 추가
         return savedUser;

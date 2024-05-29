@@ -101,22 +101,18 @@ public class TilServiceImpl implements TilService {
         Long totalTime = time + userRank.getTotalStudyTime();
         Long subjectTime = time + subject.getStudyTime();
         Long todayTime = Objects.equals(userRank.getLatestAccessed(), LocalDate.now()) ?
-                time + userRank.getTodayStudyTime() : time;
-        String rank = switchRank(totalTime);
-        userRank = new User_Rank(user, totalTime, todayTime, LocalDate.now(), rank);
+                  time + userRank.getTodayStudyTime() : time;
+        userRank.setTodayStudyTime(todayTime);
+        userRank.setTotalStudyTime(totalTime);
+        userRank.setLatestAccessed(LocalDate.now());
+        userRank.setUserRank(switchRank(totalTime));
 
-        subject = new TilSubject(
-                subject.getSubjectName(),
-                subject.getUser(),
-                subject.getColor(),
-                subjectTime
-        );
+        subject.setStudyTime(subjectTime);
 
         return userRankRepository.save(userRank);
     }
-
     @Override
-    public Til save(TilCreateDTO tilCreateDto, Long user_id, Long time) {
+    public Til save(TilCreateDTO tilCreateDto, Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         TilSubject subject = searchSubject(tilCreateDto.getSubjectName(), user);
 
@@ -132,7 +128,7 @@ public class TilServiceImpl implements TilService {
                 false
         );
 
-        timeSave(user, time, subject);
+        timeSave(user,tilCreateDto.getTime(), subject);
 
         return tilRepository.save(til);
     }
