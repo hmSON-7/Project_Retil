@@ -116,7 +116,7 @@ public class TilServiceImpl implements TilService {
     }
 
     @Override
-    public Til save(TilCreateDTO tilCreateDto, Long user_id, Long time) {
+    public Til save(TilCreateDTO tilCreateDto, Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         TilSubject subject = searchSubject(tilCreateDto.getSubjectName(), user);
 
@@ -132,7 +132,7 @@ public class TilServiceImpl implements TilService {
                 false
         );
 
-        timeSave(user, time, subject);
+        timeSave(user, tilCreateDto.getTime(), subject);
 
         return tilRepository.save(til);
     }

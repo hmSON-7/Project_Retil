@@ -46,7 +46,7 @@ public class TilController {
     }
 
     // 4. TIL 작성 내용 임시 저장 : 공부 시간만 가져와 저장 ( 미완성. 유저 랭크 객체 먼저 만들어야 함 )
-    @PostMapping("/write/temp")
+    @PostMapping("/memo/temp")
     public ResponseEntity<User_Rank> tempSave(@PathVariable Long user_id,
                                               @RequestBody TempSaveDTO temp) {
         User_Information user = userRepository.findById(user_id).orElse(null);
@@ -58,10 +58,10 @@ public class TilController {
     }
 
     // 5. TIL 작성 완료 후 저장
-    @PostMapping("/write")
+    @PostMapping("/memo")
     public ResponseEntity<Til> save(@RequestBody TilCreateDTO tilCreateDto,
                                     @PathVariable Long user_id) {
-        Til created = tilService.save(tilCreateDto, user_id, tilCreateDto.getTime());
+        Til created = tilService.save(tilCreateDto, user_id);
         return (created != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(created) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
