@@ -1,13 +1,14 @@
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 500px;
+  height: 300px;
+  position: fixed;
+  top: 50%; /* 화면 상단에서 50% 떨어진 위치에서부터 */
+  left: 50%; /* 화면 왼쪽에서 50% 떨어진 위치에서부터 */
+  transform: translate(-50%, -50%); /* 요소의 중심을 기준으로 50%만큼 이동하여 화면 가운데로 */
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
   
   .modal-content {
