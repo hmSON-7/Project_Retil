@@ -1,0 +1,47 @@
+.tabul {
+    margin-top: 70px;
+  }
+  .tab-menu {
+    width: 900px;
+    height: 60px;
+    color: rgb(232, 234, 237);
+    background-color: #f18c8c;
+    border: 1px solid #0a3ae6;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0;
+  }
+  
+  .tab-menu .submenu {
+    display: flex;
+    width: calc(100% / 3);
+    padding: 10px;
+    font-size: 15px;
+    transition: 0.5s;
+    border-radius: 10px 10px 0 0;
+    justify-content: center; /* Added to center the text */
+    cursor: pointer;
+  }
+  
+  .tab-menu .submenu.focused {
+    background-color: rgb(255, 255, 255);
+    color: rgb(21, 20, 20);
+  }
+  
+  .desc {
+    text-align: center;
+  }
+  .submenubutton {
+    width: 70px;
+    height: 30px;
+    background-color: rgb(190, 194, 193);
+    color: black;
+    border-radius: 10px;
+  }
+  
+  .submenubutton :hover {
+    background-color: rgb(127, 130, 130);
+  }
