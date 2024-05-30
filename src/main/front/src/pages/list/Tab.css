@@ -1,47 +1,61 @@
 .tabul {
-    margin-top: 70px;
-  }
-  .tab-menu {
-    width: 900px;
-    height: 60px;
-    color: rgb(232, 234, 237);
-    background-color: #f18c8c;
-    border: 1px solid #0a3ae6;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    align-items: center;
-    margin-top: 20px;
-    padding: 0;
-  }
-  
-  .tab-menu .submenu {
-    display: flex;
-    width: calc(100% / 3);
-    padding: 10px;
-    font-size: 15px;
-    transition: 0.5s;
-    border-radius: 10px 10px 0 0;
-    justify-content: center; /* Added to center the text */
-    cursor: pointer;
-  }
-  
-  .tab-menu .submenu.focused {
-    background-color: rgb(255, 255, 255);
-    color: rgb(21, 20, 20);
-  }
-  
-  .desc {
-    text-align: center;
-  }
-  .submenubutton {
-    width: 70px;
-    height: 30px;
-    background-color: rgb(190, 194, 193);
-    color: black;
-    border-radius: 10px;
-  }
-  
-  .submenubutton :hover {
-    background-color: rgb(127, 130, 130);
-  }
+  margin-top: 70px;
+}
+
+.tab-menu {
+  width: 900px;
+  color: rgb(232, 234, 237);
+  background-color: #f18c8c;
+  border: 1px solid #0a3ae6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0;
+  overflow: hidden; /* 숨긴다 */
+  transition: max-height 0.3s ease-in-out; /* 애니메이션 효과 */
+}
+
+.tab-menu.show-more {
+  max-height: none; /* 확장 시 높이를 제한하지 않음 */
+}
+
+.tab-menu .submenu {
+  flex: 1 0 20%;
+  padding: 10px;
+  font-size: 15px;
+  height: 30px; /* 기본 높이 */
+  transition: 0.5s;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab-menu .submenu.focused {
+  background-color: rgb(255, 255, 255);
+  color: rgb(21, 20, 20);
+}
+
+.tab-menu.show-more .submenu {
+  height: 80px; /* 확장 시 높이 */
+}
+
+.desc {
+  text-align: center;
+}
+
+.submenubutton {
+  width: 70px;
+  height: 30px;
+  background-color: rgb(190, 194, 193);
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.submenubutton:hover {
+  background-color: rgb(127, 130, 130);
+}
