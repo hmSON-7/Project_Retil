@@ -1,0 +1,30 @@
+.categoryTitle {
+    display: flex;
+    flex-direction: column;
+    align-items:start; /* 요소들을 수직 중앙으로 정렬 */
+    justify-content:end ;
+    left: 30px;
+    margin-top: 80px; /* 위에 100px 여백을 두고 화면 가운데 정렬 */
+
+    
+}
+
+.mecategory, .meTitle {
+    width: 100px; /* 예시로 고정 너비를 설정하였으니 필요에 따라 조절해주세요. */
+    height: 1rem;
+    margin-bottom: 0px; /* 각 요소 사이의 간격 조절 */
+    background: #F0FBFF;
+    border: 1px solid gray;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.mecategory {
+    border-radius: 5px 0px 0 0; /* 상단의 border-radius만 적용 */
+}
+
+.meTitle {
+    border-top: 0px;
+    border-radius: 0 0 0px 5px; /* 하단의 border-radius만 적용 */
+}
