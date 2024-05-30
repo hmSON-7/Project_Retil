@@ -8,6 +8,7 @@ import Today from "./pages/Today/Today";
 import Gong from "./pages/Gong";
 import Mainp from "./pages/mainprofilpage/Mainp";
 import Memo from "./pages/memo/Memo";
+import Read from "./pages/memo/Read";
 import Signup from "./pages/signup/L-signup";
 import PwSearch from "./pages/login/L-pwSearch";
 import Repw from "./pages/login/Repw";
@@ -29,6 +30,7 @@ function App() {
         <Route path="today" element={<Today />} />
         <Route path="mainp" element={<Mainp />} />
         <Route path="memo" element={<Memo />} />
+        <Route path="Read" element={<Read />} />
         <Route path="signup" element={<Signup />} />
         <Route path="pwSearch" element={<PwSearch />} />
         <Route path="repw" element={<Repw />} />

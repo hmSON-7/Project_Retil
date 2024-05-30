@@ -57,7 +57,7 @@ function Memo() {
     try {
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
-      const content = JSON.stringify(rawContentState);
+      const content = JSON.stringify(rawContentState,null, 2);
 
       const response = await axios.post(
           `http://localhost:8080/til/${user_id}/write`,
@@ -120,7 +120,7 @@ function Memo() {
             <Editor
                 editorState={editorState}
                 onEditorStateChange={onEditorStateChange}
-                placeholder="메모장"
+                placeholder="메모장"                
                 wrapperClassName="wrapper-class"
                 editorClassName="editor-class"
                 toolbarClassName="toolbar-class"
