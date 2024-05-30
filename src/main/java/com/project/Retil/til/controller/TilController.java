@@ -42,7 +42,7 @@ public class TilController {
     // 3. TIL 에디터 보기
     @GetMapping("/{til_num}")
     public Til show(@PathVariable Long user_id, @PathVariable Long til_num) {
-        return tilService.show(til_num);
+        return tilService.show(user_id ,til_num);
     }
 
     // 4. TIL 작성 내용 임시 저장 : 공부 시간만 가져와 저장

@@ -89,10 +89,9 @@ public class TilServiceImpl implements TilService {
      * @return 해당 id를 가진 TIL을 찾아서 반환
      */
     @Override
-    public Til show(Long id) {
-        return tilRepository.findById(id).orElse(null);
+    public Til show(Long user_id, Long til_id) {
+        return tilRepository.findByIdAndUserId(til_id, user_id).orElse(null);
     }
-
     @Override
     public User_Rank timeSave(User_Information user, Long time, TilSubject subject) {
         if(user == null) return null;
