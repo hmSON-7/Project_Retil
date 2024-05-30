@@ -19,6 +19,8 @@ import Menubar from "./pages/menubar/Menubar";
 import Main from "./pages/main/Main";
 import Board from "./pages/group/Board";
 
+import MockList from "./pages/main/MockList";
+
 function App() {
   return (
     <div className="App">
@@ -40,6 +42,7 @@ function App() {
         <Route path="menubar" element={<Menubar />} />
         <Route path="main" element={<Main />} />
         <Route path="group" element={<Board />} />
+        <Route path="mockList" element={<MockList />} />
       </Routes>
     </div>
   );

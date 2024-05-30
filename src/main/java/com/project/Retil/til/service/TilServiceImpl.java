@@ -85,7 +85,7 @@ public class TilServiceImpl implements TilService {
 
     /**
      * 3. TIL 내용 출력
-     * @param id TIL id
+     * @param user_id TIL id
      * @return 해당 id를 가진 TIL을 찾아서 반환
      */
     @Override
