@@ -17,7 +17,7 @@ function Memo() {
   const [inputCount, setInputCount] = useState(0);
   const [statusMessage, setStatusMessage] = useState("");
   const [studyTime, setStudyTime] = useState(0);
-
+  let timer;
   const onEditorStateChange = (newEditorState) => {
     const contentState = newEditorState.getCurrentContent();
     const text = contentState.getPlainText("");
@@ -41,6 +41,12 @@ function Memo() {
     return `${hours}시간 ${minutes}분 ${remainingSeconds}초`;
   };
 
+  const startTimer = () => {
+    timer = setInterval(() => {
+      setStudyTime((prevTime) => prevTime + 1);
+    }, 1000);
+  };
+
   const save2Content = async (e) => {
     e.preventDefault();
     if (!user_id || !token) {
@@ -51,12 +57,7 @@ function Memo() {
     try {
       const contentState = editorState.getCurrentContent();
       const rawContentState = convertToRaw(contentState);
-      const contentArray = rawContentState.blocks.map(block => ({
-        text: block.text,
-        type: block.type
-      }));
-      const content = JSON.stringify(contentArray);
-      console.log(content);
+      const content = JSON.stringify(rawContentState);
 
       const response = await axios.post(
           `http://localhost:8080/til/${user_id}/write`,
@@ -64,7 +65,7 @@ function Memo() {
             subjectName: "folder1", // 여기서 실제 데이터로 변경할 것
             title: title, // 여기서 실제 데이터로 변경할 것
             content: content,
-            time: 111111
+            time:studyTime
           },
           {
             headers: {
@@ -95,7 +96,8 @@ function Memo() {
       const newEditorState = EditorState.createWithContent(contentState);
       setEditorState(newEditorState);
     }
-    return () => {};
+    startTimer();
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -129,7 +131,7 @@ function Memo() {
             </div>
           </div>
           {statusMessage && <div className="statusMessage">{statusMessage}</div>}
-          {/*<span>공부한 시간 :{formatTime(studyTime)}</span>*/}
+          <span>공부한 시간 :{formatTime(studyTime)}</span>
         </div>
       </div>
       </>
