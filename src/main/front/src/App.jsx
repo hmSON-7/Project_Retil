@@ -14,8 +14,8 @@ import Repw from "./pages/login/Repw";
 import Fsignup from "./pages/signup/Fsignup";
 import Mypage from "./pages/mainprofilpage/Mypage";
 import Tier from "./pages/tier/Tier";
-import Menubar from "./pages/menubar/Menubar";
 import Main from "./pages/main/Main";
+import Board from "./pages/group/Board";
 
 function App() {
   return (
@@ -34,8 +34,8 @@ function App() {
         <Route path="fsignup" element={<Fsignup />} />
         <Route path="mypage" element={<Mypage />} />
         <Route path="tier" element={<Tier />} />
-        <Route path="menubar" element={<Menubar />} />
         <Route path="main" element={<Main />} />
+        <Route path="group" element={<Board />} />
       </Routes>
     </div>
   );
