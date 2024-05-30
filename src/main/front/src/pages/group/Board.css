@@ -1,0 +1,101 @@
+/* src/components/Board.css */
+/**/
+.groupmenubar {
+    position: fixed; /* 화면 상단에 고정 */
+    top: 0; /* 화면 상단에 배치 */
+    width: 100%; /* 너비를 화면 전체로 설정 */
+    
+  }
+  
+  .gruopbox {
+    outline: solid 1px #ddd;
+    width: 60%;
+    height: 1050px;
+    margin: 0 auto;
+    min-width: 800px;
+  }
+  
+  /*group 이름 있는 박스*/
+  .groupname{
+    height: 100px;
+    background-color: antiquewhite;
+    border-bottom: solid 1px #ddd;
+    font-size: 30px;
+  }
+  /*group명 위치*/
+  .groupname h1 {
+    margin-left: 20px;
+  }
+  
+  /*그룹 검색창 박스*/
+  .groupsearchbox{
+    width: 100%;
+    height: 40px;
+    text-align: end;
+    /* margin-top: -50px;
+     */
+  }
+  
+    /* 그룹 게시물들 가운데로 위치  */
+  .grouppostbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    height: auto; 
+  }
+  /*grouppostbox와 부모 자식 관계*/
+  .grouppost {
+    width: 500px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  
+  /*tab 관련 내용*/
+  /* 부모 컨테이너 스타일 */
+  .tabbox {
+    background-color: aqua;
+    position: relative; /* 부모 컨테이너를 상대 위치로 설정 */
+    width: 100%; /* 너비를 100%로 설정 */
+    display: flex; /* 플렉스 박스를 사용하여 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    margin-top: 20px; /* 상단 여백 */
+    top: 40px;
+  }
+  
+  /* 개별 탭 스타일 */
+  .tab {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+    margin: 0 5px; /* 좌우 여백 추가 */
+    position: relative; /* 탭을 상대 위치로 설정 */
+  }
+  
+  
+  .tab.active {
+    background-color: #fff;
+  }
+  
+  .tab:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  .tab-content {
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
