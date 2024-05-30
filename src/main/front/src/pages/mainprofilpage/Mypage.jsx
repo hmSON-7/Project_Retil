@@ -4,7 +4,7 @@ import axios from 'axios';
 import './Mypage.css';
 import picon from '/images/ico/picon.png';
 import check from '/images/ico/check.png';
-import Modal from './MypageModal';
+
 
 function Mypage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
