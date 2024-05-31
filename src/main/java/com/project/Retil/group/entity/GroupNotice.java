@@ -1,3 +1,4 @@
+/*
 package com.project.Retil.group.entity;
 
 import jakarta.persistence.*;
@@ -30,3 +31,4 @@ public class GroupNotice {
     @Column
     private LocalDateTime uploadTime; // 공지 작성 시간
 }
+*/
