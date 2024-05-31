@@ -23,7 +23,7 @@ public interface TilService {
     User_Rank timeSave(User_Information user, Long time, TilSubject subject);
 
     // 5. TIL 작성 완료 후 저장
-    Til save(TilCreateDTO tilCreateDto, Long user_id, Long time);
+    Til save(TilCreateDTO tilCreateDto, Long user_id);
 
     // 6. TIL 삭제
     Til delete(Long user_id, Long til_id);

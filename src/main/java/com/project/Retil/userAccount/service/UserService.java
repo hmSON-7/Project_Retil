@@ -1,6 +1,7 @@
 package com.project.Retil.userAccount.service;
 
 import com.project.Retil.userAccount.Entity.User_Information;
+import com.project.Retil.userAccount.Entity.User_Rank;
 import com.project.Retil.userAccount.dto.JoinRequestDTO;
 import com.project.Retil.userAccount.dto.LoginRequestDTO;
 
@@ -22,6 +23,8 @@ public interface UserService {
 
 	// 6. 회원 정보 반환
 	User_Information findUser(Long user_id);
+
+	User_Rank findUserRank(User_Information user);
 }
 
 

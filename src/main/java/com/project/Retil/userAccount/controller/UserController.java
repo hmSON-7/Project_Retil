@@ -1,11 +1,11 @@
 package com.project.Retil.userAccount.controller;
 
 import com.project.Retil.settings.security.JwtUtil;
+import com.project.Retil.til.dto.TilListDTO;
+import com.project.Retil.til.service.TilService;
 import com.project.Retil.userAccount.Entity.User_Information;
-import com.project.Retil.userAccount.dto.JoinRequestDTO;
-import com.project.Retil.userAccount.dto.LoginRequestDTO;
-import com.project.Retil.userAccount.dto.MyPageDTO;
-import com.project.Retil.userAccount.dto.TokenResponseDTO;
+import com.project.Retil.userAccount.Entity.User_Rank;
+import com.project.Retil.userAccount.dto.*;
 import com.project.Retil.userAccount.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,12 +14,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+
 @RestController
 @Slf4j
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final TilService tilService;
     private final JwtUtil jwtUtil;
 
     // 1. 사용자 회원가입
@@ -99,6 +102,26 @@ public class UserController {
                 newNickname,
                 user.getEmail(),
                 user.getLatestPwChange()
+        );
+    }
+
+    @GetMapping("/main/{user_id}")
+    public MainPageDTO showMain(@PathVariable Long user_id) {
+        // 필요한 정보 : 오늘의 공부량, 총 공부량, 현재 티어, 현 소속 그룹 리스트(아직 없음), 과목별 TIL 리스트(최근 20개)(☆)
+        // 1. user id 정보로 user 객체 찾기
+        // 2. user 객체로 User_Rank, Group 리스트(아직 불가능), TIL 리스트 찾기(최근 20개만)
+        // 3. 해당 정보를 MainPageDTO 객체에 저장
+        // 4. 반환
+
+        User_Information user = userService.findUser(user_id);
+        User_Rank userRank = userService.findUserRank(user);
+        ArrayList<TilListDTO> tilList = tilService.showList(user_id);
+
+        return new MainPageDTO(
+            userRank.getTodayStudyTime(),
+            userRank.getTotalStudyTime(),
+            userRank.getUserRank(),
+            tilList
         );
     }
 }

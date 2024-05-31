@@ -1,7 +1,6 @@
 package com.project.Retil.til.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,17 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TilCreateDTO {
+public class AddSubjectDTO {
     @NotEmpty
     private String subjectName;
 
     @NotEmpty
-    private String title;
-
-    @NotEmpty
-    @Size(min = 5)
-    private String content;
-
-    @NotEmpty
-    private Long time;
+    private String color;
 }

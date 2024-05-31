@@ -15,8 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -98,21 +100,20 @@ public class TilServiceImpl implements TilService {
         User_Rank userRank = userRankRepository.findByUser(user);
         Long totalTime = time + userRank.getTotalStudyTime();
         Long subjectTime = time + subject.getStudyTime();
-        String rank = switchRank(totalTime);
-        userRank = new User_Rank(user, totalTime, rank);
+        Long todayTime = Objects.equals(userRank.getLatestAccessed(), LocalDate.now()) ?
+                time + userRank.getTodayStudyTime() : time;
+        userRank.setTodayStudyTime(todayTime);
+        userRank.setTotalStudyTime(totalTime);
+        userRank.setLatestAccessed(LocalDate.now());
+        userRank.setUserRank(switchRank(totalTime));
 
-        subject = new TilSubject(
-                subject.getSubjectName(),
-                subject.getUser(),
-                subject.getColor(),
-                subjectTime
-        );
+        subject.setStudyTime(subjectTime);
 
         return userRankRepository.save(userRank);
     }
 
     @Override
-    public Til save(TilCreateDTO tilCreateDto, Long user_id, Long time) {
+    public Til save(TilCreateDTO tilCreateDto, Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         TilSubject subject = searchSubject(tilCreateDto.getSubjectName(), user);
 
@@ -128,7 +129,7 @@ public class TilServiceImpl implements TilService {
                 false
         );
 
-        timeSave(user, time, subject);
+        timeSave(user, tilCreateDto.getTime(), subject);
 
         return tilRepository.save(til);
     }
