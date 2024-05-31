@@ -15,6 +15,7 @@ function Memo() {
   const [inputCount, setInputCount] = useState(0);
   const [statusMessage, setStatusMessage] = useState("");
   const [studyTime, setStudyTime] = useState(0);
+  const [title, setTitle] = useState("");
   let timer;
 
   const onEditorStateChange = (newEditorState) => {
@@ -26,8 +27,6 @@ function Memo() {
     }
   };
 
-  const subjectName = "연습";
-  const title = "안녕";
 
   const saveContent = () => {
     const contentState = editorState.getCurrentContent();
@@ -115,7 +114,7 @@ function Memo() {
           <div className="memo_top">
             <M_Category />
             <M_CategorySelect />
-            <M_TitleInput />
+            <M_TitleInput title = {title} setTitle = {setTitle}/>
           </div>
           <div className="editorStyle">
             <Editor
