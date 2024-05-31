@@ -102,15 +102,12 @@ public class TilServiceImpl implements TilService {
         Long subjectTime = time + subject.getStudyTime();
         Long todayTime = Objects.equals(userRank.getLatestAccessed(), LocalDate.now()) ?
                 time + userRank.getTodayStudyTime() : time;
-        String rank = switchRank(totalTime);
-        userRank = new User_Rank(user, totalTime, todayTime, LocalDate.now(), rank);
+        userRank.setTodayStudyTime(todayTime);
+        userRank.setTotalStudyTime(totalTime);
+        userRank.setLatestAccessed(LocalDate.now());
+        userRank.setUserRank(switchRank(totalTime));
 
-        subject = new TilSubject(
-                subject.getSubjectName(),
-                subject.getUser(),
-                subject.getColor(),
-                subjectTime
-        );
+        subject.setStudyTime(subjectTime);
 
         return userRankRepository.save(userRank);
     }
