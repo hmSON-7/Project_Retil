@@ -66,7 +66,7 @@ const Tab = () => {
         )}
         {/* "추가하기" 버튼을 표시합니다. */}
         <div className="submenubutton" onClick={openModalHandler}>
-          추가하기
+          추가하rl
         </div>
       </ul>
       {/* 현재 선택된 탭의 내용을 표시합니다. */}
