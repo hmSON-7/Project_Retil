@@ -7,11 +7,11 @@ import M_CategorySelect from "./M_CategorySelect";
 import M_TitleInput from "./M_TitleInput";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import axios from "axios";
+const user_id = localStorage.getItem("user_id");
+const token = localStorage.getItem("token");
 
 function Memo() {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
-  const user_id = localStorage.getItem("user_id");
-  const token = localStorage.getItem("token");
   const [inputCount, setInputCount] = useState(0);
   const [statusMessage, setStatusMessage] = useState("");
   const [studyTime, setStudyTime] = useState(0);
