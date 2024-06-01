@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import {useEffect} from "react";
 import Login from "../src/pages/login/Login";
 import Firstmain from "./pages/Firstmain";
 import List from "./pages/list/List";
@@ -21,8 +22,22 @@ import Board from "./pages/group/Board";
 
 import MockList from "./pages/main/MockList";
 
+
 function App() {
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const publicPaths = ["/", "/login", "/signup","/pwSearch","/repw","/fsignup"];
+    if (!publicPaths.includes(location.pathname) && !token) {
+      alert('세션이 만료되었습니다.');
+      navigate("/");
+    }
+  }, [navigate, location.pathname, token]);
   return (
+      <>
+
     <div className="App">
       <Routes>
         <Route path="/" element={<Firstmain />} />
@@ -45,6 +60,7 @@ function App() {
         <Route path="mockList" element={<MockList />} />
       </Routes>
     </div>
+      </>
   );
 }
 
