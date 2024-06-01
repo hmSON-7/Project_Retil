@@ -28,7 +28,7 @@ public class JwtUtil {
                   .claim("userId", userId)
                   .setIssuedAt(new Date(System.currentTimeMillis()))
                   .setExpiration(new Date(System.currentTimeMillis() + expirationTime * 1000)) // Expiration time from properties
-                  .signWith(SignatureAlgorithm.HS256, secretKey)
+                  .signWith(SignatureAlgorithm.HS256, secretKey.getBytes()) // Ensure secretKey is properly encoded
                   .compact();
     }
 
@@ -51,7 +51,10 @@ public class JwtUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                  .setSigningKey(secretKey.getBytes()) // Ensure secretKey is properly encoded
+                  .parseClaimsJws(token)
+                  .getBody();
     }
 
     private boolean isTokenExpired(String token) {
