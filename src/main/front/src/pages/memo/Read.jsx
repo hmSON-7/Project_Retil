@@ -15,7 +15,7 @@ const Read = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/til/${user_id}/2`, {
+        const response = await axios.get(`http://localhost:8080/til/${user_id}/1`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

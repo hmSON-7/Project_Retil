@@ -9,12 +9,13 @@ const user_id = localStorage.getItem("user_id");
 // 리스트 오늘의 문제 진행 현황 시작하면 될듯
 const MockList = () => {
   const [list, setList] = useState([]);
-
+  const subjectName = "folder1"
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const encodedSubjectName = encodeURIComponent(subjectName);
         const response = await axios.get(
-          `http://localhost:8080/til/${user_id}/subject/folder1`, // 이부분은 카테고릴 이름을 props로 받아서 넣으면 될듯
+          `http://localhost:8080/til/${user_id}/subject/${encodedSubjectName}`, // 이부분은 카테고릴 이름을 props로 받아서 넣으면 될듯
           {
             headers: {
               Authorization: `Bearer ${token}`,
