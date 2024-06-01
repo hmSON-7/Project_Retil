@@ -95,7 +95,7 @@
     width: 150px;
     height: 150px;
     position: absolute;
-    left: 350px;
+    left: 340px;
     top: 30px;
     object-fit: cover;
   }
@@ -122,14 +122,13 @@
   }
   
   .name {
+    text-align: center;
+    width: 100%;
     color: #000000;
-    text-align: left;
     font-size: 32px;
     font-weight: 500;
     position: absolute;
-    left: 375px;
     top: 195px;
-    width: 266px;
     height: 71px;
   }
   
