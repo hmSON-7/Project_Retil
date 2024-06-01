@@ -10,6 +10,9 @@ import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.Entity.User_Rank;
 import com.project.Retil.userAccount.Repository.UserRankRepository;
 import com.project.Retil.userAccount.Repository.UserRepository;
+import com.project.Retil.question.entity.Question;
+import com.project.Retil.question.repository.QuestionRepository;
+import com.project.Retil.chatgpt.ChatGPTService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,7 +21,9 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -28,6 +33,8 @@ public class TilServiceImpl implements TilService {
     private final TilSubjectRepository tilSubjectRepository;
     private final UserRepository userRepository;
     private final UserRankRepository userRankRepository;
+    private final QuestionRepository questionRepository;
+    private final ChatGPTService chatGPTService;
 
     /**
      * 1. TIL 리스트 작성 일자 순으로 출력
@@ -128,8 +135,21 @@ public class TilServiceImpl implements TilService {
         );
 
         timeSave(user,tilCreateDto.getTime(), subject);
+//        return tilRepository.save(til); 여기는 진짜
+        // 임시
+        Til savedTil = tilRepository.save(til);
 
-        return tilRepository.save(til);
+        List<Question> questions = chatGPTService.generateQuestions(savedTil);
+        questions.forEach(this::saveUniqueQuestion);
+        return savedTil;
+    }
+
+    public void saveUniqueQuestion(Question question) {
+        Optional<Question> existingQuestion = questionRepository.findByContentAndTil(
+                  question.getContent(), question.getTil());
+        if (existingQuestion.isEmpty()) {
+            questionRepository.save(question);
+        }
     }
 
     @Override
@@ -146,6 +166,7 @@ public class TilServiceImpl implements TilService {
         tilRepository.delete(target);
         return target;
     }
+
 
     @Override
     public TilSubject addSubject(Long user_id, String subjectName, String color) {
