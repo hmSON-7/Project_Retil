@@ -49,5 +49,5 @@ tasks.named('test') {
 
 // 추가할 부분: 컴파일러 플래그
 tasks.withType(JavaCompile) {
-	options.compilerArgs << '-parameters'
+	options.compilerArgs << "-parameters"
 }
