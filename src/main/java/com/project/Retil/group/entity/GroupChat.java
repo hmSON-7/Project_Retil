@@ -1,4 +1,3 @@
-/*
 package com.project.Retil.group.entity;
 
 import com.project.Retil.userAccount.Entity.User_Information;
@@ -44,4 +43,3 @@ public class GroupChat {
         this.timeStamp = timeStamp;
     }
 }
-*/

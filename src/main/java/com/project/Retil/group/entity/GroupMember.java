@@ -1,4 +1,3 @@
-/*
 package com.project.Retil.group.entity;
 
 import com.project.Retil.userAccount.Entity.User_Information;
@@ -29,4 +28,3 @@ public class GroupMember {
         this.member = member;
     }
 }
-*/
