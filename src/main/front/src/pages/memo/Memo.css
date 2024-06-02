@@ -4,17 +4,17 @@
     display: flex;
     flex-direction: row;
     justify-content:center ;
-
-    
-}
-.Memo form {
-   
-    width: 40%;
+        width: 40%;
    
     text-align: end;
 
-   
+
+    
 }
+.Memo_form{
+
+}
+
 .Memo p{
     text-align: start;
     position: relative;
@@ -53,7 +53,7 @@ p img{
   
 }
 .wrapper-class {
-   
+   min-width: 400px;
     position: relative;
     height: 100%;
     bottom:90px;
@@ -68,4 +68,10 @@ p img{
 
     border: 1px solid gray;
   }
-.
+
+.memo_top{
+
+ width: 100%;
+  margin-top: 80px; /* 위에 100px 여백을 두고 화면 가운데 정렬 */
+
+}

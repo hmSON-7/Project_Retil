@@ -1,3 +1,4 @@
+
 .mainnav{
     position: fixed;
     top: 0px;
@@ -8,6 +9,8 @@
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     display: flex;
     justify-content: center;
+    z-index: 10;
+
 }
 .nav__mainmenu {
     display: flex;
@@ -18,16 +21,17 @@
 }
 /*메뉴바 - 글 간격*/
 .nav__mainmenu > li {
+    font-size: 18px;
     padding: 1.5rem;
 }
 /*메뉴바 - 글 색상*/
 .nav__mainmenu--foused {
     color: rgb(77, 173, 228);
 }
-.nav_mypagebutton{
+ .nav_mypagebutton{
     height: 50px;
     width: 100px;
-    margin-top: 13px;
+    margin-top: 5px;
     background-color: rgb(77, 173, 228);
     border-radius: 20px;
     border: none;
@@ -36,9 +40,10 @@
     background-color: rgb(124, 201, 245);
 }
 .nav_writebutton{
+    
     height: 50px;
     width: 100px;
-    margin-top: 13px;
+    margin-top: 5px;
     background-color: rgb(64, 236, 101);
     border-radius: 20px;
     border: none;

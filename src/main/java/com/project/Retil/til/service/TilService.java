@@ -17,7 +17,7 @@ public interface TilService {
     ArrayList<TilListDTO> showListInSubject(Long user_id, String subjectName);
 
     // 3. TIL 단일 조회
-    Til show(Long id);
+    Til show(Long user_id, Long til_id);
 
     // 4. TIL 작성(임시 저장)
     User_Rank timeSave(User_Information user, Long time, TilSubject subject);

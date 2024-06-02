@@ -1,0 +1,13 @@
+li {
+    list-style: none;
+    border-bottom: 1px solid rgb(240, 240, 240); /*리스트 밑에 밑줄*/
+}
+.categoryname{
+
+    margin: 0 auto;
+    width: 400px;
+    height: 100px;
+}
+.categorylist{
+    margin-top: 200px;
+}

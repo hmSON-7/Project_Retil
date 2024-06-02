@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import "./Mainp.css";
 
 function Mainp() {
+  const nav = useNavigate()
+  const onClickHandle = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    nav("/");
+  }
   return (
     <div>
       <nav id="mainnav" className="mainnav">
@@ -21,6 +27,9 @@ function Mainp() {
           <li>
             <Link to="/tier">티어</Link>
           </li>
+          <li>
+            <Link to="/group">group</Link>
+          </li>
         </ul>
 
         <Link to={"/Mypage"}>
@@ -29,6 +38,7 @@ function Mainp() {
         <Link to={"/memo"}>
           <button className="nav_writebutton">작성하기</button>
         </Link>
+        <button onClick={onClickHandle}></button>
       </nav>
     </div>
   );

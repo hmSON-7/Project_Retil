@@ -1,0 +1,44 @@
+.tab-menu {
+
+    width: 900px;
+    height: 60px;
+    background-color: #f18c8c;
+    border: 1px solid #0a3ae6;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .tab-menu button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+  }
+  
+  .tab-menu button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .tab-content-container{
+    margin-top:170px;
+    display: flex; /* Flexbox 레이아웃 사용 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+  height: 300px; /* 원하는 높이로 설정 */
+  }
+  .tab-content {
+    width: 900px;
+    height: 600px;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

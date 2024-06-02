@@ -1,8 +1,8 @@
 .main_content{
     width: 100%;
-    min-width: 1400px;
+    min-width: 1600px;
     margin: 0 auto;
-    
+    z-index: 1;
 }
 .main_top{
     display: flex;
@@ -10,7 +10,7 @@
     top: 200px;
     justify-content:space-around ;
     margin:0 auto;
-    width: 80%;
+    width: 70%;
     height: 100%;
 
 

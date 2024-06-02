@@ -1,0 +1,73 @@
+.modal { /*모달 전체 움직임*/
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 */
+    width: 500px; /* 너비 500px */
+    height: 300px; /* 높이 300px */
+    border-radius: 10px;
+    z-index: 1000; /* 다른 요소들보다 위에 표시 */
+  }
+  
+  .modal-content {
+    width: 450px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  } 
+
+  /*아이콘 추가해야함*/
+  .close { 
+    position: absolute;
+    top: 20px;
+    right: 1px;
+    cursor: pointer;
+    width: 30px; /* 너비 조정 */
+    height: 30px; /* 높이 조정 */
+  }
+  
+  .category-input {
+    width: calc(100% - 110px); /* 추가하기 버튼을 고려한 입력칸의 너비 조정 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .add-button {
+    width: 100px; /* 추가하기 버튼의 너비 */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3; /* 호버 시 배경색 변경 */
+  }
+  /* Listmodal.css */
+
+  /* 추가된 색상 피커의 스타일 */
+  .color-picker {
+    margin-left: 10px;
+  }
+  
+  /* Tab Content의 스타일 */
+  .tab-content {
+    border: 2px solid #007bff; /* 기본 border 색상을 파란색으로 설정 */
+    padding: 10px;
+  }
+  
+  /* 선택한 색상 값이 Tab Content의 border에 반영되도록 하는 스타일 */
+  .tab-content.custom-border {
+    border-color: var(--selected-color); /* 선택한 색상 값으로 border 색상을 설정 */
+  }
+  

@@ -4,14 +4,13 @@
     position: relative;
     height: 400px;
     border: 2px solid rgba(255,255,255,.2);
-    margin: 0 auto;
     box-shadow: 0 0 5px gray;
     border-radius: 10px;
     padding: 10px;
 }
 .profile span{
    
-
+    font-size: 19px;
     top:50px;
     left: 25px;
     z-index: 0;
@@ -20,7 +19,7 @@
 .division_line{
     border-top: 1.5px solid gray;
     position: relative;
-    top:40%;
+    top:35%;
     margin: auto;
     width: 90%;
 
@@ -28,7 +27,7 @@
 .division_line2{
     border-top: 1.5px solid gray;
     position: relative;
-    top:230px;
+    top:115px;
     margin: auto;
     width: 110px;
     transform: rotate(90deg);
@@ -39,7 +38,8 @@
     top: 10px;
 }
 .target_Time span{
-    font-size: 100%;
+
+    font-size: 19px;
 
 }
 
@@ -50,12 +50,18 @@
     top: 100px;
 
 }
-.setting_Button{
+.setting_Button {
+    width: 100%;
+    text-align: end;
+    position: relative;
+    left: -25px;
+}
+.setting_Button button{
     width: 50px;
     position: relative;
     height: 20px;
-    z-index: 0;
-    left: 85%;
+    z-index: 3;
+    text-align: end;
     background-color:rgb(77, 173, 228);
     color: white;
     border: none;
@@ -64,15 +70,31 @@
     padding: 10px 10px;
     
 }
+.setting_Button button:hover{
+    box-shadow: 0 0 6px gray;
+}
 .setting{
     position: relative;
-    text-align: center;
+    text-align: end;
+    width: 100%;
     bottom: 40px;
-    left: 28%;
+
 }
 .setting span{
-    font-size: 14px;
-   
+    font-size: 17px;
+    position: relative;
+    left: -25px;
     font-weight: 100;
  
+}
+.profile_Tier{
+    font-size:40px;
+    width: 80px;
+    position: relative;
+    top: 165px;
+    left: 20%;
+}
+
+.profile_Tier img{
+    width: 100%;
 }
