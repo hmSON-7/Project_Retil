@@ -1,4 +1,3 @@
-/*
 package com.project.Retil.group.entity;
 
 import com.project.Retil.userAccount.Entity.User_Information;
@@ -20,6 +19,9 @@ public class GroupInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // 그룹 코드. 구별자
 
+    @Column
+    private String groupName; // 그룹 이름
+
     @ManyToOne
     @JoinColumn(nullable = false, name = "group_owner")
     private User_Information groupOwner; // 그룹장. User_Information 객체
@@ -28,12 +30,12 @@ public class GroupInfo {
     private String groupIntroduce; // 그룹 소개
 
     @Column
-    private Integer memberLimit; // 그룹 제한 인원
+    private int memberLimit; // 그룹 제한 인원
 
     @Column
-    private Integer memberCurrent; // 현 그룹 소속 인원
+    private int memberCurrent; // 현 그룹 소속 인원
 
-    @OneToMany(mappedBy = "group_member")
+    @OneToMany(mappedBy = "group")
     private List<GroupMember> memberList = new ArrayList<>(); // 그룹 멤버 테이블
 
     public GroupInfo(User_Information groupOwner,
@@ -47,4 +49,3 @@ public class GroupInfo {
         this.memberList = memberList;
     }
 }
-*/
