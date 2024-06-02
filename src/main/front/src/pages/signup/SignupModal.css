@@ -1,4 +1,4 @@
-.modal-overlay {
+.signup-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
 }
 
 /* 모달 설정 */
-.modal {
+.signup-modal {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -24,16 +24,21 @@
   text-align: center; /* 내부 텍스트 가운데 정렬 */
 }
 
-.modal-close-button {
+.signup-modal-close-button, .signup-modal-delete-button {
   padding: 10px 20px;
-  background-color:rgb(77, 173, 228); /* 버튼 배경 컬러 지정 */
+  background-color: rgb(77, 173, 228); /* 버튼 배경 컬러 지정 */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px; /* 위쪽 여백 추가 */
+  margin-right: 10px; /* 삭제하기 버튼과 닫기 버튼 사이의 간격 조정 */
 }
 
-.modal-close-button:hover {
+.signup-modal-button {
+  margin-left: 10px; /* 닫기 버튼의 왼쪽 여백 추가 */
+  margin-right: 10px; /* 삭제하기 버튼과 닫기 버튼 사이의 간격 조정 */
+}
+
+.signup-modal-close-button:hover, .modal-delete-button:hover {
   background-color: rgb(63, 138, 182); /* 호버 시 배경 컬러 변경 */
 }

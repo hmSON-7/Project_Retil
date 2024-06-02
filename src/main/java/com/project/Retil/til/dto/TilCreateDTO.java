@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TilCreateDTO {
-    @NotEmpty
+
     private String subjectName;
 
     @NotEmpty

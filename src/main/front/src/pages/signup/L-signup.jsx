@@ -60,15 +60,10 @@ function Signup() {
 
         });
 
-        console.log('회원가입 요청을 보냅니다.', response.data);
-
-        if (response.data && response.data.token) {
-          localStorage.setItem('token', response.data.token);
+        if (response.data) {
           navigate('/fsignup');
-        } else {
-          console.error('토큰이 응답에 없습니다.');
         }
-      } catch (error) {
+      }catch (error) {
         console.error('회원가입 요청 중 에러 발생:', error);
       }
     } else {

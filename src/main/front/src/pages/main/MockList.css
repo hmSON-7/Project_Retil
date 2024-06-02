@@ -1,0 +1,20 @@
+.list-container {
+    padding: 20px;
+  }
+  
+  .list-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .list-item-content h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+  }
+  
+  .list-item-content p {
+    margin: 5px 0;
+  }
