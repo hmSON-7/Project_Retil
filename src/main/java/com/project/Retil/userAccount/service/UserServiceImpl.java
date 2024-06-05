@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
         User_Information savedUser = userRepository.save(user);
 
         User_Rank userRank = new User_Rank
-                (savedUser, 0L, 0L, LocalDate.now(), "unRanked");
+            (savedUser, 0L, 0L, LocalDate.now(), "unRanked");
         userRankRepository.save(userRank);
 
         TilSubject tilSubject = new TilSubject(
-                  "folder1", user, Color.WHITE, 0L
+            "folder1", user, Color.WHITE, 0L
         );
         tilSubjectRepository.save(tilSubject);
 
@@ -63,7 +63,8 @@ public class UserServiceImpl implements UserService {
     // 2. 사용자 로그인
     @Override
     public User_Information login(LoginRequestDTO loginRequestDto) {
-        Optional<User_Information> findUser = userRepository.findByEmail(loginRequestDto.getEmail());
+        Optional<User_Information> findUser = userRepository.findByEmail(
+            loginRequestDto.getEmail());
 
         if (findUser.isEmpty()) {
             throw new RuntimeException("계정이 존재하지 않습니다.");
@@ -92,15 +93,18 @@ public class UserServiceImpl implements UserService {
 
     // 4. 비밀번호 변경(미완성)
     @Override
+    @Transactional
     public User_Information pwChange(String email, String password) {
         Optional<User_Information> requestedUser = userRepository.findByEmail(email);
-        if(requestedUser.isEmpty()) return null;
+        if (requestedUser.isEmpty()) {
+            return null;
+        }
 
         User_Information user = requestedUser.get();
         user = new User_Information(
-                user.getNickname(),
-                user.getEmail(),
-                passwordEncoder.encode(password)
+            user.getNickname(),
+            user.getEmail(),
+            passwordEncoder.encode(password)
         );
 
         return userRepository.save(user);
@@ -108,9 +112,12 @@ public class UserServiceImpl implements UserService {
 
     // 5. 사용자 계정 삭제
     @Override
+    @Transactional
     public User_Information deleteUser(Long user_id, String password) {
         User_Information target = findUser(user_id);
-        if(target == null) return null;
+        if (target == null) {
+            return null;
+        }
 
         if (!passwordEncoder.matches(target.getPassword(), password)) {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
@@ -129,5 +136,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User_Rank findUserRank(User_Information user) {
         return userRankRepository.findByUser(user);
+    }
+
+    // 7. 닉네임 변경
+    @Override
+    @Transactional
+    public User_Information changeNickname(Long user_id, String newNickname) {
+        User_Information user = findUser(user_id);
+        if (user != null) {
+            user.changeNickname(newNickname);
+            userRepository.save(user);
+        }
+        return user;
     }
 }

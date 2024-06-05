@@ -7,6 +7,7 @@ import com.project.Retil.userAccount.Entity.User_Information;
 import com.project.Retil.userAccount.Entity.User_Rank;
 import com.project.Retil.userAccount.dto.*;
 import com.project.Retil.userAccount.service.UserService;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
     private final TilService tilService;
     private final JwtUtil jwtUtil;
@@ -44,7 +46,8 @@ public class UserController {
         if (user != null) {
 
             String token = jwtUtil.generateToken(user.getEmail(), user.getId());
-            return ResponseEntity.status(HttpStatus.OK).body(new TokenResponseDTO(token, user.getId()));
+            return ResponseEntity.status(HttpStatus.OK)
+                .body(new TokenResponseDTO(token, user.getId()));
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -55,14 +58,14 @@ public class UserController {
     public ResponseEntity<String> requestPwChange(@RequestBody String email) {
         String sendCode = userService.sendMail(email);
         return sendCode != null ?
-                ResponseEntity.status(HttpStatus.OK).body(sendCode) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            ResponseEntity.status(HttpStatus.OK).body(sendCode) :
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 4. 비밀번호 변경
     @PostMapping("/{email}/pw_change")
     public ResponseEntity<RedirectView> pwChange(@PathVariable String email,
-                                                 @RequestBody String password) {
+        @RequestBody String password) {
         User_Information user = userService.pwChange(email, password);
         if (user != null) {
             RedirectView redirectView = new RedirectView("/login", true);
@@ -75,35 +78,41 @@ public class UserController {
     // 5. 회원 삭제
     @DeleteMapping("/{user_id}/delete")
     public ResponseEntity<RedirectView> deleteUser(@PathVariable Long user_id,
-                                                   @RequestBody String password) {
+        @RequestBody String password) {
         User_Information deleted = userService.deleteUser(user_id, password);
         return deleted != null ?
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 6. 마이 페이지
     @GetMapping("/{user_id}/my_page")
     public MyPageDTO showMyPage(@PathVariable Long user_id) {
-        User_Information user =  userService.findUser(user_id);
+        User_Information user = userService.findUser(user_id);
         return new MyPageDTO(
-                user.getNickname(),
-                user.getEmail(),
-                user.getLatestPwChange()
+            user.getNickname(),
+            user.getEmail(),
+            user.getLatestPwChange()
         );
     }
 
     // 7. 닉네임 수정
     @PatchMapping("/{user_id}/my_page/nickname")
-    public MyPageDTO nicknameChange(@PathVariable Long user_id,
-                                    @RequestBody String newNickname) {
-        User_Information user =  userService.findUser(user_id);
-        return new MyPageDTO(
-                newNickname,
-                user.getEmail(),
-                user.getLatestPwChange()
-        );
+    public ResponseEntity<MyPageDTO> nicknameChange(@PathVariable Long user_id,
+        @RequestBody Map<String, String> request) {
+        String newNickname = request.get("nickname");
+        User_Information updatedUser = userService.changeNickname(user_id, newNickname);
+        if (updatedUser != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(new MyPageDTO(
+                updatedUser.getNickname(),
+                updatedUser.getEmail(),
+                updatedUser.getLatestPwChange()
+            ));
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
+
 
     @GetMapping("/main/{user_id}")
     public MainPageDTO showMain(@PathVariable Long user_id) {

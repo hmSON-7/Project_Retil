@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Mypage.css';
 import picon from '/images/ico/picon.png';
 import check from '/images/ico/check.png';
 import Modal from './MypageModal';
-
 
 function Mypage() {
     const navigate = useNavigate();
@@ -22,10 +21,10 @@ function Mypage() {
         if (!token) {
             alert('세션이 만료되었습니다.');
             navigate("/");
-        }else{
+        } else {
             fetchUserData();
         }
-    }, [navigate]);
+    }, [navigate, token]);
 
     const fetchUserData = async () => {
         try {
@@ -35,15 +34,15 @@ function Mypage() {
                 }
             });
             const user = response.data;
-            if(user) {
+            if (user) {
                 setNickname(user.nickname);
                 setEmail(user.email);
-                setLatestPwChange(user.latestPwChange)
+                setLatestPwChange(user.latestPwChange);
             }
-        } catch(error){
-                console.error('Error fetching user data:', error);
-                alert('사용자 정보를 가져오는 데 문제가 발생했습니다.');
-            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            alert('사용자 정보를 가져오는 데 문제가 발생했습니다.');
+        }
     };
 
     const openModal = () => {
@@ -54,38 +53,21 @@ function Mypage() {
         setIsModalOpen(false);
     };
 
-    // const handleDeleteProfile = (password) => {
-    //     axios
-    //         .delete(`${process.env.REACT_APP_PROXY_URL}/members/${parsed.memberId}`, {
-    //             headers: {
-    //                 Authorization: 'Bearer ' + localStorage.getItem('ACCESS_TOKEN'),
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             data: {
-    //                 password: password
-    //             }
-    //         })
-    //         .then(() => {
-    //             localStorage.clear();
-    //             alert('그동안 이용해주셔서 감사합니다.');
-    //             window.location.href = '/'; // 페이지 리디렉션
-    //         })
-    //         .catch((err) => alert(err.response.data.message));
-    // };
-
     const handleNicknameChange = (event) => {
         setNickname(event.target.value);
     };
 
     const handleNicknameSave = async () => {
         try {
-            const response = await axios.patch(`http://localhost:8080/users/${user_id}/my_page/nickname`, {
-                newNickname: nickname
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
+            const response = await axios.patch(
+                `http://localhost:8080/users/${user_id}/my_page/nickname`,
+                { nickname: nickname }, // 올바른 형태로 변경
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
                 }
-            });
+            );
             setNickname(response.data.nickname);
             setIsEditing(false);
             alert('닉네임이 저장되었습니다.');
@@ -94,8 +76,6 @@ function Mypage() {
             alert('닉네임을 저장하는 데 문제가 발생했습니다.');
         }
     };
-        // 닉네임 저장 로직 추가 (서버에 저장 등)
-
 
     return (
         <div className="container">
