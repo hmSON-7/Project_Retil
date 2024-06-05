@@ -44,4 +44,8 @@ public class User_Information {
         this.latestPwChange = LocalDateTime.now();
         this.setToken = "";
     }
+
+    public void changeNickname(String newNickname) {
+        this.nickname = newNickname;
+    }
 }
