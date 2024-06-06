@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupInfo {
@@ -40,12 +42,11 @@ public class GroupInfo {
 
     public GroupInfo(User_Information groupOwner,
                      String groupIntroduce,
-                     List<GroupMember> memberList,
-                     int memberCurrent) {
+                     int memberLimit) {
         this.groupOwner = groupOwner;
         this.groupIntroduce = groupIntroduce;
-        this.memberLimit = 20;
-        this.memberCurrent = memberCurrent;
-        this.memberList = memberList;
+        this.memberLimit = memberLimit;
+        this.memberCurrent = 1;
+        this.memberList = null;
     }
 }

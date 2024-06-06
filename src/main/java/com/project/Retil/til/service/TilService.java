@@ -32,4 +32,7 @@ public interface TilService {
     TilSubject addSubject(Long user_id, String subjectName, String color);
 
     TilSubject searchSubject(String subjectName, User_Information user);
+
+    // 8. 과목 리스트 제공
+    ArrayList<String> showSubjectList(Long user_id);
 }

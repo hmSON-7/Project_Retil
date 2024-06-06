@@ -112,4 +112,10 @@ public class TilController {
                 ResponseEntity.status(HttpStatus.OK).body(addedSubject) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
+    // 8. 에디터 작성시 과목 리스트 조회
+    @GetMapping("/write")
+    public List<String> showSubjectList(@PathVariable Long user_id) {
+        return tilService.showSubjectList(user_id);
+    }
 }
