@@ -202,6 +202,23 @@ public class TilServiceImpl implements TilService {
         return null;
     }
 
+    @Override
+    public ArrayList<String> showSubjectList(Long user_id) {
+        User_Information user = userRepository.findById(user_id).orElse(null);
+        if(user == null) {
+            throw new RuntimeException("존재하지 않는 유저입니다.");
+        }
+
+        List<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
+
+        ArrayList<String> list = new ArrayList<>();
+        for(TilSubject sub : subjectList) {
+            list.add(sub.getSubjectName());
+        }
+
+        return list;
+    }
+
     public String switchRank(Long time) {
         if (time < 3600000) {
             return "unRanked";
