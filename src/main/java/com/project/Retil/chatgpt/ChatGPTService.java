@@ -9,6 +9,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import com.project.Retil.question.entity.Question;
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.userAccount.Entity.User_Information;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class ChatGPTService {
         this.restTemplate = new RestTemplate();
     }
 
-    public List<Question> generateQuestions(Til til) {
+    public List<Question> generateQuestions(Til til, User_Information user) {
         String prompt =
             "Create a question and an answer based on the following content (한국어로). Format: Q: [Question] A: [Answer] "
                 + til.getContent();
@@ -52,7 +53,7 @@ public class ChatGPTService {
                         String[] qa = choice.getMessage().getContent().split("A: ");
                         String questionContent = qa[0].replace("Q: ", "").trim();
                         String answerContent = qa[1].trim();
-                        return new Question(questionContent, answerContent, til);
+                        return new Question(questionContent, answerContent, til, user);
                     })
                     .collect(Collectors.toList());
             } else {

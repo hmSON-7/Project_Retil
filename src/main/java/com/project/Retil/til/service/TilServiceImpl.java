@@ -80,10 +80,10 @@ public class TilServiceImpl implements TilService {
         ArrayList<TilListDTO> requestedList = new ArrayList<>();
         for (Til til : tilList) {
             requestedList.add(new TilListDTO(
-                    til.getBookmark(),
-                    til.getTilSubject().getSubjectName(),
-                    til.getTitle(),
-                    til.getSaveTime()
+                til.getBookmark(),
+                til.getTilSubject().getSubjectName(),
+                til.getTitle(),
+                til.getSaveTime()
             ));
         }
         requestedList.sort(Comparator.comparing(TilListDTO::getSaveTime).reversed());
@@ -109,7 +109,7 @@ public class TilServiceImpl implements TilService {
         Long totalTime = time + userRank.getTotalStudyTime();
         Long subjectTime = time + subject.getStudyTime();
         Long todayTime = Objects.equals(userRank.getLatestAccessed(), LocalDate.now()) ?
-                time + userRank.getTodayStudyTime() : time;
+            time + userRank.getTodayStudyTime() : time;
         userRank.setTodayStudyTime(todayTime);
         userRank.setTotalStudyTime(totalTime);
         userRank.setLatestAccessed(LocalDate.now());
@@ -133,27 +133,26 @@ public class TilServiceImpl implements TilService {
         }
 
         Til til = new Til(
-                subject,
-                tilCreateDto.getTitle(),
-                tilCreateDto.getContent(),
-                user,
-                false
+            subject,
+            tilCreateDto.getTitle(),
+            tilCreateDto.getContent(),
+            user,
+            false
         );
 
         timeSave(user, tilCreateDto.getTime(), subject);
 
         Til savedTil = tilRepository.save(til);
 
-        List<Question> questions = chatGPTService.generateQuestions(savedTil);
+        List<Question> questions = chatGPTService.generateQuestions(savedTil, user);
         questions.forEach(this::saveUniqueQuestion);
 
         return savedTil;
     }
 
-
     public void saveUniqueQuestion(Question question) {
         Optional<Question> existingQuestion = questionRepository.findByContentAndTil(
-                question.getContent(), question.getTil());
+            question.getContent(), question.getTil());
         if (existingQuestion.isEmpty()) {
             questionRepository.save(question);
         }
@@ -184,7 +183,7 @@ public class TilServiceImpl implements TilService {
 
         Color selected = Color.decode(color);
         TilSubject subject = new TilSubject(
-                subjectName, user, selected, 0L
+            subjectName, user, selected, 0L
         );
 
         return tilSubjectRepository.save(subject);
@@ -205,14 +204,14 @@ public class TilServiceImpl implements TilService {
     @Override
     public ArrayList<String> showSubjectList(Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
-        if(user == null) {
+        if (user == null) {
             throw new RuntimeException("존재하지 않는 유저입니다.");
         }
 
         List<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
 
         ArrayList<String> list = new ArrayList<>();
-        for(TilSubject sub : subjectList) {
+        for (TilSubject sub : subjectList) {
             list.add(sub.getSubjectName());
         }
 

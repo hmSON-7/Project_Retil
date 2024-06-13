@@ -39,7 +39,7 @@ public class TilController {
     // 2. TIL 과목별 리스트 조회
     @GetMapping("/subject/{subjectName}")
     public List<TilListDTO> showListInSubject(@PathVariable Long user_id,
-                                              @PathVariable String subjectName) {
+        @PathVariable String subjectName) {
         return tilService.showListInSubject(user_id, subjectName);
     }
 
@@ -52,7 +52,7 @@ public class TilController {
     // 4. TIL 작성 내용 임시 저장 : 공부 시간만 가져와 저장
     @PostMapping("/write/temp")
     public ResponseEntity<User_Rank> tempSave(@PathVariable Long user_id,
-                                              @RequestBody TempSaveDTO temp) {
+        @RequestBody TempSaveDTO temp) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -65,19 +65,25 @@ public class TilController {
 
         User_Rank userRank = tilService.timeSave(user, temp.getTime(), subject);
         return (userRank != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(userRank) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            ResponseEntity.status(HttpStatus.OK).body(userRank) :
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 5. TIL 작성 완료 후 저장
     @PostMapping("/write")
     public ResponseEntity<Til> save(@RequestBody TilCreateDTO tilCreateDto,
-                                    @PathVariable Long user_id) {
+        @PathVariable Long user_id) {
         try {
+            User_Information user = userRepository.findById(user_id).orElse(null);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+
             Til created = tilService.save(tilCreateDto, user_id);
             if (created != null) {
                 // TIL 저장 후 ChatGPT를 호출하여 질문 생성 및 저장
-                List<Question> questions = chatGPTService.generateQuestions(created); // Til 객체 전달
+                List<Question> questions = chatGPTService.generateQuestions(created,
+                    user); // Til 객체와 User_Information 객체 전달
                 questions.forEach(tilService::saveUniqueQuestion); // 질문 저장 로직 추가
                 return ResponseEntity.status(HttpStatus.OK).body(created);
             } else {
@@ -95,22 +101,22 @@ public class TilController {
     // 6. TIL 삭제
     @DeleteMapping("/{til_num}")
     public ResponseEntity<Void> delete(@PathVariable Long user_id, @PathVariable Long til_num) {
-        Til deleted = tilService.delegit te(user_id, til_num);
+        Til deleted = tilService.delete(user_id, til_num);
         return (deleted != null) ?
-                ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 7. 과목 등록
     @PostMapping("/subject")
     public ResponseEntity<TilSubject> addSubject(@PathVariable Long user_id,
-                                                 @RequestBody AddSubjectDTO addSubjectDto) {
+        @RequestBody AddSubjectDTO addSubjectDto) {
         TilSubject addedSubject = tilService.addSubject(
-                user_id, addSubjectDto.getSubjectName(), addSubjectDto.getColor());
+            user_id, addSubjectDto.getSubjectName(), addSubjectDto.getColor());
 
         return (addedSubject != null) ?
-                ResponseEntity.status(HttpStatus.OK).body(addedSubject) :
-                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            ResponseEntity.status(HttpStatus.OK).body(addedSubject) :
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 8. 에디터 작성시 과목 리스트 조회
