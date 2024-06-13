@@ -19,12 +19,16 @@ public class Question {
     @Column(nullable = false)
     private String content;
 
+    @Column(nullable = false)
+    private String answer;
+
     @ManyToOne
     @JoinColumn(nullable = false, name = "til_id")
     private Til til;
 
-    public Question(String content, Til til) {
+    public Question(String content, String answer, Til til) {
         this.content = content;
+        this.answer = answer;
         this.til = til;
     }
 }
