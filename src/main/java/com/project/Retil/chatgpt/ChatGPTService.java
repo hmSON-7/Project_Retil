@@ -26,7 +26,9 @@ public class ChatGPTService {
     }
 
     public List<Question> generateQuestions(Til til) {
-        String prompt = "Create a question based on the following content (한국어로): " + til.getContent();
+        String prompt =
+            "Create a question and an answer based on the following content (한국어로). Format: Q: [Question] A: [Answer] "
+                + til.getContent();
 
         try {
             OpenAIRequest request = new OpenAIRequest(prompt);
@@ -38,16 +40,21 @@ public class ChatGPTService {
             HttpEntity<OpenAIRequest> entity = new HttpEntity<>(request, headers);
 
             ResponseEntity<OpenAIResponse> response = restTemplate.exchange(
-                    "https://api.openai.com/v1/chat/completions", // 수정된 URI
-                    HttpMethod.POST,
-                    entity,
-                    OpenAIResponse.class
+                "https://api.openai.com/v1/chat/completions",
+                HttpMethod.POST,
+                entity,
+                OpenAIResponse.class
             );
 
             if (response.getBody() != null && !response.getBody().getChoices().isEmpty()) {
                 return response.getBody().getChoices().stream()
-                        .map(choice -> new Question(choice.getMessage().getContent(), til))
-                        .collect(Collectors.toList());
+                    .map(choice -> {
+                        String[] qa = choice.getMessage().getContent().split("A: ");
+                        String questionContent = qa[0].replace("Q: ", "").trim();
+                        String answerContent = qa[1].trim();
+                        return new Question(questionContent, answerContent, til);
+                    })
+                    .collect(Collectors.toList());
             } else {
                 return List.of();
             }

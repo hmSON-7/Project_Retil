@@ -95,7 +95,7 @@ public class TilController {
     // 6. TIL 삭제
     @DeleteMapping("/{til_num}")
     public ResponseEntity<Void> delete(@PathVariable Long user_id, @PathVariable Long til_num) {
-        Til deleted = tilService.delete(user_id, til_num);
+        Til deleted = tilService.delegit te(user_id, til_num);
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
