@@ -1,6 +1,7 @@
 package com.project.Retil.question.entity;
 
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.userAccount.Entity.User_Information;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +27,14 @@ public class Question {
     @JoinColumn(nullable = false, name = "til_id")
     private Til til;
 
-    public Question(String content, String answer, Til til) {
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "user_id")
+    private User_Information user;
+
+    public Question(String content, String answer, Til til, User_Information user) {
         this.content = content;
         this.answer = answer;
         this.til = til;
+        this.user = user;
     }
 }
