@@ -11,8 +11,8 @@ import java.util.Optional;
 @Repository
 public interface TilRepository extends JpaRepository<Til, Long> {
     ArrayList<Til> findAllByUser(User_Information user);
+
     ArrayList<Til> findAllByTilSubject(TilSubject tilSubject);
 
-    // userId와 tilId로 Til을 찾는 메서드 추가
     Optional<Til> findByIdAndUserId(Long tilId, Long userId);
 }

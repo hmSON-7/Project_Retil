@@ -7,13 +7,19 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * DB 유저 정보 테이블
+ * id : 일련번호(기본값, 자동 증가)
+ * email : 이메일(후보키)
+ * password : 비밀번호(DB 저장시 암호화)
+ * nickname : 유저 닉네임
+ */
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class User_Information {
 
-    // 유저의 모든 정보 , (회원가입 할 때 쓰인다.)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,18 +37,19 @@ public class User_Information {
     private LocalDateTime latestPwChange;
 
     @Column
-    private String profileImage;
-
-    @Column
     private String setToken;
 
     public User_Information(String nickname, String email, String password) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.profileImage = "";
         this.latestPwChange = LocalDateTime.now();
         this.setToken = "";
+    }
+
+    // 유저 객체 생성자(회원가입)
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
     }
 
     public void changeNickname(String newNickname) {

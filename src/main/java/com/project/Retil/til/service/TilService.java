@@ -35,4 +35,7 @@ public interface TilService {
 
     // 8. 과목 리스트 제공
     ArrayList<String> showSubjectList(Long user_id);
+
+    // 9. 과목 제거
+    TilSubject deleteSubject(Long user_id, String subjectName);
 }

@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 그룹을 생성하기 위해 입력한 값들을 받아주는 DTO
+ * 순서대로 그룹명, 소개글, 제한 인원
+ */
 @Getter
 @Setter
 @AllArgsConstructor

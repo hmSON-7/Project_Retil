@@ -9,32 +9,25 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 /**
- * TIL 리스트 출력에 필요한 값을 반환하는 DTO
- * 순서대로 북마크 여부, 과목 이름, 과목 컬러, TIL 제목, TIL 별 오늘의 문제 진행도, 작성 시각
+ * 사용자가 요청한 TIL 에디터의 내용을 반환하는 DTO
+ * 순서대로 TIL 제목, 과목명, 내용, 작성 시간
  */
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TilListDTO {
-
-    @NotEmpty
-    private Long til_id;
-
-    @NotEmpty
-    private Boolean bookmark;
-
-    @NotEmpty
-    private String subjectName;
+public class TilDTO {
 
     @NotEmpty
     private String title;
 
     @NotEmpty
-    private String color;
+    private String subjectName;
 
-    // 내용 추가 필요 : 오늘의 문제 진행도
+    @NotEmpty
+    private String content;
 
     @NotEmpty
     private LocalDateTime saveTime;
+
 }

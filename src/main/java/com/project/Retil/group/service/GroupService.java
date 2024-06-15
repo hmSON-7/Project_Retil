@@ -1,14 +1,18 @@
 package com.project.Retil.group.service;
 
+import com.project.Retil.group.dto.GroupChatDTO;
+import com.project.Retil.group.dto.GroupDTO;
+import com.project.Retil.group.entity.GroupChat;
 import com.project.Retil.group.entity.GroupInfo;
 import com.project.Retil.group.entity.GroupMember;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface GroupService {
-    List<GroupInfo> showList();
+    List<GroupDTO> showList();
 
-    List<GroupInfo> showMyList(Long user_id);
+    List<GroupDTO> showMyList(Long user_id);
 
     GroupInfo updateIntroduce(Long user_id, Long group_id, String introduce);
 
@@ -19,4 +23,8 @@ public interface GroupService {
     GroupInfo delete(Long user_id, Long group_id);
 
     GroupMember withdraw(Long user_id, Long group_id);
+
+    GroupChat writeNewChat(Long group_id, Long user_id, String chat);
+
+    ArrayList<GroupChatDTO> showChat(Long group_id);
 }
