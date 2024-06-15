@@ -48,7 +48,7 @@ public class TilController {
      */
     @GetMapping("/subject/{subjectName}")
     public List<TilListDTO> showListInSubject(@PathVariable Long user_id,
-        @PathVariable String subjectName) {
+                                              @PathVariable String subjectName) {
         return tilService.showListInSubject(user_id, subjectName);
     }
 
@@ -109,7 +109,7 @@ public class TilController {
      */
     @PostMapping("/write")
     public ResponseEntity<Til> save(@RequestBody TilCreateDTO tilCreateDto,
-        @PathVariable Long user_id) {
+                                    @PathVariable Long user_id) {
         try {
             User_Information user = userService.findUser(user_id);
             if (user == null) {
@@ -119,8 +119,8 @@ public class TilController {
             Til created = tilService.save(tilCreateDto, user_id);
             if (created != null) {
                 // TIL 저장 후 ChatGPT를 호출하여 질문 생성 및 저장
-                List<Question> questions = chatGPTService.generateQuestions(created,
-                    user); // Til 객체와 User_Information 객체 전달
+                List<Question> questions = chatGPTService.generateQuestions(
+                    created, user); // Til 객체와 User_Information 객체 전달
                 questions.forEach(tilService::saveUniqueQuestion); // 질문 저장 로직 추가
                 return ResponseEntity.status(HttpStatus.OK).build();
             } else {
@@ -160,7 +160,7 @@ public class TilController {
      */
     @PostMapping("/subject")
     public ResponseEntity<TilSubject> addSubject(@PathVariable Long user_id,
-        @RequestBody AddSubjectDTO addSubjectDto) {
+                                                 @RequestBody AddSubjectDTO addSubjectDto) {
         TilSubject addedSubject = tilService.addSubject(
             user_id, addSubjectDto.getSubjectName(), addSubjectDto.getColor());
 
@@ -176,7 +176,7 @@ public class TilController {
      * @return 해당 사용자가 만들어 두었던 과목들의 이름을 리스트로 반환
      */
     @GetMapping("/write")
-    public List<String> showSubjectList(@PathVariable Long user_id) {
+    public List<TilSubjectDTO> showSubjectList(@PathVariable Long user_id) {
         return tilService.showSubjectList(user_id);
     }
 

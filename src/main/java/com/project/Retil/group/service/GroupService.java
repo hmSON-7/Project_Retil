@@ -2,6 +2,7 @@ package com.project.Retil.group.service;
 
 import com.project.Retil.group.dto.GroupChatDTO;
 import com.project.Retil.group.dto.GroupDTO;
+import com.project.Retil.group.dto.GroupDetailDTO;
 import com.project.Retil.group.entity.GroupChat;
 import com.project.Retil.group.entity.GroupInfo;
 import com.project.Retil.group.entity.GroupMember;
@@ -27,4 +28,6 @@ public interface GroupService {
     GroupChat writeNewChat(Long group_id, Long user_id, String chat);
 
     ArrayList<GroupChatDTO> showChat(Long group_id);
+
+    GroupDetailDTO getGroupDetail(Long groupId);
 }

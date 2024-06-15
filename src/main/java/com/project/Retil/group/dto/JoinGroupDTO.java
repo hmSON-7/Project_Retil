@@ -1,5 +1,6 @@
 package com.project.Retil.group.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class JoinGroupDTO {
     private Long user_id;
 
     @NotEmpty
+    @NotBlank
     private String groupName;
 }

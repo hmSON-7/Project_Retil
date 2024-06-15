@@ -86,7 +86,7 @@ public class UserController {
      */
     @PostMapping("/{email}/pw_change")
     public ResponseEntity<RedirectView> pwChange(@PathVariable String email,
-        @RequestBody String password) {
+                                                 @RequestBody String password) {
         User_Information user = userService.pwChange(email, password);
         if (user != null) {
             RedirectView redirectView = new RedirectView("/login", true);
@@ -105,7 +105,7 @@ public class UserController {
      */
     @DeleteMapping("/{user_id}/delete")
     public ResponseEntity<RedirectView> deleteUser(@PathVariable Long user_id,
-        @RequestBody String password) {
+                                                   @RequestBody String password) {
         User_Information deleted = userService.deleteUser(user_id, password);
         return deleted != null ?
             ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
@@ -170,7 +170,8 @@ public class UserController {
             userRank.getTodayStudyTime(),
             userRank.getTotalStudyTime(),
             userRank.getUserRank(),
-            tilList
+            tilList,
+            user.getNickname()
         );
     }
 

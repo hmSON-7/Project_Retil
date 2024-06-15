@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public interface GroupMemberRepository extends JpaRepository<GroupMember, Long> {
     ArrayList<GroupMember> findAllByMember(User_Information member);
 
+    ArrayList<GroupMember> findAllByGroup(GroupInfo group);
+
     void deleteGroupMemberByGroupAndMember(GroupInfo group, User_Information member);
 
     GroupMember findGroupMemberByGroupAndMember(GroupInfo group, User_Information member);
