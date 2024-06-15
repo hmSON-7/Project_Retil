@@ -122,4 +122,11 @@ public class GroupController {
 
         return groupService.showChat(group_id);
     }
+
+    // 10. 그룹 상세 정보 조회
+    @GetMapping("/{group_id}/details")
+    public ResponseEntity<GroupDetailDTO> getGroupDetails(@PathVariable Long group_id) {
+        GroupDetailDTO groupDetails = groupService.getGroupDetail(group_id);
+        return ResponseEntity.status(HttpStatus.OK).body(groupDetails);
+    }
 }

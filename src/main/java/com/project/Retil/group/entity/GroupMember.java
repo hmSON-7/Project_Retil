@@ -1,10 +1,12 @@
 package com.project.Retil.group.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.Retil.userAccount.Entity.User_Information;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * DB 그룹 멤버 테이블(M 대 N 관계)
@@ -14,6 +16,7 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class GroupMember {
@@ -23,6 +26,7 @@ public class GroupMember {
 
     @ManyToOne
     @JoinColumn(name = "group_id")
+    @JsonBackReference
     private GroupInfo group;
 
     @ManyToOne

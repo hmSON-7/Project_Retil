@@ -28,7 +28,7 @@ public class JwtUtil {
                 .claim("userId", userId)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime * 1000)) // Expiration time from properties
-                .signWith(SignatureAlgorithm.HS256, secretKey.getBytes()) // Ensure secretKey is properly encoded
+                .signWith(SignatureAlgorithm.HS256, secretKey) // Ensure secretKey is properly encoded
                 .compact();
     }
 

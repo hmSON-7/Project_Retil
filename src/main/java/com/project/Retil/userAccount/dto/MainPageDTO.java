@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class MainPageDTO {
 
     @NotEmpty
-    @Size(max = 86400000)
+    @Size(max = 86400)
     private Long todayStudied;
 
     @NotEmpty
@@ -35,5 +35,8 @@ public class MainPageDTO {
 
     @NotEmpty
     private ArrayList<TilListDTO> tilList;
+
+    @NotEmpty
+    private String nickname;
 
 }

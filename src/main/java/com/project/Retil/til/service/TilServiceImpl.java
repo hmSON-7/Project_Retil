@@ -2,6 +2,7 @@ package com.project.Retil.til.service;
 
 import com.project.Retil.til.dto.TilCreateDTO;
 import com.project.Retil.til.dto.TilListDTO;
+import com.project.Retil.til.dto.TilSubjectDTO;
 import com.project.Retil.til.entity.Til;
 import com.project.Retil.til.entity.TilSubject;
 import com.project.Retil.til.repository.TilRepository;
@@ -140,7 +141,7 @@ public class TilServiceImpl implements TilService {
 
         User_Rank userRank = userRankRepository.findByUser(user);
         if (userRank == null) {
-            throw new RuntimeException("존재하지 않는 사용자 등급입니다.");
+            throw new IllegalArgumentException("존재하지 않는 사용자 등급입니다.");
         }
 
         Long totalTime = time + userRank.getTotalStudyTime();
@@ -169,12 +170,12 @@ public class TilServiceImpl implements TilService {
     public Til save(TilCreateDTO tilCreateDto, Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         if (user == null) {
-            throw new RuntimeException("존재하지 않는 사용자입니다.");
+            throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
         }
 
         TilSubject subject = searchSubject(tilCreateDto.getSubjectName(), user);
         if (subject == null) {
-            throw new RuntimeException("존재하지 않는 과목입니다.");
+            throw new IllegalArgumentException("존재하지 않는 과목입니다.");
         }
 
         Til til = new Til(
@@ -220,10 +221,10 @@ public class TilServiceImpl implements TilService {
         Til target = tilRepository.findById(til_id).orElse(null);
 
         if (target == null) {
-            return null;
+            throw new IllegalArgumentException("존재하지 않는 글입니다.");
         }
         if (!target.getUser().getId().equals(user_id)) {
-            return null;
+            throw new IllegalArgumentException("작성자가 아닌 사용자가 삭제 요청을 할 수 없습니다.");
         }
 
         tilRepository.delete(target);
@@ -243,10 +244,9 @@ public class TilServiceImpl implements TilService {
         User_Information user = userRepository.findById(user_id).orElse(null);
 
         if (user == null) {
-            return null;
+            throw new IllegalArgumentException("존재하지 않는 사용자입니다.");
         }
 
-        Color selected = Color.decode(color);
         TilSubject subject = new TilSubject(
                 subjectName, user, color, 0L
         );
@@ -281,17 +281,20 @@ public class TilServiceImpl implements TilService {
      * @return Subject 리스트를 DB에서 가져온 후 과목명 리스트 반환
      */
     @Override
-    public ArrayList<String> showSubjectList(Long user_id) {
+    public ArrayList<TilSubjectDTO> showSubjectList(Long user_id) {
         User_Information user = userRepository.findById(user_id).orElse(null);
         if (user == null) {
-            throw new RuntimeException("존재하지 않는 유저입니다.");
+            throw new IllegalArgumentException("존재하지 않는 유저입니다.");
         }
 
         List<TilSubject> subjectList = tilSubjectRepository.findAllByUser(user);
 
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<TilSubjectDTO> list = new ArrayList<>();
         for (TilSubject sub : subjectList) {
-            list.add(sub.getSubjectName());
+            list.add(new TilSubjectDTO(
+                    sub.getSubjectName(),
+                    sub.getColor()
+            ));
         }
 
         return list;
