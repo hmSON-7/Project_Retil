@@ -1,11 +1,10 @@
 package com.project.Retil.group.controller;
 
-import com.project.Retil.group.dto.JoinGroupDTO;
-import com.project.Retil.group.dto.UpdateGroupDTO;
+import com.project.Retil.group.dto.*;
+import com.project.Retil.group.entity.GroupChat;
 import com.project.Retil.group.entity.GroupInfo;
 import com.project.Retil.group.entity.GroupMember;
 import com.project.Retil.group.service.GroupServiceImpl;
-import com.project.Retil.group.dto.CreateGroupDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,15 +21,15 @@ public class GroupController {
     private final GroupServiceImpl groupService;
     // 1. 그룹 소개 글 리스트 출력
     // 보여줘야 할 정보 : 즐겨찾기(나중에), 그룹명, 소개글, 그룹장, 현재인원/제한인원
-    @GetMapping("/")
-    public List<GroupInfo> showList() {
+    @GetMapping("/show")
+    public List<GroupDTO> showList() {
         return groupService.showList();
     }
 
     // 2. 내가 속한 그룹 리스트 출력
     // 보여줘야 할 정보 : 즐겨찾기(나중에), 그룹명, 소개글, 그룹장, 현재인원/제한인원
     @GetMapping("/{user_id}")
-    public List<GroupInfo> showMyList(@PathVariable Long user_id) {
+    public List<GroupDTO> showMyList(@PathVariable Long user_id) {
         return groupService.showMyList(user_id);
     }
 
@@ -100,5 +99,27 @@ public class GroupController {
         return (target != null) ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 8. 그룹 챗 작성
+    @PostMapping("/{group_id}/chat")
+    public ResponseEntity<GroupChat> writeNewChat(@PathVariable Long group_id,
+                                                  @RequestBody CreateChatDTO createChatDto) {
+        GroupChat newChat = groupService.writeNewChat(
+                createChatDto.getUser_id(),
+                group_id,
+                createChatDto.getChat()
+        );
+
+        return (newChat != null) ?
+                ResponseEntity.status(HttpStatus.OK).build() :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    // 9. 그룹 채팅 출력(리스트)
+    @GetMapping("/{group_id}/chat")
+    public List<GroupChatDTO> showChat(@PathVariable Long group_id) {
+
+        return groupService.showChat(group_id);
     }
 }
