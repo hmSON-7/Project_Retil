@@ -103,19 +103,32 @@ a {
 
 #retil {
     position: relative; /* 위치 지정 */
-    margin-top: 130px;
-    font-size: 100px;
-    height: 600px;
+    margin-top: 80px; 
+    height: 900px;
     color: #000000;
-    background: #F6F6F6;
+    background: rgba(0, 0, 0, 0); /* 검정색 불투명 배경 */
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
     font-family: 'Chosunilbo_myungjo', 'serif'; /* 새로운 폰트 적용 */
+}
+/*introduce- 리틸 글자 */
+.flist-retiltitle{
+    margin-top: 160px;
+    font-size: 64px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.flist-retilintroduce{
+    margin-top: 15px;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .main_gragh {
+    margin-top: 15px;
     z-index: 0;
 }
+
 
 #list {
     background: #ffffff;
@@ -171,23 +184,11 @@ a {
     opacity: 1; /* 노출 시 텍스트가 보이게 설정 */
 }
 
-#todaymoon {
-    background: rgb(33, 44, 134);
-    height: 1100px;
-    font-family: 'Chosunilbo_myungjo', 'serif'; /* 새로운 폰트 적용 */
-    font-size: 100px;
-    padding-top: 100px; /* 텍스트의 위치를 변경하기 위한 margin-top 설정 */
-}
 
-.todaymoon-answer {
-    margin-top: 20px;
-    font-size: 19px;
-    font-family: 'Chosunilbo_myungjo', 'serif'; /* 새로운 폰트 적용 */
-}
 
 #four {
     background: #2f3fa7;
-    height: 1100px;
+    height: 1000px;
     font-family: 'Chosunilbo_myungjo', 'serif'; /* 새로운 폰트 적용 */
 }
 

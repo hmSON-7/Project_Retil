@@ -1,9 +1,10 @@
 //초기 로그인 전 화면
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import G from "../pages/G"; // G 컴포넌트 import
+import G from "../Firstmain/G"; // G 컴포넌트 import
 import "./Firstmain.css";
-import AnimationContainer from "./AnimationContainer.jsx"; // CSS 파일 import
+import AnimationContainer from "./AnimationContainer.jsx";
+import Todayquestion from "./Todayquestion";
 
 function Firstmain() {
   const marker = useRef(null);
@@ -114,6 +115,7 @@ function Firstmain() {
             <a href="#four">Tier</a>
           </li>
         </ul>
+        
 {/**로그인 로고 */}
         <Link to="/login">
         <button className="floginbutton">
@@ -123,13 +125,17 @@ function Firstmain() {
         </Link>
         <div ref={marker} className="fmarker"></div>
       </nav>
-
+{/** 여기부터 색션 시작 */}
+{/**introduce */}
       <section id="retil">
-        <span>RE:TIL</span>
+        <span className="flist-retiltitle">RE:TIL</span>
+        <span className="flist-retilintroduce">당신의 미래, 저희 retil이 도와드리겠습니다</span>
         <div className="main_gragh">
           <G />
         </div>
       </section>
+
+{/**list */}
       <section id="list">
         <div className="list-content">
           <div className="list-left">
@@ -146,12 +152,14 @@ function Firstmain() {
           </div>
         </div>
       </section>
-      <section id="todaymoon">
-        오늘의 문제
-        <div className="todaymoon-answer">
-          오늘의 문제를 통해 학습 내용을 확인하고 , 복습 효과를 높이세요!
-        </div>
-      </section>
+
+{/**todayQuestion */}
+      
+      
+       <Todayquestion />
+      
+
+{/**tier */}
       <section id="four">순위</section>
     </div>
   );

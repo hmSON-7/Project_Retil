@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Lottie from "react-lottie";
-import Ggg from "../pages/animation/G.json";
+import Ggg from "../animation/G.json";
 import "./G.css";
 
 const G = () => {

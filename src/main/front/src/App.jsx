@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import {useEffect} from "react";
 import Login from "../src/pages/login/Login";
-import Firstmain from "./pages/Firstmain";
+import Firstmain from "./pages/Firstmain/Firstmain.jsx";
 import Headlist from "./pages/list/Headlist";
 import Today from "./pages/Today/Today";
 import Gong from "./pages/Gong";
@@ -22,7 +22,7 @@ import Group from "./pages/group/Group.jsx";
 import Question from "./pages/question/Question.jsx";
 import MockList from "./pages/main/MockList";
 import GroupRoom from "./pages/group/GroupRoom.jsx";
-import G from "./pages/G";
+import G from "./pages/Firstmain/G.jsx";
 
 
 function App() {

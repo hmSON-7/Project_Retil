@@ -1,0 +1,50 @@
+#todaymoon {
+    position: relative; /* 위치 지정 */
+    margin-top: 60px; 
+    height: 1000px;
+    
+    color: #FFFFFF; /* 글자 색상 */
+    background: rgba(0, 0, 0, 0.7); /* 검정색 불투명 배경 */
+    display: flex;
+    flex-direction: column;   
+    font-family: 'Chosunilbo_myungjo', 'serif'; /* 새로운 폰트 적용 */
+    padding: 20px; /* 내부 여백 추가 */
+    
+  }
+  
+  .AiIconimage {
+    position: absolute; /* 절대 위치 지정 */
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 섹션 전체를 덮도록 설정 */
+    z-index: -1; /* 이미지가 글자 뒤에 오도록 설정 */
+    opacity: 0.5; /* 이미지 투명도 설정 */
+  }
+  
+  .todaymoon-sepcial {
+    margin-top: 110px;
+    font-size: 20px; /* 글자 크기 설정 */
+    margin-bottom: 20px; /* 아래 여백 추가 */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ff5101;
+  }
+  
+  .todaymoon-answer {
+    margin-top: 19px;
+    font-size: 32px; /* 글자 크기 설정 */
+    line-height: 1.5; /* 줄 간격 설정 */
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+  }
+  /*
+  .todaymoonIcon{
+    width: 700px;
+    height: 350px;
+    border-radius: 10px;
+    margin-left: 280px;
+    margin-top: 80px;
+  }
+*/
