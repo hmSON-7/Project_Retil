@@ -35,7 +35,7 @@
     background-color: #fff;
 }
 
-
+  
 .Tab-Totalbutton:hover{
     cursor: pointer;
     background-color: beige;
@@ -73,6 +73,7 @@
     white-space: nowrap; /* 추가된 부분: 줄바꿈 방지 */
     overflow: hidden;
     text-overflow: ellipsis; /* 추가된 부분: 넘치는 텍스트를 줄임표로 표시 */
+    opacity: 30;
 }
 .AddSubjectbutton:hover{
     cursor: pointer;
@@ -112,27 +113,68 @@
 
 
 /*리스트 띄우는 공간*/
-.List-middle{
-    width: 100%;
-    height: 900px;
-    background-color: #ffffff;
-    position: absolute;
-    margin-top: -2px;
-    border-style: solid;
-    border-color: #b4b3b3;
-
-}
-/*리스트 내용 박스*/
-.categorcontenet-box {
+.List-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소들을 수평 중앙 정렬 */
+  }
+  
+  .categorcontenet-box {
+    position: relative;
     width: 600px;
+    height: 50px;
     margin: 0 auto; /* 수평 중앙 정렬 */
-    margin-top: 10px;
-
-
-
+    margin-top: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .listtitle-box {
+    width: 200px;
+    border: none;
+    outline: none;
+    margin-left: 30px;
+  }
+ .listsavetime-box {
+    width: 100px;
+    border: none;
+    outline: none;
+  }
+  
+  .category-separator {
+    width: 100%;
+    border-top: 1px solid #ccc;
+  }
+  
+/*망각 프로그래스바*/
+.addprogress{
+    position: relative;
+    width: 1000px;
+    border-style: solid;
+    border-color: antiquewhite;
 }
-.categorcontenet-box-text{
+  
+
+
+/*제목*/
+.listtitle-box{
+    font-size: 18px;
+    margin-left: 0px;
+    height: 34px;
+    width: 350px;
     margin-left: 20px;
+    margin-top: 8px;
+}
+/*작성날짜*/
+.listsavetime-box{
+    font-size: 14px;
+    margin-left: 90px;
+}
+
+/*즐겨찾기*/
+.listcheckbox{
+    position: absolute;
+    margin-top: 25px;
+    left: 55px;
 }
 
 
@@ -144,7 +186,7 @@
     width: 150px;
     height: 27px;
     margin-top: 20px;
-    margin-left: 270px;
+    margin-left: 190px;
     border-radius: 10px;
     border-style: solid;
     border-color: #d1d1d1;
@@ -158,4 +200,5 @@
     border-radius: 10px;
     margin-top: 23px;
     margin-left: 3px;
+    font-size: 10px;
 }

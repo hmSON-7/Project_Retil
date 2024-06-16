@@ -1,0 +1,47 @@
+.modal-overlay{
+    
+    z-index: 2;
+}
+.listcontentmodal-content {
+    position: relative;
+    background-color: #fff;
+    width: 800px;
+    height: 700px;
+    border-radius: 10px;
+}
+.listcontentmodal-title {
+    position: absolute;
+    font-size: 20px;
+    left: 45px;
+}
+/*띄운 리스트 내역*/
+.listcontentmodal-text {
+    width: 700px;
+    height: 550px; /* max-height: 500px; 최대 높이 설정 */
+    overflow-y: auto; /* 내용이 넘칠 경우 세로 스크롤 표시 */
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-radius: 10px;
+    position: absolute;
+    top: 70px;
+    left: 40px;
+}
+/*저장 시간 */
+.listcontentmodal-savetime {
+    position: absolute;
+    left: 45px;
+    bottom: 20px;
+    font-size: 15px;
+}
+/*메모장 내역 닫기 버튼*/
+.listcontentmodal-closebutton {
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 30px;
+    right: 55px;
+
+    background-color: rgb(170, 171, 171);
+    border-radius: 15px;
+}

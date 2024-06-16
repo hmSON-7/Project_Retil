@@ -33,6 +33,7 @@ function ListPodal({ isOpen, closeModal, onSave, categories }) {
             setErrorMessage('User ID is missing.');
             return;
         }
+
         try {
             // 서버에 POST 요청
             const response = await axiosInstance.post(`/til/${user_id}/subject`, {

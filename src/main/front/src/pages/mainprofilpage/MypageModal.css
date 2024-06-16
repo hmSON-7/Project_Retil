@@ -12,10 +12,11 @@
 
 .mypage-modal {
   background-color: white;
-  padding: 20px;
+  padding: 35px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 추가 */
   display: flex;
+  width: 400px;
   flex-direction: column;
   justify-content: center; /* 내용을 수직 가운데 정렬 */
   align-items: center; /* 내용을 수평 가운데 정렬 */

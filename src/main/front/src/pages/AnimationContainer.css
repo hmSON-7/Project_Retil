@@ -1,0 +1,15 @@
+.animation-container {
+    width: 60%; /* 원하는 너비로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;/* 상대 위치 설정 */
+    margin-top:10px;
+    margin-left:150px;
+
+}
+
+.animation-container img {
+    max-width: 110%;
+    height: auto;
+}

@@ -1,34 +1,53 @@
-
-.mainnav{
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 박스 모델 설정 */
+}
+.mainnav {
     position: fixed;
     top: 0px;
     width: 100%;
     height: 60px;
-    background-color: rgb(255, 255, 255);
-    
+    background-color: #F0F5F9;
     display: flex;
     justify-content: center;
     z-index: 10;
-
-}
-.nav__mainmenu {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    font-family: 'Chosunilbo_myungjo', 'serif';
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav__mainmenu {
     display: flex;
     margin-top: -4px;
     height: 60px;
     justify-content: center;
-    list-style-type: none; /*점 없애는 코드*/
-}
-/*메뉴바 - 글 간격*/
-.nav__mainmenu > li {
+    list-style-type: none; /* 점 없애는 코드 */
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 메뉴바 링크 */
+  .nav__mainmenu > li {
     padding: 1.5rem;
-}
-/*메뉴바 - 글 색상*/
-.nav__mainmenu--foused {
-    color: rgb(77, 173, 228);
-}
-
-/*마이페이지 아이콘 버튼*/
-.nav_mypagebutton {
+    border-bottom: none;
+  }
+  
+  /* 활성화된 링크의 글자 색상 설정 */
+  .nav__mainmenu > li > a.nav__menu--focused {
+    color: #4070f4;
+  }
+  
+  /* 링크에 마우스를 가져갔을 때 색상 변경 */
+  .nav__mainmenu > li > a:hover {
+    color: #4070f4;
+  }
+  
+  /* 마이페이지 아이콘 버튼 */
+  .nav_mypagebutton {
     margin-top: 10px;
     margin-right: 10px;
     width: 40px;
@@ -48,20 +67,60 @@
     object-fit: cover; /* 이미지가 원형 버튼 안에 꽉 차도록 */
     display: block;
   }
-  
-
-.nav_mypagebutton:hover{
-    background-color: rgb(124, 201, 245);
-}
-.nav_writebutton{
     
-    height: 50px;
+  .nav_writebutton {
+    color: black;
+    height: 45px;
+    font-weight: 600;
     width: 100px;
     margin-top: 5px;
-    background-color: rgb(64, 236, 101);
+    background-color: #DBB5B5;
     border-radius: 20px;
     border: none;
-}
-.nav_writebutton:hover{
-    background-color: rgb(124, 245, 152);
-}
+    font-family: 'Chosunilbo_myungjo', 'serif';
+  }
+  
+  .nav_writebutton:hover {
+    background-color: #C39898;
+  }
+  
+  .logoutbutton {
+    height: 45px;
+    width: 100px;
+    margin-top: 5px;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-family: 'Chosunilbo_myungjo', 'serif';
+    background-color: whitesmoke;
+    margin-left: 10px;
+  }
+  
+  .logoutbutton:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .logout-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  @font-face {
+    font-family: 'Chosunilbo_myungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .mlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 45px;
+    margin-top: 10px;
+  }
+    .mlogo-image{
+        width: 120px;
+        height: 120px;
+    }

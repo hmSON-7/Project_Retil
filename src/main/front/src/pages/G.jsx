@@ -17,11 +17,11 @@ const G = () => {
       });
 
       progressBar.style.width = `${
-        ((currentStep - 1) / (steps.length - 1)) * 100
+          ((currentStep - 1) / (steps.length - 1)) * 100
       }%`;
     };
 
-    const intervalId = setInterval(updateSteps, 567);
+    const intervalId = setInterval(updateSteps, 570);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -36,51 +36,51 @@ const G = () => {
   };
 
   return (
-    <>
-      <div className="lottie-container">
-        <Lottie
-          isClickToPauseDisabled={true}
-          options={defaultOptions}
-          height={"100%"}
-          width={"100%"}
-        />
-      </div>
-      <div className="gcontainer">
-        <div className="steps">
-          <div className="step">
-            <span className="circle active">1</span>
-            <span className="progress-label">1일</span>
-          </div>
-          <div className="step">
-            <span className="circle">3</span>
-            <span className="progress-label">3일</span>
-          </div>
-          <div className="step">
-            <span className="circle">7</span>
-            <span className="progress-label">7일</span>
-          </div>
-          <div className="step">
-            <span className="circle">15</span>
-            <span className="progress-label">15일</span>
-          </div>
-          <div className="step">
-            <span className="circle">30</span>
-            <span className="progress-label">30일</span>
-          </div>
-          <div className="step">
-            <span className="circle">60</span>
-            <span className="progress-label">60일</span>
-          </div>
-          <div className="step">
-            <span className="circle">180</span>
-            <span className="progress-label">180일</span>
-          </div>
-          <div className="progress-bar">
-            <span className="indicator"></span>
+      <>
+        <div className="lottie-container">
+          <Lottie
+              isClickToPauseDisabled={true}
+              options={defaultOptions}
+              height={"100%"}
+              width={"100%"}
+          />
+        </div>
+        <div className="gcontainer">
+          <div className="steps">
+            <div className="step">
+              <span className="circle active">1</span>
+              <span className="progress-label">1일</span>
+            </div>
+            <div className="step">
+              <span className="circle">3</span>
+              <span className="progress-label">3일</span>
+            </div>
+            <div className="step">
+              <span className="circle">7</span>
+              <span className="progress-label">7일</span>
+            </div>
+            <div className="step">
+              <span className="circle">15</span>
+              <span className="progress-label">15일</span>
+            </div>
+            <div className="step">
+              <span className="circle">30</span>
+              <span className="progress-label">30일</span>
+            </div>
+            <div className="step">
+              <span className="circle">60</span>
+              <span className="progress-label">60일</span>
+            </div>
+            <div className="step">
+              <span className="circle">180</span>
+              <span className="progress-label">180일</span>
+            </div>
+            <div className="progress-bar">
+              <span className="indicator"></span>
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
   );
 };
 
