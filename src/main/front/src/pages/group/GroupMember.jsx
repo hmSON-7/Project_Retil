@@ -28,7 +28,7 @@ const GroupMember = ({ memberList, memberMe }) => {
                     const memberTierImageSrc = getTier(rankConverter(member.userRank));
                     return (
                         <div key={member.userId}>
-                            <div>{member.nickname}</div>
+                            <div className="member_nickname">{member.nickname}</div>
                             <div className="member_card">
                                 <img src={memberTierImageSrc} alt="Tier" className="tier_image"/>
                             </div>

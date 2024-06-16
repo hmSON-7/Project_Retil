@@ -22,7 +22,10 @@
     margin: 0 10px;
     margin-left: -100px; /* Left margin of 20px added */
 }
-
+.member_nickname{
+    width: 180px;
+    text-align: center;
+}
 
 .member_you {
     flex-wrap: wrap; /* Flex items will wrap to the next line */

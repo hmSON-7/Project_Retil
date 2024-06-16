@@ -5,6 +5,7 @@ import Mainp from "../mainprofilpage/Mainp";
 import GroupMember from "./GroupMember.jsx";
 import GroupChat from "./GroupChat.jsx";
 import axiosInstance from "../../api/axiosInstance.js";
+import groupChat from "./GroupChat.jsx";
 
 const mockChat = [
     {
@@ -74,7 +75,7 @@ const GroupRoom = () => {
     const token = localStorage.getItem("token");
     const user_id = parseInt(localStorage.getItem("user_id"), 10);
     const [memberMe, setMemberMe] = useState(null);
-
+    const [chatList, setChatList] = useState([])
     useEffect(() => {
         const fetchGroupData = async () => {
             try {
@@ -91,8 +92,23 @@ const GroupRoom = () => {
                 console.error('Failed to fetch group data:', error);
             }
         };
+        const fetchChatData = async () => {
+            try {
+                const response = await axiosInstance.get(`/group/${groupId}/chat`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setChatList(response.data);
+            } catch (error) {
+                console.error('Failed to fetch chat data:', error);
+            }
+        };
+
         fetchGroupData();
+        fetchChatData();
     }, [groupId, token, user_id]);
+
 
     return (
         <>
@@ -102,7 +118,7 @@ const GroupRoom = () => {
                     {memberMe && <GroupMember memberList={memberList} memberMe={memberMe} />}
                 </div>
                 <div className="group_Chat">
-                    <GroupChat chatData={mockChat} userId={user_id} />
+                    <GroupChat chatData={chatList} userId={user_id} groupId={groupId} />
                 </div>
                 <div></div>
             </div>

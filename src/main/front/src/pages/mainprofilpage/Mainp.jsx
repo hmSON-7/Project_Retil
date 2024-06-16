@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LogoutModal from "./LogoutModal";
+
 import "./Mainp.css";
 
 function Mainp() {
@@ -37,7 +38,11 @@ function Mainp() {
         <ul className="nav__mainmenu">
           <div className="mlogo">
             <Link to="/main" className="mlogo-link">
-              <img className="mlogo-image" src="images/ico/galogo.png" alt="로고" />
+              <img
+                className="mlogo-image"
+                src="images/ico/galogo.png"
+                alt="로고"
+              />
             </Link>
           </div>
           <li>
@@ -51,7 +56,7 @@ function Mainp() {
           </li>
           <li>
             <Link
-              to="/Headlist"
+              to="/list"
               className={activeLink === "List" ? "nav__menu--focused" : ""}
               onClick={() => handleLinkClick("List")}
             >
@@ -61,7 +66,9 @@ function Mainp() {
           <li>
             <Link
               to="/question"
-              className={activeLink === "오늘의 문제" ? "nav__menu--focused" : ""}
+              className={
+                activeLink === "오늘의 문제" ? "nav__menu--focused" : ""
+              }
               onClick={() => handleLinkClick("오늘의 문제")}
             >
               오늘의 문제
@@ -97,7 +104,11 @@ function Mainp() {
         </Link>
         <button className="logoutbutton" onClick={openLogoutModal}>
           로그아웃
-          <img src="src/assets/logoutbutton.png" alt="Logout" className="logout-icon" />
+          <img
+            src="src/assets/logoutbutton.png"
+            alt="Logout"
+            className="logout-icon"
+          />
         </button>
       </nav>
 

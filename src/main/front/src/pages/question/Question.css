@@ -33,7 +33,7 @@
     align-items: center; /* 추가된 부분: 버튼 내 텍스트가 수직 중앙에 오도록 함 */
     justify-content: center; /* 추가된 부분: 버튼 내 텍스트가 수평 중앙에 오도록 함 */
     box-sizing: border-box; /* 추가된 부분: padding과 border를 포함한 크기 계산 */
-    box-shadow: 0 4px 6px gray;);
+    box-shadow: 0 4px 6px gray;
 }
 
 .question_top > input{
