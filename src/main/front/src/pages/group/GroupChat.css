@@ -1,0 +1,119 @@
+.group_chat {
+    background-color: white;
+    width: 600px;
+    margin: 100px auto;
+    height: 600px; /* 고정된 높이 설정 */
+    border: #b4b3b3 solid;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto; /* 수직 스크롤 허용 */
+    flex-grow: 1; /* 남은 공간을 차지하도록 설정 */
+}
+
+.chat-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.chat-message {
+    display: flex;
+    align-items: center;
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.my-message {
+    background-color: #dcf8c6; /* 연두색 */
+    align-self: flex-end;
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.other-message {
+    background-color: #add8e6; /* 하늘색 */
+    align-self: flex-start;
+    text-align: left;
+}
+
+.user-rank {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.my-message .user-rank {
+    margin-left: 0;
+}
+
+.chat-content {
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+}
+
+.chat-nickname {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.chat-text {
+    margin-bottom: 5px;
+}
+
+.chat-time {
+    font-size: 0.8em;
+    color: #999999;
+    margin-top: 5px;
+}
+
+.my-time {
+    align-self: flex-end;
+}
+
+.other-time {
+    align-self: flex-start;
+}
+
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 10px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: white;
+    width: 100%;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-send-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(77, 173,228);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-send-button:hover {
+    background-color: #0056b4;
+}

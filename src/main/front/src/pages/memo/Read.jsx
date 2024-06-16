@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertFromRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import axios from "axios";
+import axiosInstance from "../../api/axiosInstance.js";
 
 const Read = () => {
   const [editorState, setEditorState] = useState(() =>
@@ -15,7 +15,7 @@ const Read = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/til/${user_id}/1`, {
+        const response = await axiosInstance.get(`/til/${user_id}/4`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -23,9 +23,20 @@ const Read = () => {
         const raw = response.data.content;
         console.log(raw);
         if (raw) {
-          const contentState = convertFromRaw(JSON.parse(raw)); // JSON.parse 메서드로 텍스트를 자바스크립트 객체로 파싱
-          const newEditorState = EditorState.createWithContent(contentState); //convertFromRaw 메서드로 contentstate로
-          //EditorState.createWithContent 메서드를 이용해서 Draft.js의 EditorState로 만들고 현재 상태에 저장
+          const extractedContent = JSON.parse(raw);
+          const contentState = convertFromRaw({
+            blocks: extractedContent.map(block => ({
+              key: block.key,
+              text: block.text,
+              type: block.type,
+              depth: 0,
+              inlineStyleRanges: [],
+              entityRanges: [],
+              data: {},
+            })),
+            entityMap: {},
+          });
+          const newEditorState = EditorState.createWithContent(contentState);
           setEditorState(newEditorState);
         }
       } catch (error) {

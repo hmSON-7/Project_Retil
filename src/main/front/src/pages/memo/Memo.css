@@ -1,15 +1,15 @@
 .Memo{
     margin: 0 auto;
-    
+
     display: flex;
     flex-direction: row;
     justify-content:center ;
-        width: 40%;
-   
+    width: 40%;
+
     text-align: end;
 
 
-    
+
 }
 .Memo_form{
 
@@ -20,7 +20,7 @@
     position: relative;
     top: 70px;
     width: 70px;
-    
+
 }
 p img{
     width: 100%;
@@ -37,10 +37,10 @@ p img{
     border-radius: 8px;
     font-weight: 700
 
-  
+
 }
 .temporaryStorage{
-  
+
 }
 
 .save{
@@ -50,28 +50,29 @@ p img{
     position: relative;
     bottom: 60px;
 
-  
+
 }
 .wrapper-class {
-   min-width: 400px;
+    min-width: 400px;
     position: relative;
     height: 100%;
     bottom:90px;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px 5px 5px 5px;
-  }
-  .editor-class {
+}
+.editor-class {
 
     border-radius: 5px 5px 5px 5px;
- 
+    padding: 10px;
 
     border: 1px solid gray;
-  }
+}
 
 .memo_top{
 
- width: 100%;
-  margin-top: 80px; /* 위에 100px 여백을 두고 화면 가운데 정렬 */
+
+    margin-top: 80px; /* 위에 100px 여백을 두고 화면 가운데 정렬 */
+    padding: 0 0;
 
 }

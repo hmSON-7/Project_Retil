@@ -10,7 +10,7 @@
     top: 200px;
     justify-content:space-around ;
     margin:0 auto;
-    width: 70%;
+    width: 80%;
     height: 100%;
 
 
@@ -32,4 +32,8 @@
 .main_profile span{
     position: relative;
     bottom: 10px;
+}
+
+.main_today{
+    margin-top : 300px;
 }

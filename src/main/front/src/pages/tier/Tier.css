@@ -1,48 +1,48 @@
-
 .tier{
-      display: flex;
-      flex-direction: column;
-      margin : 0 auto;
-      justify-content:center ;
-      width: 100%;
-
-      
-   
-    
+    display: flex;
+    flex-direction: column;
+    margin : 0 auto;
+    justify-content:center ;
+    width: 100%;
 }
-.tier p{
+.aaaa .sun {
     text-align: center;
-    width: 45%;
+    width: 60%;
+    position: relative; /* 위치 조정을 위해 추가 */
+    left: 10px; /* 순위를 원하는 위치로 이동 */
+    top: 65px; /* 필요에 따라 조정 */
 }
 .date {
     position: relative;
-    left: 70%;
-    bottom:35px;
-    width: 20%;
-}
-.tier input{
-    margin: auto ;
-    width: 50%;
-    border: none;
-    border-bottom: 1px solid rgb(220, 220, 220);
-    padding: 15px 0px;
-}
-.tier input:focus{
-    outline: none;
-    border-bottom: 1px solid rgb(37, 147, 255);
-}
-.myTier{
-
+    left: 65%;
+    bottom:-40px;
     width: 40%;
-    height: 400px;
-    margin : 0 auto;
+}
+
+
+.myTier{
+    width: 600px; /* 원하는 너비로 설정 */
+    height: 400px; /* 원하는 높이로 설정 */
+    margin: 0 auto;
     background: white;
-    border: 2px solid rgba(255,255,255,.2);
+    border: 2px solid rgba(255, 255, 255, .2);
     color: gray;
     border-radius: 10px;
     padding: 30px 40px;
     margin-top: 100px;
     box-shadow: 0 0 5px gray;
+    position: relative;
+}
+.my_rank{
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left: 88px;
+    top: -70px;
+    width: 176px;
+    height: 58px;
+
 }
 .myTier .myTier{
     display: flex;
@@ -51,12 +51,98 @@
     position: relative;
     top: 30%;
 }
-.tier .rank_wrapper{
+.rank_wrapper{
     display : flex;
     margin: 0 auto;
-    width: 50%;
+    width: 700px;
     flex-direction : column;
+    margin-top: 90px;
 
-    /* gap : 10px; */
+    gap : 20px;
 }
 
+.tierbox {
+    background: #ffffff;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #a7a7a7;
+    border-width: 1px;
+    width: 1186px;
+    height: 514px;
+    position: relative;
+    left: 271px;
+    top: 155px;
+}
+.Tiericon {
+    width: 183px;
+    height: 187px;
+    position: relative;
+    left: 20px;
+    top: -50px;
+    object-fit: cover;
+}
+.Tname {
+    color: #000000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left: 40px;
+    top: 10px;
+    width: 128px;
+    height: 39px;
+}
+.oo {
+    color: #000000;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left: 380px;
+    top: -20px;
+    width: 383px;
+}
+.rank_time {
+    color: #000000;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left: 490px;
+    top: -40px;
+    width: 245px;
+    height: 47px;
+}
+.my_studyTime{
+    color: #000000;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left: 400px;
+    top: -200px;
+    width: 245px;
+    height: 47px;
+}
+.aaaa{
+    width: 700px;
+    height: 60%;
+    position: relative;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
+.bb {
+    width: 100%;
+    height: 40%;
+    right: 40px;
+    top: 70px;
+    text-align: end;
+    position: relative;
+}
+
+.bb > input {
+    padding: 5px 5px;
+    border-radius: 20px;
+    border: 1px solid;
+}

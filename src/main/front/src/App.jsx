@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes, useNavigate, useLocation } from "react-ro
 import {useEffect} from "react";
 import Login from "../src/pages/login/Login";
 import Firstmain from "./pages/Firstmain";
-import List from "./pages/list/List";
+import Headlist from "./pages/list/Headlist";
 import Today from "./pages/Today/Today";
 import Gong from "./pages/Gong";
 import Mainp from "./pages/mainprofilpage/Mainp";
@@ -18,9 +18,11 @@ import Mypage from "./pages/mainprofilpage/Mypage";
 import Tier from "./pages/tier/Tier";
 import Menubar from "./pages/menubar/Menubar";
 import Main from "./pages/main/Main";
-import Board from "./pages/group/Board";
-
+import Group from "./pages/group/Group.jsx";
+import Question from "./pages/question/Question.jsx";
 import MockList from "./pages/main/MockList";
+import GroupRoom from "./pages/group/GroupRoom.jsx";
+import G from "./pages/G";
 
 
 function App() {
@@ -43,7 +45,7 @@ function App() {
         <Route path="/" element={<Firstmain />} />
         <Route path="login" element={<Login />} />
         <Route path="gong" element={<Gong />} />
-        <Route path="list" element={<List />} />
+        <Route path="Headlist" element={<Headlist />} />
         <Route path="today" element={<Today />} />
         <Route path="mainp" element={<Mainp />} />
         <Route path="memo" element={<Memo />} />
@@ -56,8 +58,12 @@ function App() {
         <Route path="tier" element={<Tier />} />
         <Route path="menubar" element={<Menubar />} />
         <Route path="main" element={<Main />} />
-        <Route path="group" element={<Board />} />
+        <Route path="group" element={<Group />} />
         <Route path="mockList" element={<MockList />} />
+        <Route path="question" element={<Question/>}/>
+        <Route path="G" element={<G />} />
+        <Route path="today" element={<Today/>}/>
+        <Route path="groupRoom/:groupId" element={<GroupRoom/>}/>
       </Routes>
     </div>
       </>
