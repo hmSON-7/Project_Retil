@@ -26,6 +26,11 @@
     top: 70px;
     left: 40px;
 }
+.listcontentmodal-text .editor-class{
+    position: relative;
+    bottom: 100px;
+    border: none;
+}
 /*저장 시간 */
 .listcontentmodal-savetime {
     position: absolute;

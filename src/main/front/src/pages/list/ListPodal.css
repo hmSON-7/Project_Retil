@@ -10,6 +10,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    z-index: 2;
 }
 /*모달창*/
 .Modal-content {

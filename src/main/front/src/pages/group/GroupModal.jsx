@@ -1,13 +1,13 @@
 // GroupModal.jsx
 import React from 'react';
-
+import "./GroupModal.css"
 const GroupModal = ({ show, onClose, onChange, onSubmit, group }) => {
     if (!show) return null;
 
     return (
-        <div className="modal" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <span className="close" onClick={onClose}>&times;</span>
+        <div className="group_modal" onClick={onClose}>
+            <div className="groupModal-content" onClick={(e) => e.stopPropagation()}>
+                <span className="group_close" onClick={onClose}>&times;</span>
                 <form onSubmit={onSubmit}>
                     <input
                         type="text"
