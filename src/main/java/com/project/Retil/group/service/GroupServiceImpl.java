@@ -43,8 +43,8 @@ public class GroupServiceImpl implements GroupService{
             list.add(new GroupDTO(
                     group.getId(),
                     group.getGroupName(),
-                    group.getGroupIntroduce(),
                     group.getGroupOwner().getNickname(),
+                    group.getGroupIntroduce(),
                     group.getMemberLimit(),
                     group.getMemberCurrent()
             ));
@@ -69,8 +69,8 @@ public class GroupServiceImpl implements GroupService{
             targetList.add(new GroupDTO(
                     group.getId(),
                     group.getGroupName(),
-                    group.getGroupIntroduce(),
                     group.getGroupOwner().getNickname(),
+                    group.getGroupIntroduce(),
                     group.getMemberLimit(),
                     group.getMemberCurrent()
             ));
@@ -111,7 +111,7 @@ public class GroupServiceImpl implements GroupService{
         GroupInfo newGroup = new GroupInfo(
                 owner, groupName, introduce, limit
         );
-
+        groupRepository.save(newGroup);
         addMember(owner, newGroup);
 
         return newGroup;
@@ -137,6 +137,7 @@ public class GroupServiceImpl implements GroupService{
         }
 
         group.changeMemberCurrent(cur + 1);
+        groupRepository.save(group);
         addMember(user, group);
 
         return group;

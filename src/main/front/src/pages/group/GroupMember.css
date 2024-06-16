@@ -1,0 +1,56 @@
+.member_list {
+    margin-top: 150px;
+    width: 1000px;
+    position: relative;
+    height: 600px;
+    border: #b4b3b3 solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.member_me, .member_you {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin: 0 10px;
+    margin-left: -100px; /* Left margin of 20px added */
+}
+
+
+.member_you {
+    flex-wrap: wrap; /* Flex items will wrap to the next line */
+    justify-content: center;
+}
+
+.member_you > div {
+    width: 55%; /* Adjust the width to fit two items per row */
+    margin: 10px;
+}
+
+.member_card {
+    width: 150px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.tier_image {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}

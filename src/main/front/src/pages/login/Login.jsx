@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaLock } from "react-icons/fa";
-import axios from "axios";
+import emailIcon from '/images/ico/mail.png';
+import passwordIcon from '/images/ico/password.png';
 import "./Login.css";
+import axiosInstance from "../../api/axiosInstance.js";
 
 function Login() {
     const navigate = useNavigate();
@@ -23,8 +24,8 @@ function Login() {
     const valid = validation(id, pw);
 
     const buttonOnClick = () => {
-        axios
-            .post(`http://localhost:8080/users/login`, { email: id, password: pw })
+        axiosInstance
+            .post(`/users/login`, { email: id, password: pw })
             .then((response) => {
                 const { token, id } = response.data; // 서버에서 받은 토큰
                 // 토큰을 로컬 스토리지에 저장
@@ -35,6 +36,9 @@ function Login() {
             .catch((error) => {
                 const errorMsg = error.response ? error.response.data : "로그인 실패";
                 setMessage(errorMsg);
+                alert("로그인 실패: " + errorMsg); // alert로 오류 메시지 표시
+                setId(""); // 로그인 실패 시 이메일 입력란을 비웁니다.
+                setPw(""); // 로그인 실패 시 비밀번호 입력란을 비웁니다.
                 console.error(error);
             });
     };
@@ -49,7 +53,6 @@ function Login() {
     return (
         <div className="login">
             <Link to={"/"}>
-                {" "}
                 <h1>
                     <img src="./images/ico/retil.png" alt="Retil Logo" />
                 </h1>
@@ -57,6 +60,7 @@ function Login() {
 
             <form onSubmit={handleFormSubmit}>
                 <div className="input-box">
+                    <img className="email_icon" src={emailIcon} alt="사용자 아이콘" />
                     <input
                         type="text"
                         name="id"
@@ -66,10 +70,10 @@ function Login() {
                         }}
                         placeholder="이메일을 입력하세요"
                     />
-                    <FaUser className="icon" />
                 </div>
 
                 <div className="input-box">
+                    <img className="email_icon" src={passwordIcon} alt="사용자 아이콘" />
                     <input
                         type="password"
                         name="password"
@@ -79,7 +83,6 @@ function Login() {
                         }}
                         placeholder="비밀번호를 입력하세요"
                     />
-                    <FaLock className="icon" />
                 </div>
 
                 <div className="remember-signup">

@@ -1,62 +1,161 @@
-.tabcontent {
-    margin-left: calc(50% - 200px);
-    margin-top: 30px;
-    padding: 30px;
-    box-sizing: border-box;
-    width: 950px;
-    height: 1000px;
-    border-radius: 10px;
-    background: #f41e1e;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+.List-container{
+    width: 900px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    margin: auto;
+    margin-top: 70px;
+}
+.Forst-name{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+/*리스트 메뉴바 공간*/
+.List-header{
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+    position: absolute;
+    margin-top: 0px;
+    display: flex;
 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  input[type="radio"] {
-    display: none;
-  }
-  
-  input[type="radio"] + label {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #9a7dab;
-    color: #fff;
-    border-radius: 10px;
-    font-size: 14px;
+}
+/*전체보기버튼*/
+.Tab-Totalbutton {
+    width: 80px;
+    height: 35px;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-left: 60px;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(198, 198, 198);
+    background-color: #fff;
+}
+
+
+.Tab-Totalbutton:hover{
     cursor: pointer;
-  }
-  
-  input[type="radio"]:checked + label {
-    background: #fff;
-    color: #9a7dab;
-    border: 1px solid #9a7dab;
-  }
-  
-  .content-box {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    width: 340px;
-    height: 250px;
-    font-size: 30px;
-    box-sizing: border-box;
+    background-color: beige;
+}
+
+
+/*추가하기버튼*/
+.Tab-addbutton {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    margin-top: 23px;
+    margin-left: 30px;
     border-radius: 10px;
-    text-align: center;
-    background: #efe6f4;
-    color: #666;
-  }
-  
-  input[id="tabmenu01"]:checked ~ .content01 {
-    display: block;
-  }
-  
-  input[id="tabmenu02"]:checked ~ .content02 {
-    display: block;
-  }
-  
-  input[id="tabmenu03"]:checked ~ .content03 {
-    display: block;
-  }
-  
+    border-style: solid;
+    border-color: rgb(198, 198, 198);
+}
+.Tab-addbutton:hover{
+    cursor: pointer;
+    background-color: rgb(250, 209, 2);
+    border-style: solid;
+    border-radius: 10px;
+}
+/*추가된 카테고리 버튼들*/
+.AddSubjectbutton{
+    width: 80px;
+    height: 35px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(198, 198, 198);
+    background-color: #fff;
+    white-space: nowrap; /* 추가된 부분: 줄바꿈 방지 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 추가된 부분: 넘치는 텍스트를 줄임표로 표시 */
+}
+.AddSubjectbutton:hover{
+    cursor: pointer;
+    background-color: antiquewhite;
+    border-style: solid;
+    border-radius: 30px;
+}
+
+
+
+/*즐겨찾기, 번호, 제목, 작성날짜*/
+.List-moklocklist{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 70px;
+    border-style: solid;
+    border-color: #b4b3b3;
+    font-size: 10px;
+    align-items: center; /*위아래 수평*/
+}
+.Listfavorite-icon{
+    margin-left: 50px;
+}
+.Listitem-number{
+    margin-left: 30px;
+}
+.Listitem-title{
+    margin-left: 300px;
+}
+.Listitem-date{
+    margin-left: 300px;
+}
+
+
+
+
+/*리스트 띄우는 공간*/
+.List-middle{
+    width: 100%;
+    height: 900px;
+    background-color: #ffffff;
+    position: absolute;
+    margin-top: -2px;
+    border-style: solid;
+    border-color: #b4b3b3;
+
+}
+/*리스트 내용 박스*/
+.categorcontenet-box {
+    width: 600px;
+    margin: 0 auto; /* 수평 중앙 정렬 */
+    margin-top: 10px;
+
+
+
+}
+.categorcontenet-box-text{
+    margin-left: 20px;
+}
+
+
+
+
+
+/*검색창*/
+.ListSerachinput{
+    width: 150px;
+    height: 27px;
+    margin-top: 20px;
+    margin-left: 270px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #d1d1d1;
+}
+.List-okSerchbutton {
+    cursor: pointer;
+    width: 40px;
+    height: 27px;
+    background-color: #ffffff;
+    border-style: solid;
+    border-radius: 10px;
+    margin-top: 23px;
+    margin-left: 3px;
+}

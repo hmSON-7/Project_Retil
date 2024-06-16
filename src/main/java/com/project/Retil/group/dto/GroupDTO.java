@@ -13,21 +13,21 @@ import lombok.Setter;
 public class GroupDTO {
 
     @NotEmpty
-    private Long group_id;
+    private Long id;
 
     @NotEmpty
     private String groupName;
 
     @NotEmpty
-    private String introduce;
+    private String groupOwner;
 
     @NotEmpty
-    private String ownerName;
+    private String groupIntroduce;
 
     @NotEmpty
-    private int limit;
+    private int memberLimit;
 
     @NotEmpty
-    private int current;
+    private int memberCurrent;
 
 }

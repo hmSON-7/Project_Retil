@@ -1,3 +1,4 @@
+/*
 package com.project.Retil.settings.security;
 
 import org.springframework.context.annotation.Bean;
@@ -60,3 +61,4 @@ public class SecurityConfig {
         return userDetailsService;
     }
 }
+*/

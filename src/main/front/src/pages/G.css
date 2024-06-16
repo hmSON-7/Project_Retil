@@ -1,63 +1,107 @@
-.graph-container {
-    margin-top: 200px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .graph-svg {
-    margin-top: -50px;
-    width: 800px;
-    height: 100px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.gcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.gcontainer .steps {
+  display: flex;
+  width: 130%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-top: -50px;
+}
+
+.steps .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.steps .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  color: #999;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #e0e0e0;
+  transition: all 200ms ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.steps .progress-label {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #999;
+}
+
+.steps .step.active .circle {
+  border-color: #4070f4;
+  color: #4070f4;
+}
+
+.steps .step.active .progress-label {
+  color: #4070f4;
+}
+
+.steps .progress-bar {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #e0e0e0;
+  z-index: -1;
+  margin-bottom: 30px;
+}
+
+.progress-bar .indicator {
+  position: absolute;
+  left: 0%;
+  height: 100%;
+  width: 0%;
+  background: #4070f4;
+  transition: all 300ms ease;
+}
+
+.lottie-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: -140px;
+}
+
+
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+    align-items: center;
   }
 
-  @keyframes curveAnimation {
-    0% {
-      d: path("M-130,25 Q-130,-20 -60,25"); /* 시작지점 */
-    }
-    100% {
-      d: path("M-100,25 Q-110,-20 -60,25"); /* 끝지점 */
-    }
-  }
-  
-  .animation-path {
-    animation: curveAnimation 2s forwards;
-  }
-  
-  @keyframes curveAnimation2 {
-    0% {
-      d: path("M-130,25 Q-130,-20 -60,25"); /* 시작지점 */
-    }
-    100% {
-      d: path("M-130,25 Q-60,-20 -60,25"); /* 끝지점 */
-    }
-  }
-  
-  .animation-path2 {
-    animation: curveAnimation2 2s forwards;
-  }
-  
-  @keyframes curveAnimation3 {
-    0% {
-      d: path("M-130,25 Q-110,-20 -60,25");
-    }
-    100% {
-      d: path("M-35,25 Q20,-10 100,25");
-    }
-  }
-  
-  .animation-path3 {
-    animation: curveAnimation3 3s forwards;
+  .steps .step {
+    margin-bottom: 20px;
   }
 
-  @keyframes curveAnimation4 {
-    0% {
-      d: path("M-130,25 Q-110,-20 -60,25");
-    }
-    100% {
-      d: path("M-35,25 Q20,-10 180,25");
-    }
+  .steps .progress-bar {
+    width: 100%;
   }
-  
-  .animation-path4 {
-    animation: curveAnimation4 3s forwards;
+
+  .gcontainer {
+    max-width: 90%;
   }
+
+  .lottie-container {
+    margin-top: 20px;
+  }
+}

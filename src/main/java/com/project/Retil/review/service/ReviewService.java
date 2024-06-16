@@ -1,10 +1,9 @@
 package com.project.Retil.review.service;
 
 import com.project.Retil.question.entity.Question;
-import com.project.Retil.question.repository.QuestionRepository;
 import com.project.Retil.review.entity.ReviewCycle;
 import com.project.Retil.review.repository.ReviewCycleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,13 +11,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ReviewService {
-
-    @Autowired
-    private ReviewCycleRepository reviewCycleRepository;
-
-    @Autowired
-    private QuestionRepository questionRepository;
+    private final ReviewCycleRepository reviewCycleRepository;
 
     private final List<Integer> cycles = Arrays.asList(1, 3, 7, 15, 30, 180);
     private final Map<Integer, Double> cycleRatios = Map.of(

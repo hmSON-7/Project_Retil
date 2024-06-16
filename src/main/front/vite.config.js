@@ -9,12 +9,4 @@ export default defineConfig({
       'history': 'history',
     },
   },
-  build: {
-    outDir: "../resources/static",
-  }, // 빌드 결과물이 생성되는 경로
-  server: {
-    proxy: {
-      "/api": "http://localhost:8080",
-    }, // proxy 설정
-  },
 })

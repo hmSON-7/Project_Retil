@@ -1,0 +1,35 @@
+.mock_list{
+    display : flex;
+    align-items : center;
+    gap : 20px;
+    padding-bottom : 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+.mock_list > input[type="checkbox"]{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.mock_list > label {
+    position: relative;
+
+    padding-top:18px ;
+    padding-left: 24px; /* 체크박스 크기에 맞게 조절 */
+}
+
+.mock_list > input[type="checkbox"] + label::before{
+    content: "☆"; /* 빈 별 모양 아이콘 */
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 16px; /* 아이콘 크기 조절 */
+}
+.mock_list > input[type="checkbox"]:checked + label::before{
+    content: "★"; /* 꽉찬 별 모양 아이콘 */
+    color: #ffcc00; /* 체크된 별 색상 */
+}
+.mock_list .subject_name{
+    padding-left: 50px ;
+    width: 100px;
+}

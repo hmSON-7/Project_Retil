@@ -3,24 +3,24 @@
 .categorySelect{
 
     position : relative;
-    left : 154px;
+    left : 172px;
     bottom : 115px;
     width: 70%; /* 예시로 고정 너비를 설정하였으니 필요에 따라 조절해주세요. */
     height: 1rem;
     background: white;
     border: 1px solid gray;
     color: black;
-    z-index: -1;
+    border-left: 0px;
     text-align: center;
     padding: 20px 20px;
     border-radius: 0px 5px 0px 0px;
-    
+
 }
 .categorySelect select{
     width: 80%;
     height: 30px;
     text-align: center;
-   margin-top: -30px;
-   border-radius: 5px 5px 5px 5px;
+    margin-top: -30px;
+    border-radius: 5px 5px 5px 5px;
 
 }

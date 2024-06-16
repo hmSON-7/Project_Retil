@@ -36,7 +36,7 @@ public class Til {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, length = 10000)
+    @Column(nullable = false, length = 50000)
     private String content;
 
     @ManyToOne

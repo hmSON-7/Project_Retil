@@ -5,8 +5,7 @@
     width: 100%;
     height: 60px;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
     display: flex;
     justify-content: center;
     z-index: 10;
@@ -21,21 +20,36 @@
 }
 /*메뉴바 - 글 간격*/
 .nav__mainmenu > li {
-    font-size: 18px;
     padding: 1.5rem;
 }
 /*메뉴바 - 글 색상*/
 .nav__mainmenu--foused {
     color: rgb(77, 173, 228);
 }
- .nav_mypagebutton{
-    height: 50px;
-    width: 100px;
-    margin-top: 5px;
-    background-color: rgb(77, 173, 228);
-    border-radius: 20px;
-    border: none;
-}
+
+/*마이페이지 아이콘 버튼*/
+.nav_mypagebutton {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none; /* 버튼 테두리를 없앰 */
+    padding: 0;
+    overflow: hidden; /* 이미지가 버튼 경계를 넘어가지 않도록 */
+    display: inline-block; /* 필요한 경우 */
+    background: none; /* 기본 버튼 배경을 없앰 */
+    cursor: pointer; /* 마우스 포인터를 손가락 모양으로 변경 */
+  }
+  
+  .nav_mypagebutton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 원형 버튼 안에 꽉 차도록 */
+    display: block;
+  }
+  
+
 .nav_mypagebutton:hover{
     background-color: rgb(124, 201, 245);
 }

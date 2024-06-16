@@ -1,0 +1,5 @@
+.group_contain{
+    margin: 0 auto;
+    width: 1000px;
+    justify-content:space-around ;
+}

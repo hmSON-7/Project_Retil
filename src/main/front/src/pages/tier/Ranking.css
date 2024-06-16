@@ -1,14 +1,17 @@
 .ranking{
+
         width: 100%;
-        display : flex;;
+        display : flex;
         flex-direction : row;
         margin-top:10px;
-        gap : 20px;
+        gap : 50px;
         border-bottom: 1px solid rgb(240, 240, 240);
 
 }
 .ranking .nickname{
-        flex : 1;
+        width: 100%;
 
-    
-    }
+}
+.user_tier{
+        width: 50px;
+}

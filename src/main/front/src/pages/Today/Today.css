@@ -1,0 +1,54 @@
+.today {
+    margin: 0 auto;
+    width: 1000px;
+    height: 300px;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: gray;
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0 0 5px gray;
+}
+
+.today_top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.create_button {
+    width: 100px;
+    height: 50px;
+    margin-left: auto; /* Pushes the button to the far right */
+    margin-bottom: 10px;
+    border: 2px solid gray;
+    border-radius: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px gray;
+    cursor: pointer;
+}
+
+.today_mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.today_mid > button {
+    width: 80%;
+    height: 90px;
+    background-color: rgb(77, 173,228);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 20px; /* Add space between buttons */
+}

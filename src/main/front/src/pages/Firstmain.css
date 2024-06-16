@@ -16,6 +16,7 @@ a {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     display: flex;
+    z-index: 1;
     justify-content: center;
 }
 /*메뉴바 안에 div*/
@@ -67,11 +68,19 @@ section {
     color: white;
 }
 #retil {
-    margin-top: 130px;
-    font-size: 100px;
-    height: 600px;
-    color: #000000;
-    background: #ffffff;
+  position: relative; /* 위치 지정 */
+  margin-top: 130px;
+  font-size: 100px;
+  height: 600px;
+  color: #000000;
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.main_gragh{
+    z-index: 0;
 }
 #list {
     background: palegreen;
@@ -84,4 +93,13 @@ section {
 #four {
     background: palevioletred;
     height: 1100px;
+}
+.Flogo{
+    margin-top: -27px;
+    margin-right: 100px;
+
+}
+.Flogo-image{
+    width: 120px;
+    height: 120px;
 }

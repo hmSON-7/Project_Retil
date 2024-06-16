@@ -5,7 +5,7 @@ import userIcon from '/images/ico/smile.png';
 import emailIcon from '/images/ico/mail.png';
 import passwordIcon from '/images/ico/password.png';
 import './L-signup.css';
-import axios from 'axios';
+import axiosInstance from "../../api/axiosInstance.js";
 
 function Signup() {
   const [nickname, setNickname] = useState('');
@@ -52,7 +52,7 @@ function Signup() {
     e.preventDefault();
     if (nickname && email && validateEmail(email) && password && confirmPassword && passwordMatch && agreeTerms && agreePrivacy) {
       try {
-        const response = await axios.post('http://localhost:8080/users/join', {
+        const response = await axiosInstance.post('/users/join', {
           nickname: nickname,
           email: email,
           password: password,
