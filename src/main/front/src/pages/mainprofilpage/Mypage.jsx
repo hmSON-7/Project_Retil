@@ -13,7 +13,6 @@ function Mypage() {
   const [isEditing, setIsEditing] = useState(false);
   const [nickname, setNickname] = useState(''); // 초기 닉네임 설정
   const [email, setEmail] = useState('');
-  const [latestPwChange, setLatestPwChange] = useState('');
 
   const token = localStorage.getItem("token");
   const user_id = localStorage.getItem("user_id");

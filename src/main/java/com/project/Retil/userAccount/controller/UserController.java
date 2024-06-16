@@ -129,13 +129,16 @@ public class UserController {
     /**
      * 7. 닉네임 수정
      * @param user_id 접속 중인 유저 번호. 해당 번호로 유저 객체 탐색
-     * @param newNickname 변경하고자 하는 신규 닉네임
+     * @param request 변경하려는 닉네임을 JSON 형태로 받음.
      * @return DB에서 가져온 user 객체의 닉네임 변경 후 다시 DB에 저장 및 반환
      */
     @PatchMapping("/{user_id}/my_page/nickname")
     public ResponseEntity<MyPageDTO> nicknameChange(@PathVariable Long user_id,
-                                                    @RequestBody String newNickname) {
+                                                    @RequestBody Map<String, String> request) {
+
+        String newNickname = request.get("nickname");
         User_Information updatedUser = userService.changeNickname(user_id, newNickname);
+        
         if (updatedUser != null) {
             return ResponseEntity.status(HttpStatus.OK).body(new MyPageDTO(
                     updatedUser.getNickname(),
