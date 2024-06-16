@@ -21,6 +21,9 @@ public class GroupChatDTO {
     private String nickname;
 
     @NotEmpty
+    private String userRank;
+
+    @NotEmpty
     private String chat;
 
     @NotEmpty

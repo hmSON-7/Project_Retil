@@ -235,9 +235,11 @@ public class GroupServiceImpl implements GroupService{
 
         ArrayList<GroupChatDTO> targetList = new ArrayList<>();
         for(GroupChat chat : groupChatList) {
+            User_Rank rank = userRankRepository.findByUser(chat.getMember());
             targetList.add(new GroupChatDTO(
                     chat.getMember().getId(),
                     chat.getMember().getNickname(),
+                    rank.getUserRank(),
                     chat.getChatComment(),
                     chat.getTimeStamp()
             ));
