@@ -33,7 +33,7 @@ function Memo() {
   const onEditorStateChange = (newEditorState) => {
     const contentState = newEditorState.getCurrentContent();
     const text = contentState.getPlainText("");
-    if (text.length <= 2048) {
+    if (text.length <= 5000) {
       setInputCount(text.length);
       setEditorState(newEditorState);
     }

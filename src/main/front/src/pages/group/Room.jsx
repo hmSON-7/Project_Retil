@@ -28,7 +28,7 @@ const Room = ({ group, myGroupIds }) => {
         <div className="group_item">
             <span className="item_name">{group.groupName}</span>
             <span className="item_ex">{group.groupIntroduce}</span>
-            <span className="item_user">{group.groupOwner.nickname}</span>
+            <span className="item_user">{group.groupOwner}</span>
             <span className="item_limit">{group.memberCurrent} / {group.memberLimit}</span>
             <button
                 onClick={onClick_button}
