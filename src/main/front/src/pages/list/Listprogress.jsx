@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Listprogress.css';
 
 const Listprogress = ({ til }) => {
-  const steps = ["1일", "3일", "7일", "30일", "60일", "6개월"];
+  const steps = ["1", "3", "7", "30", "60", "6M"];
 
   // 각 단계별 너비 정의 (%)
-  const stepWidths = [0, 10, 30, 50, 70, 100];
+  const stepWidths = [0, 10, 20, 40, 69, 100]; // 수정된 너비 값
 
   // til 값에 따라 currentStep 결정
   const getCurrentStep = (til) => {
@@ -18,6 +18,7 @@ const Listprogress = ({ til }) => {
   };
 
   const [currentStep, setCurrentStep] = useState(getCurrentStep(til));
+  const [missedSteps, setMissedSteps] = useState([false, true, false, false, false, false]); // 3일 스텝만 missed
 
   useEffect(() => {
     setCurrentStep(getCurrentStep(til));
@@ -35,7 +36,7 @@ const Listprogress = ({ til }) => {
         {steps.map((step, index) => (
           <div
             key={index}
-            className={`step step-${index} ${index <= currentStep ? 'current' : ''}`}
+            className={`step step-${index} ${index <= currentStep ? 'current' : ''} ${missedSteps[index] ? 'missed' : ''}`}
             onClick={() => setCurrentStep(index)}
           >
             {step}

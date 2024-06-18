@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LogoutModal from "./LogoutModal";
-
 import "./Mainp.css";
 
 function Mainp() {
@@ -35,28 +34,20 @@ function Mainp() {
   return (
     <div>
       <nav id="mainnav" className="mainnav">
+        <div className="mlogo">
+          <Link to="/main" className="mlogo-link">
+            <img
+              className="mlogo-image"
+              src="images/ico/galogo.png"
+              alt="main로고"
+            />
+          </Link>
+        </div>
+
         <ul className="nav__mainmenu">
-          <div className="mlogo">
-            <Link to="/main" className="mlogo-link">
-              <img
-                className="mlogo-image"
-                src="images/ico/galogo.png"
-                alt="로고"
-              />
-            </Link>
-          </div>
           <li>
             <Link
-              to="/main"
-              className={activeLink === "RETIL" ? "nav__menu--focused" : ""}
-              onClick={() => handleLinkClick("RETIL")}
-            >
-              RETIL
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/list"
+              to="/Headlist"
               className={activeLink === "List" ? "nav__menu--focused" : ""}
               onClick={() => handleLinkClick("List")}
             >
@@ -89,25 +80,26 @@ function Mainp() {
               className={activeLink === "group" ? "nav__menu--focused" : ""}
               onClick={() => handleLinkClick("group")}
             >
-              group
+              Group
             </Link>
           </li>
         </ul>
-
-        <Link to={"/Mypage"}>
-          <button className="nav_mypagebutton">
-            <img src="src/assets/menubarIcon.png" alt="my Page" />
-          </button>
-        </Link>
+        {/**작성하기 버튼 */}
         <Link to={"/memo"}>
           <button className="nav_writebutton">작성하기</button>
         </Link>
-        <button className="logoutbutton" onClick={openLogoutModal}>
-          로그아웃
+        {/**마이페이지 아이콘 */}
+        <Link to={"/Mypage"}>
+          <button className="nav_mypagebutton">
+            <img src="src/assets/mypageIcon.png" alt="my Page" />
+          </button>
+        </Link>
+        {/**로그아웃 버튼 */}
+        <button className="logout-icon">
           <img
-            src="src/assets/logoutbutton.png"
+            src="src/assets/logoutIcon.png"
             alt="Logout"
-            className="logout-icon"
+            onClick={openLogoutModal}
           />
         </button>
       </nav>

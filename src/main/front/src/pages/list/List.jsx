@@ -17,10 +17,16 @@ function List() {
   const [filteredTilList, setFilteredTilList] = useState([]); // 필터링된 TIL 리스트
   const [isItemModalOpen, setIsItemModalOpen] = useState(false); // 아이템 모달 열림/닫힘 상태
   const [selectedItem, setSelectedItem] = useState(null); // 선택된 아이템
+  const [visibleCategories, setVisibleCategories] = useState(3); // 처음에는 5개의 카테고리만 보이도록 설정
+  const [showMore, setShowMore] = useState(false); // 더보기/접기 버튼 상태
+  const [headerHeight, setHeaderHeight] = useState(70); // 초기 div 높이 설정
+
 
   // 로컬 스토리지에서 사용자 ID와 토큰 가져오기
   const user_id = localStorage.getItem("user_id");
   const token = localStorage.getItem("token");
+
+  
 
   // 컴포넌트가 마운트될 때 카테고리와 TIL 리스트 가져오기
   useEffect(() => {
@@ -93,6 +99,19 @@ function List() {
     setIsModalOpen(false);
   };
 
+  // 더보기 버튼 클릭 시
+const handleShowMore = () => {
+  setHeaderHeight(140); // 높이를 70px에서 140px로 변경
+  setVisibleCategories(categories.length); // 모든 카테고리를 보여줌
+  setShowMore(true); // 더보기 버튼 클릭 상태 설정
+};
+
+// 접기 버튼 클릭 시
+const handleCollapse = () => {
+  setHeaderHeight(70); // 높이를 다시 70px로 변경
+  setVisibleCategories(3); // 처음 3개의 카테고리만 보여줌
+  setShowMore(false); // 더보기 버튼 접기 상태 설정
+};
   // 새로운 카테고리 저장
   const handleSaveCategory = (categoryName, color) => {
     const newCategory = {
@@ -141,109 +160,148 @@ function List() {
     setIsItemModalOpen(false);
   };
 
+  // bookmark 상태 변경 핸들러
+  const handleBookmarkToggle = async (til) => {
+    try {
+      const updatedTil = { ...til, bookmark: !til.bookmark };
+      await axiosInstance.patch(`/til/${user_id}/bookmark/${til.til_id}`, updatedTil, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setTilList((prevTilList) =>
+          prevTilList.map((item) =>
+              item.til_id === til.til_id ? updatedTil : item
+          )
+      );
+      setFilteredTilList((prevFilteredTilList) =>
+          prevFilteredTilList.map((item) =>
+              item.til_id === til.til_id ? updatedTil : item
+          )
+      );
+    } catch (error) {
+      console.error("Error updating bookmark", error);
+    }
+  };
+
   return (
+    <div className="List-talltotal">
+         <div className="listmoongu"> 
+            <span >카테고리를 설정하세요</span>
+          </div>
+          <div className="listsecondmoongu"><span>그리고 작성하기 버튼을 클릭하세요.마음껏 작성하세요!</span></div>
+
     <div className="List-container">
-      <div className="Forst-name">
-        <h1>리스트</h1>
-      </div>
-      <div className="List-header">
-        <button className="Tab-Totalbutton" onClick={handleShowAll}>
-          전체보기
-        </button>
-        {categories.map((category, index) => (
-          <button
-            className="AddSubjectbutton"
-            key={index}
-            onClick={() => handleCategoryClick(category.subjectName)}
-            style={{
-              border: `2px solid ${category.color || "transparent"}`,
-              borderRadius: "5px",
-              marginBottom: "10px",
-            }}
-          >
-            {category.subjectName}
+      
+        <div className="List-header"
+          style={{ height: `${headerHeight}px`, transition: "height 0.3s ease" }}
+        >
+          <button onClick={openModal} className="Tab-addbutton">
+              +
           </button>
-        ))}
-
-        <button onClick={openModal} className="Tab-addbutton">
-          +
-        </button>
-        <ListModal
-          isOpen={isModalOpen}
-          closeModal={closeModal}
-          onSave={handleSaveCategory}
-          categories={categories}
-          selectedColor={selectedColor}
-          setSelectedColor={setSelectedColor}
-        />
-        <input
-          type="text"
-          placeholder=" 제목을 검색하세요"
-          className="ListSerachinput"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button className="List-okSerchbutton" onClick={handleSearch}>
-          확인
-        </button>
-      </div>
-      <div className="List-moklocklist">
-        <span className="Listfavorite-icon">즐겨찾기</span>
-        <span className="Listitem-title">제목</span>
-        <span className="Listitem-date">작성날짜</span>
-      </div>
-
-      <div className="List-middle">
-        {filteredTilList.map((til, index) => (
-          // 필터링된 TIL 리스트 렌더링
-          <React.Fragment key={index}>
-            <div>
-              <input
-                className="listcheckbox"
-                type="checkbox"
-                checked={til.bookmark || false}
-                readOnly
-              />
-            </div>
-            <div
-              className="categorcontenet-box"
-              style={{
-                border: `2px solid ${til.color || "transparent"}`,
-                borderRadius: "5px",
-                marginBottom: "10px",
-              }}
-              onClick={() => openItemModal(til)} // 아이템 클릭 시 모달 열기
-            >
-              <input
-                className="listtitle-box"
-                type="text"
-                value={til.title || ""}
-                readOnly
-              />
-              <input
-                className="listsavetime-box"
-                type="text"
-                value={(til.saveTime || "").split("T")[0]} // 날짜 부분만 추출하여 표시
-                readOnly
-              />
-            </div>
-
-            <div className="addprogress">
-            <Listprogress til={7} /> {/* 3일일 경우 */}
-            </div>
-
-            {index !== filteredTilList.length - 1 && (
-              <hr className="category-separator" />
+            {categories.length > 3 && (
+              <button className="ShowMoreButton" onClick={showMore ? handleCollapse : handleShowMore}>
+                {showMore ? "접기" : "더보기"}
+              </button>
             )}
-          </React.Fragment>
-        ))}
+            <ListModal
+              isOpen={isModalOpen}
+              closeModal={closeModal}
+              onSave={handleSaveCategory}
+              categories={categories}
+              selectedColor={selectedColor}
+              setSelectedColor={setSelectedColor}
+            />
+
+          <button className="Tab-Totalbutton" onClick={handleShowAll}>
+              전체보기
+            </button>
+              {filteredCategories.slice(0, visibleCategories).map((category, index) => (
+                <button
+                  className="AddSubjectbutton"
+                  key={index}
+                  onClick={() => handleCategoryClick(category.subjectName)}
+                    style={{
+                    border: `2px solid ${category.color || "transparent"}`,
+                    marginBottom: "10px",
+                    "--border-color": category.color || "transparent",
+              }}
+            >
+              {category.subjectName}
+            </button>
+            ))}
+        </div>
+
+        <div className="list-searchmocklist">
+          <input
+              type="text"
+              placeholder=" 제목을 검색하세요"
+              className="ListSerachinput"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button className="List-okSerchbutton" onClick={handleSearch}>
+            확인
+          </button>
+        </div>
+
+        <div className="List-moklocklist">
+          <span className="Listfavorite-icon">즐겨찾기</span>
+          <span className="Listitem-title">제목</span>
+          <span className="Listitem-date">작성날짜</span>
+        </div>
+
+        <div className="List-middle">
+          {filteredTilList.map((til, index) => (
+              <React.Fragment key={index}>
+                <div>
+                  <input
+                      className="listcheckbox"
+                      type="checkbox"
+                      checked={til.bookmark || false}
+                      onChange={() => handleBookmarkToggle(til)}
+                  />
+                </div>
+                <div
+                    className="categorcontenet-box"
+                    style={{
+                      border: `2px solid ${til.color || "transparent"}`,
+                      borderRadius: "5px",
+                      marginBottom: "10px",
+                    }}
+                    onClick={() => openItemModal(til)} // 아이템 클릭 시 모달 열기
+                >
+                  <input
+                      className="listtitle-box"
+                      type="text"
+                      value={til.title || ""}
+                      readOnly
+                  />
+                  <input
+                      className="listsavetime-box"
+                      type="text"
+                      value={(til.saveTime || "").split("T")[0]} // 날짜 부분만 추출하여 표시
+                      readOnly
+                  />
+                  <Listprogress til={180} /> {/* 3일일 경우 */}
+                </div>
+
+                
+
+                {index !== filteredTilList.length - 1 && (
+                    <hr className="category-separator" />
+                )}
+              </React.Fragment>
+          ))}
+        </div>
+        <Listcontentmodal
+            isOpen={isItemModalOpen}
+            onClose={closeItemModal}
+            item={selectedItem}
+        />
       </div>
-      <Listcontentmodal
-        isOpen={isItemModalOpen}
-        onClose={closeItemModal}
-        item={selectedItem}
-      />
-    </div>
+      </div>
   );
 }
 

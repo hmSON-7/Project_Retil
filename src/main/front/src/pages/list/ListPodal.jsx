@@ -61,19 +61,24 @@ function ListPodal({ isOpen, closeModal, onSave, categories }) {
     return (
         <div className="ListModal-container">
             <div className="Modal-content" onClick={(e) => e.stopPropagation()}>
-                <span className="Modalclose" onClick={closeModal}>&times;</span>
-                <p>카테고리 생성</p>
-                <input
-                    type="text"
-                    value={CategoryName}
-                    onChange={handleInputChange}
-                    placeholder="카테고리명을 입력하세요"
-                />
-                <input
-                    type="color"
-                    value={color}
-                    onChange={handleColorChange}
-                />
+                <div className="Modalclose" onClick={closeModal}>&times;</div>
+                <span>카테고리 생성</span>
+                <div className="categorynamebox">
+                    <input
+                        type="text"
+                        className="categorytextinput"
+                        value={CategoryName}
+                        onChange={handleInputChange}
+                        placeholder="카테고리명을 입력하세요"
+                    />
+                
+                    <input
+                        type="color"
+                        className="category-colorpicker"
+                        value={color}
+                        onChange={handleColorChange}
+                    />
+                </div>
                 {errorMessage && <p className="ErrorMessage">{errorMessage}</p>}
                 <button className="Listsavebutton" onClick={handleSave}>저장</button>
                 <button className="Listclosebutton" onClick={closeModal}>닫기</button>

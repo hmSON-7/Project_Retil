@@ -9,33 +9,43 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  font-size: 14px;
+  position: relative;
 }
 
 .step {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
   border: 2px solid #ccc;
   border-radius: 50%;
   cursor: pointer;
   background-color: #fff;
-  z-index: 1;
+  z-index: 1; /* step이 progress-line 위에 나타나도록 z-index 설정 */
 }
 
 .step.current {
-  background-color: #8fa9f1;
+  background-color: #8fa9f1; /* 현재 스텝 배경색 */
+  color: #fff;
+}
+
+.step.missed {
+  background-color: red; /* 놓친 스텝 배경색 */
   color: #fff;
 }
 
 .progress-line {
   position: absolute;
-  top: 25px;
+  top: 25px; /* step의 아래에 위치하도록 조정 */
   left: 0;
   height: 4px;
   background-color: #8fa9f1;
   transition: width 0.3s ease;
-  z-index: 0;
+  z-index: 0; /* progress-line이 step 아래에 나타나도록 z-index 설정 */
 }
 
 .navigation-buttons {
@@ -58,38 +68,32 @@
   cursor: not-allowed;
 }
 
-/* 각 단계에 대한 스타일 설정
+/* 각 단계에 대한 스타일 설정 */
 .step.step-0 {
-  /* 1일 첫 번째 단계의 스타일 설정 */
-
+  left: 0;
+}
 
 .step.step-1 {
-  /* 3일 두 번째 단계의 스타일 설정 */
   position: relative;
-  left: -85px;
+  left: -58px;
 }
 
 .step.step-2 {
-  /* 7일 세 번째 단계의 스타일 설정 */
   position: relative;
-  right: 90px;
+  right: 100px;
 }
 
-/* 나머지 단계에 대한 스타일 설정 */
 .step.step-3 {
-  /* 30일 네 번째 단계의 스타일 설정 */
   position: relative;
   right: 90px;
 }
 
 .step.step-4 {
-  /* 다섯 번째 단계의 스타일 설정 */
   position: relative;
   right: 55px;
 }
 
 .step.step-5 {
-  /* 여섯 번째 단계의 스타일 설정 */
   position: relative;
-  left: 50px;
+  left: 20px;
 }
