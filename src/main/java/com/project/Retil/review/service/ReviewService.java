@@ -163,6 +163,8 @@ public class ReviewService {
             else if(progress.getThreeDays()) progress.changeAWeek();
             else if(progress.getADay()) progress.changeThreeDays();
             else progress.changeADay();
+
+            tilProgressRepository.save(progress);
         }
 
         reviewContentRepository.saveAll(reviewList); // 변경된 복습 콘텐츠 저장
