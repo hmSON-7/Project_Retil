@@ -1,4 +1,4 @@
-.today_Today {
+.reviewQuestion_Review {
     display: block;
     position: fixed;
     z-index: 3;
@@ -11,7 +11,7 @@
     padding-top: 60px;
 }
 
-.today_test {
+.review_test {
     position: relative;
     bottom: 100px;
     width: 700px;
@@ -26,11 +26,11 @@
     box-shadow: 0 0 5px gray;
 }
 
-.todayQuestion_top {
+.reviewQuestion_top {
     margin-bottom: 20px;
 }
 
-.todayQuestion_test {
+.reviewQuestion_test {
     margin-bottom: 20px;
 }
 
@@ -52,9 +52,12 @@
 }
 
 
+
 .pagination span {
     font-size: 16px;
 }
+
+
 
 .close_button {
     padding: 8px 12px;
@@ -66,4 +69,8 @@
     display: block;
     margin: 0 auto;
 }
+
+
+
+
 
