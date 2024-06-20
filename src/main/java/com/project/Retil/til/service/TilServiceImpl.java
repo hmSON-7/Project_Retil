@@ -4,7 +4,9 @@ import com.project.Retil.til.dto.TilCreateDTO;
 import com.project.Retil.til.dto.TilListDTO;
 import com.project.Retil.til.dto.TilSubjectDTO;
 import com.project.Retil.til.entity.Til;
+import com.project.Retil.til.entity.TilProgress;
 import com.project.Retil.til.entity.TilSubject;
+import com.project.Retil.til.repository.TilProgressRepository;
 import com.project.Retil.til.repository.TilRepository;
 import com.project.Retil.til.repository.TilSubjectRepository;
 import com.project.Retil.userAccount.Entity.User_Information;
@@ -33,6 +35,7 @@ public class TilServiceImpl implements TilService {
 
     private final TilRepository tilRepository;
     private final TilSubjectRepository tilSubjectRepository;
+    private final TilProgressRepository tilProgressRepository;
     private final UserRepository userRepository;
     private final UserRankRepository userRankRepository;
     private final QuestionRepository questionRepository;
@@ -99,13 +102,21 @@ public class TilServiceImpl implements TilService {
     public ArrayList<TilListDTO> makeList(ArrayList<Til> tilList) {
         ArrayList<TilListDTO> requestedList = new ArrayList<>();
         for (Til til : tilList) {
+            TilProgress progress = tilProgressRepository.findByTil(til);
             requestedList.add(new TilListDTO(
                     til.getId(),
                     til.getBookmark(),
                     til.getTilSubject().getSubjectName(),
                     til.getTitle(),
                     til.getTilSubject().getColor(),
-                    til.getSaveTime()
+                    til.getSaveTime(),
+                    progress.getADay(),
+                    progress.getThreeDays(),
+                    progress.getAWeek(),
+                    progress.getFifteenDays(),
+                    progress.getAMonth(),
+                    progress.getTwoMonths(),
+                    progress.getSixMonths()
             ));
         }
         requestedList.sort(Comparator.comparing(TilListDTO::getSaveTime).reversed());
@@ -190,8 +201,11 @@ public class TilServiceImpl implements TilService {
 
         Til savedTil = tilRepository.save(til);
 
-        List<Question> questions = chatGPTService.generateQuestions(savedTil, user);
-        questions.forEach(this::saveUniqueQuestion);
+        TilProgress progress = new TilProgress(til);
+        tilProgressRepository.save(progress);
+
+        List<Question> questions = chatGPTService.generateAndSaveQuestions(savedTil, user);
+        /*questions.forEach(this::saveUniqueQuestion);*/
 
         return savedTil;
     }
@@ -201,13 +215,13 @@ public class TilServiceImpl implements TilService {
      * 상기한 TIL 세이브 메서드에서 사용하는 GPT API를 활용하여 문제를 생성하고 DB에 저장하는 메서드
      * @param question 생성된 문제를 순서대로 받아와서 DB에 저장
      */
-    public void saveUniqueQuestion(Question question) {
+    /*public void saveUniqueQuestion(Question question) {
         Optional<Question> existingQuestion = questionRepository.findByContentAndTil(
             question.getContent(), question.getTil());
         if (existingQuestion.isEmpty()) {
             questionRepository.save(question);
         }
-    }
+    }*/
 
     /**
      * 8. TIL 삭제
@@ -342,5 +356,23 @@ public class TilServiceImpl implements TilService {
         } else {
             return "Diamond";
         }
+    }
+
+    /**
+     * 14. 즐겨찾기 변경 메서드
+     * 사용자가 즐겨찾기를 설정 또는 해제할 경우 해당 TIL을 찾아 bookmark 값을 변경
+     * @param tilTitle 즐겨찾기 상태가 변경된 TIL 제목
+     * @param userId 요청한 사용자 번호
+     * @return TIL의 즐겨찾기 상태 변경 후 저장 및 반환
+     */
+    public Til changeBookMark(String tilTitle, Long userId) {
+        User_Information user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
+
+        Til til = tilRepository.findByUserAndTitle(user, tilTitle)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 글입니다."));
+
+        til.changeBookMark();
+        return tilRepository.save(til);
     }
 }

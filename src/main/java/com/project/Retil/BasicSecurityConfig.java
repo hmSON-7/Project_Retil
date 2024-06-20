@@ -31,8 +31,8 @@ public class BasicSecurityConfig {
     public SecurityFilterChain basicSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeRequests(auth -> auth
-                        .requestMatchers("/users/login", "/users/join").permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/users/login", "/users/join","/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

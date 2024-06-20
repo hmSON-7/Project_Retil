@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @AllArgsConstructor
@@ -23,6 +25,9 @@ public class Question {
     @Column(nullable = false)
     private String answer;
 
+    @Column(nullable = false)
+    private LocalDate date;
+
     @ManyToOne
     @JoinColumn(nullable = false, name = "til_id")
     private Til til;
@@ -34,6 +39,7 @@ public class Question {
     public Question(String content, String answer, Til til, User_Information user) {
         this.content = content;
         this.answer = answer;
+        this.date = LocalDate.now();
         this.til = til;
         this.user = user;
     }

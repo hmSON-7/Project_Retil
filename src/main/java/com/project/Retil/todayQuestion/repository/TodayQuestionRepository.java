@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface TodayQuestionRepository extends JpaRepository<TodayQuestion, Long> {
 
-    List<TodayQuestion> findByUserAndDate(User_Information user, LocalDate date);
+    List<TodayQuestion> findAllByUserAndDate(User_Information user, LocalDate date);
 }
+

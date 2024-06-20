@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -119,9 +120,7 @@ public class TilController {
             Til created = tilService.save(tilCreateDto, user_id);
             if (created != null) {
                 // TIL 저장 후 ChatGPT를 호출하여 질문 생성 및 저장
-                List<Question> questions = chatGPTService.generateQuestions(
-                    created, user); // Til 객체와 User_Information 객체 전달
-                questions.forEach(tilService::saveUniqueQuestion); // 질문 저장 로직 추가
+                /*chatGPTService.generateAndSaveQuestions(created, user);*/
                 return ResponseEntity.status(HttpStatus.OK).build();
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -194,6 +193,24 @@ public class TilController {
         TilSubject target = tilService.deleteSubject(user_id, subjectName);
 
         return (target != null) ?
+                ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    /**
+     * 10. TIL 즐겨찾기 설정
+     * 선택한 TIL에 대한 즐겨찾기 설정을 변경하면 변경 내용 적용
+     * @param userId 요청한 사용자 번호
+     * @param request 요청 대상 TIL의 제목
+     * @return TIL의 제목과 작성자 번호로 해당하는 TIL 객체를 찾아 북마크 상태 변경
+     */
+    @PatchMapping("/bookmark")
+    public ResponseEntity<Void> changeBookMark(@PathVariable("user_id") Long userId,
+                                               @RequestBody Map<String, String> request) {
+        String tilTitle = request.get("tilTitle");
+        Til til = tilService.changeBookMark(tilTitle, userId);
+
+        return (til != null) ?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }

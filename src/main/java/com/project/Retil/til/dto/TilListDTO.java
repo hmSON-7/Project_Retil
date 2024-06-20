@@ -33,8 +33,27 @@ public class TilListDTO {
     @NotEmpty
     private String color;
 
-    // 내용 추가 필요 : 오늘의 문제 진행도
-
     @NotEmpty
     private LocalDateTime saveTime;
+
+    @NotEmpty
+    private boolean aDay;
+
+    @NotEmpty
+    private boolean threeDays;
+
+    @NotEmpty
+    private boolean aWeek;
+
+    @NotEmpty
+    private boolean fifteenDays;
+
+    @NotEmpty
+    private boolean aMonth;
+
+    @NotEmpty
+    private boolean twoMonths;
+
+    @NotEmpty
+    private boolean sixMonths;
 }

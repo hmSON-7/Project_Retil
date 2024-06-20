@@ -58,4 +58,8 @@ public class Til {
         this.saveTime = LocalDateTime.now();
         this.bookmark = check;
     }
+
+    public void changeBookMark() {
+        this.bookmark = !this.bookmark;
+    }
 }

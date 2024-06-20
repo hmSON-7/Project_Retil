@@ -1,6 +1,6 @@
 .question_div {
     width: 800px;
-    height: 500px;
+    height: 700px;
     margin: 0 auto;
     background: white;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -10,38 +10,25 @@
     margin-top: 200px;
     box-shadow: 0 0 5px gray;
 }
+.questionTitle_div{
+    margin-top:100px;
+}
 
 .question_top {
     width: 100%;
     border-bottom: 1px solid gray;
     display: flex; /* 추가된 부분: 버튼들을 한 줄로 정렬 */
     flex-wrap: wrap;
+    padding-bottom:10px ;
     align-items: center; /* 추가된 부분: 버튼들이 수직 중앙에 정렬되도록 함 */
 }
 
-.question_top > button {
-    width: 100px;
-    height: 50px;
-    overflow: hidden;
-    margin-left: 40px;
-    margin-bottom: 10px;
-    border: 2px solid gray;
-    border-radius: 40px;
-    white-space: nowrap; /* 추가된 부분: 줄바꿈 방지 */
-    text-overflow: ellipsis; /* 추가된 부분: 넘치는 텍스트를 줄임표로 표시 */
-    display: inline-flex; /* 추가된 부분: 버튼 내 텍스트가 중앙에 오도록 함 */
-    align-items: center; /* 추가된 부분: 버튼 내 텍스트가 수직 중앙에 오도록 함 */
-    justify-content: center; /* 추가된 부분: 버튼 내 텍스트가 수평 중앙에 오도록 함 */
-    box-sizing: border-box; /* 추가된 부분: padding과 border를 포함한 크기 계산 */
-    box-shadow: 0 4px 6px gray;
-}
 
 .question_top > input{
     padding: 10px 20px;
     width: 120px;
     height: 10px;
     border-radius:40px ;
-    margin-left: auto;
 }
 .span_span{
     width: 100%;
@@ -53,13 +40,22 @@
     padding: 10px;
 
 }
-.span_span .span_day{
 
-    padding-left: 530px;
+.span_span .span_create{
+    padding-left: 145px;
 }
-
+.span_span .span_title{
+    padding-left: 45px;
+}
 .question_list{
     display : flex;
     flex-direction : column;
     gap : 20px
+}
+.questionTitle_div{
+    text-align: center;
+    width: 500px;
+    margin-left: 580px;
+    font-weight: bold;
+    font-size: 32px;
 }

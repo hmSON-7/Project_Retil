@@ -39,4 +39,7 @@ public interface TilService {
 
     // 9. 과목 제거
     TilSubject deleteSubject(Long user_id, String subjectName);
+
+    // 10. 즐겨찾기 변경
+    Til changeBookMark(String tilTitle, Long userId);
 }

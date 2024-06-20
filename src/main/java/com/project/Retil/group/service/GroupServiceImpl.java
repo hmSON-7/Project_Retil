@@ -137,6 +137,7 @@ public class GroupServiceImpl implements GroupService{
         }
 
         group.changeMemberCurrent(cur + 1);
+
         groupRepository.save(group);
         addMember(user, group);
 
@@ -190,6 +191,12 @@ public class GroupServiceImpl implements GroupService{
         if(member == null) {
             throw new IllegalArgumentException("그룹 멤버가 아닙니다.");
         }
+
+        int cur = group.getMemberCurrent();
+        if(cur <= 1) {
+            throw new IllegalArgumentException("잘못된 요청입니다! 그룹장이신 경우 그룹 제거를 진행해주세요!");
+        }
+        group.changeMemberCurrent(cur - 1);
 
         groupMemberRepository.deleteGroupMemberByGroupAndMember(group, user);
         group.removeMember(member);

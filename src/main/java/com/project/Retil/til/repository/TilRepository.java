@@ -15,4 +15,6 @@ public interface TilRepository extends JpaRepository<Til, Long> {
     ArrayList<Til> findAllByTilSubject(TilSubject tilSubject);
 
     Optional<Til> findByIdAndUserId(Long tilId, Long userId);
+
+    Optional<Til> findByUserAndTitle(User_Information user, String title);
 }
