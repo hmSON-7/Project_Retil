@@ -51,7 +51,6 @@
     border-radius: 5px;
 }
 
-
 .pagination span {
     font-size: 16px;
 }
@@ -67,3 +66,20 @@
     margin: 0 auto;
 }
 
+.flag_button {
+    padding: 10px 20px; /* Increased padding for better visual balance */
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Adjusted positioning */
+    position: absolute;
+    right: 20px; /* Slightly adjusted position from the right */
+    bottom: 20px; /* Positioned 20px from the bottom */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.flag_button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

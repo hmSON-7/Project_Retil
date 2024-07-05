@@ -1,13 +1,13 @@
 .question_div {
     width: 800px;
-    height: 700px;
+    height: 100%;
     margin: 0 auto;
-    background: white;
+    background: rgb(250, 253, 255);
     border: 2px solid rgba(255, 255, 255, .2);
-    color: gray;
+    color: rgb(0, 0, 0);
     border-radius: 10px;
     padding: 20px 30px;
-    margin-top: 200px;
+    margin-top: 6cqmin;
     box-shadow: 0 0 5px gray;
 }
 .questionTitle_div{
@@ -26,15 +26,15 @@
 
 .question_top > input{
     padding: 10px 20px;
-    width: 120px;
+    width: 140px;
     height: 10px;
     border-radius:40px ;
 }
 .span_span{
     width: 100%;
     display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid gray;
+    border-radius: 8px;
+    background-color: rgb(198, 242, 255);
 }
 .span_span > span{
     padding: 10px;

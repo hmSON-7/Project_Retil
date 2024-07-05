@@ -1,0 +1,58 @@
+.list-content {
+    display: flex;
+    justify-content: space-between; /* 텍스트와 이미지를 양쪽에 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+.list-left {
+    flex: 1;
+    padding-right: 20px; /* 오른쪽 여백 추가 */
+}
+
+.list-right {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* 이미지를 중앙에 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
+    transition: opacity 2s ease-in-out; /* 애니메이션 효과 시간 2초로 설정 */
+    opacity: 0; /* 초기 상태에서 투명하게 설정 */
+}
+
+.list-right.frame-in {
+    opacity: 1; /* 뷰포트에 나타날 때 불투명하게 설정 */
+}
+
+.list-text {
+    font-size: 28px;
+    margin-bottom: 40px;
+    position: relative;
+    right: 14%; /* 텍스트를 10% 오른쪽으로 이동 */
+}
+
+.bold-text {
+    font-weight: bold;
+    font-size: 44px; /* 볼드 텍스트의 글꼴 크기 */
+    display: block; /* 줄 바꿈을 위해 block으로 설정 */
+    width: 150px;
+    position: relative;
+    left: 280px;
+}
+.bold-texttwo {
+    font-size: 30px;
+}
+
+.additional-text1,
+.additional-text2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    left: -40px;
+    
+}
+
+.list-image {
+    max-width: 100%;
+    height: auto; /* 비율을 유지하며 크기 조정 */
+    margin-right: 100px; /* 오른쪽 여백 추가 */
+    border-radius: 40px; /* 이미지 모서리를 둥글게 설정 */
+}

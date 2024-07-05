@@ -2,12 +2,12 @@
 .progressbar{
     position: relative;
     overflow: hidden;
-    width: 40%;
-    height: 35px;
+    width: 50%;
+    height: 50px;
     border-radius: 5px;
     background-color: #eee;
-    left: 380px;
-    top: -410px;
+    left: 390px;
+    top: -290px;
 
 }
 .progressPercent{

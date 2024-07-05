@@ -1,53 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Listprogress.css';
 
-const Listprogress = ({ submissionDate }) => {
+const Listprogress = ({ til }) => {
   const steps = ["1", "3", "7", "30", "60", "6M"];
-  const stepWidths = [0, 10, 20, 40, 69, 100];
+  const stepWidths = [0, 10, 20, 40, 69, 100]; // 수정된 너비 값
 
-  // 각 단계별 진행 상황을 날짜에 따라 계산하는 함수
-  const calculateProgress = (submissionDate) => {
-    const currentDate = new Date(); // 현재 날짜
-    const daysDiff = Math.ceil((currentDate - new Date(submissionDate)) / (1000 * 60 * 60 * 24)); // 제출일로부터 몇 일이 지났는지 계산
-
-    if (daysDiff >= 0) {
-      // daysDiff에 따라 단계별 진행 상황 계산
-      if (daysDiff >= 180) return 5;   // 6개월 이상
-      if (daysDiff >= 60) return 4;    // 2개월 이상
-      if (daysDiff >= 30) return 3;    // 한 달 이상
-      if (daysDiff >= 15) return 2;    // 15일 이상
-      if (daysDiff >= 7) return 1;     // 일주일 이상
-      if (daysDiff >= 1) return 0;     // 1일 이상
-      return 0;  // 1일 미만은 첫 번째 단계
-    } else {
-      return 0; // 제출일이 현재 날짜보다 미래일 경우 첫 번째 단계
-    }
+  const getCurrentStep = (til) => {
+    if (til < 1) return -1; // 1일 미만
+    if (til <= 1) return 0; // 1일 이하
+    if (til <= 3) return 1; // 3일 이하
+    if (til <= 7) return 2; // 7일 이하
+    if (til <= 30) return 3; // 30일 이하
+    if (til <= 60) return 4; // 60일 이하
+    return 5; // 6개월 이상
   };
 
-  // 진행 막대의 너비를 계산하는 함수
+  const [currentStep, setCurrentStep] = useState(getCurrentStep(til));
+  const [missedSteps, setMissedSteps] = useState([false,false,false,false,false,false]);
+
+  useEffect(() => {
+    setCurrentStep(getCurrentStep(til));
+
+    const checkMissedSteps = () => {
+      const newMissedSteps = [
+        !til.aday,
+        !til.threeDays,
+        !til.aweek,
+        !til.fifteenDays,
+        !til.amonth,
+        !til.twoMonths && !til.sixMonths // 두 달 또는 6개월을 만족하지 않는 경우
+      ];
+      setMissedSteps(newMissedSteps);
+    };
+
+    checkMissedSteps();
+  }, [til]);
+
   const getProgressWidth = (stepIndex) => {
+    if (stepIndex === -1) return '0%';
     return `${stepWidths[stepIndex]}%`;
   };
 
-  // 제출일을 기준으로 현재 단계 계산
-  const calculatedStep = calculateProgress(submissionDate);
-
   return (
       <div className="step-progress-bar">
-        {/* 단계 표시 */}
         <div className="step-labels">
           {steps.map((step, index) => (
               <div
                   key={index}
-                  className={`step step-${index} ${index <= calculatedStep ? 'current' : ''}`}
+                  className={`step step-${index} ${index <= currentStep && currentStep !== -1 ? 'current' : ''} ${missedSteps[index] ? 'missed' : ''} ${til[step.toLowerCase()] ? 'completed' : ''}`}
               >
                 {step}
               </div>
           ))}
         </div>
-
-        {/* 진행 막대 */}
-        <div className={`progress-line`} style={{ width: getProgressWidth(calculatedStep) }}></div>
+        <div className="progress-line" style={{ width: getProgressWidth(currentStep) }}></div>
       </div>
   );
 };

@@ -107,11 +107,13 @@ const Group = () => {
 
     return (
         <>
-            <MainP />
+            <MainP/>
+            <div className="group_divname"><span>그룹방을 만들어 같이 스터디하세요!</span></div>
+            <div className="group_divsecondname"><span>여러 사람들과 함께 공부하세요, 저희는 서로 소통도 가능합니다</span></div>
             <div className="group_div">
                 <div className="group_top">
-                    <button onClick={handleFilterAll}>전체</button>
-                    <button onClick={handleFilterMine}>내가 포함된 그룹</button>
+                    <button className="grouptotalbutton" onClick={handleFilterAll}>전체</button>
+                    <button  className="myinbutton" onClick={handleFilterMine}>내가 포함된 그룹</button>
                     <button className="group_add" onClick={onClickAdd}>+</button>
                     <input
                         value={search}
@@ -134,7 +136,7 @@ const Group = () => {
                 </div>
                 <div className="group_list">
                     {finalFilteredGroups.map((g) => (
-                        <Room key={g.id} group={g} myGroupIds={myGroupIds} />
+                        <Room key={g.id} group={g} myGroupIds={myGroupIds}/>
                     ))}
                 </div>
             </div>

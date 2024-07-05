@@ -46,6 +46,7 @@
   cursor: pointer;
   margin-right: 220px;
   margin-top: 80px;
+  border-radius: 8px;
 }
 .Lcancel-button {
   width: 220px;
@@ -54,7 +55,8 @@
   cursor: pointer;
   font-size: 16px;
   margin-left: 230px;
-  margin-top: -39.5px;
+  margin-top: -41px;
+  border-radius: 8px;
 }
 
 .Lconfirm-button {

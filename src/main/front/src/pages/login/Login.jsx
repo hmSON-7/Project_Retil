@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import emailIcon from '/images/ico/mail.png';
-import passwordIcon from '/images/ico/password.png';
+import password from '../../assets/password.png';
+import email from "../../assets/mail.png"
 import "./Login.css";
+import logo from "../../assets/selogo.png"
 import axiosInstance from "../../api/axiosInstance.js";
 
 function Login() {
@@ -27,20 +29,18 @@ function Login() {
         axiosInstance
             .post(`/users/login`, { email: id, password: pw })
             .then((response) => {
-                const { token, id } = response.data; // 서버에서 받은 토큰
-                // 토큰을 로컬 스토리지에 저장
-                localStorage.setItem("token", token);
-                localStorage.setItem("user_id", id);
-                navigate("/main");
-            })
-            .catch((error) => {
-                const errorMsg = error.response ? error.response.data : "로그인 실패";
-                setMessage(errorMsg);
-                alert("로그인 실패: " + errorMsg); // alert로 오류 메시지 표시
-                setId(""); // 로그인 실패 시 이메일 입력란을 비웁니다.
-                setPw(""); // 로그인 실패 시 비밀번호 입력란을 비웁니다.
-                console.error(error);
-            });
+                if (response.status === 200) {
+                    const { token, id } = response.data;
+                    localStorage.setItem("token", token);
+                    localStorage.setItem("user_id", id);
+                    navigate("/main");
+                }
+            }).catch((error) => {
+            alert( "로그인 실패 : 이메일과 패스워드를 다시 확인해주세요");
+            setId("");
+            setPw("");
+            console.error(error);
+        });
     };
 
     const handleFormSubmit = (event) => {
@@ -54,13 +54,13 @@ function Login() {
         <div className="login">
             <Link to={"/"}>
                 <h1>
-                    <img src="./images/ico/retil.png" alt="Retil Logo" />
+                    <img src={logo} alt="Retil Logo" />
                 </h1>
             </Link>
 
             <form onSubmit={handleFormSubmit}>
                 <div className="input-box">
-                    <img className="email_icon" src={emailIcon} alt="사용자 아이콘" />
+                    <img className="email_icon" src={email} alt="사용자 아이콘" />
                     <input
                         type="text"
                         name="id"
@@ -73,7 +73,7 @@ function Login() {
                 </div>
 
                 <div className="input-box">
-                    <img className="email_icon" src={passwordIcon} alt="사용자 아이콘" />
+                    <img className="email_icon" src={password} alt="사용자 아이콘" />
                     <input
                         type="password"
                         name="password"

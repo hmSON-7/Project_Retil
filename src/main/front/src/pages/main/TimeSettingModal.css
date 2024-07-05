@@ -1,5 +1,5 @@
-/* TimeSettingModal.css */
-.time-setting-modal-overlay {
+/* .time-setting-modal-overlay 제거 및 scrim 스타일 추가 */
+.scrim {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
@@ -8,7 +8,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 500px;
   padding: 20px;
   background-color: white;
   border-radius: 8px;
@@ -27,10 +27,16 @@
   margin-bottom: 10px;
 }
 
+.time-setting-input-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
 .time-setting-input {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 0 10px;
 }
 
 .time-setting-input label {
@@ -52,7 +58,7 @@
   width: 30px;
   height: 30px;
   border: none;
-  background-color: #007bff;
+  background-color: rgb(86, 146, 210);
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -60,33 +66,39 @@
 }
 
 .time-setting-input button:hover {
-  background-color: #0056b3;
+  background-color: rgb(57, 97, 140);
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .save-button, .cancel-button {
   width: 100px;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 30px;
 }
 
 .save-button {
-  background-color: #28a745;
+  background-color: rgb(0, 195, 255);
   color: white;
 }
 
 .save-button:hover {
-  background-color: #218838;
+  background-color: rgb(0, 175, 230);
 }
 
 .cancel-button {
-  background-color: #dc3545;
+  background-color: #c5c5c5;
   color: white;
 }
 
 .cancel-button:hover {
-  background-color: #c82333;
+  background-color: #a5a5a5;
 }
-  

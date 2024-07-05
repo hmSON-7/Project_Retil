@@ -6,6 +6,7 @@ import emailIcon from '/images/ico/mail.png';
 import passwordIcon from '/images/ico/password.png';
 import './L-signup.css';
 import axiosInstance from "../../api/axiosInstance.js";
+import logo from "../../assets/selogo.png"
 
 function Signup() {
   const [nickname, setNickname] = useState('');
@@ -133,7 +134,7 @@ function Signup() {
       <div className="signup-container">
         <div className="signup-header">
           <Link to={"/"}>
-            <img className="logo-image" src="/images/ico/retil.png" alt="로고" />
+            <img className="logo-image" src={logo} alt="로고" />
           </Link>
         </div>
         <div className="signup-form">

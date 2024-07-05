@@ -6,7 +6,7 @@
 .listmoongu{
     width: 500px;
 
-    margin-left: 580px;
+    margin-left: 640px;
     font-weight: bold;
     font-size: 32px;
 }
@@ -17,7 +17,7 @@
 /*두번째 문구*/
 .listsecondmoongu{
     width: 900px;
-    margin-left: 510px;
+    margin-left: 560px;
     margin-top: 20px;
     font-size: 20px;
 }
@@ -260,13 +260,29 @@
 }
 
 /*즐겨찾기*/
-.listcheckbox{
-    position: relative;
-    top: 50px;
-    right: 400px;
+
+.list_checkbox > input[type="checkbox"]{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
+.list_checkbox > label{
+    position: relative;
+    top: 70px;
+    right: 135px;
+    padding-top:18px ;
+    padding-left: 24px;
+}
 
-
-
-
+.list_checkbox > input[type="checkbox"] + label::before{
+    content: "☆"; /* 빈 별 모양 아이콘 */
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 30px; /* 아이콘 크기 조절 */
+}
+.list_checkbox > input[type="checkbox"]:checked + label::before{
+    content: "★"; /* 꽉찬 별 모양 아이콘 */
+    color: #ffcc00; /* 체크된 별 색상 */
+}

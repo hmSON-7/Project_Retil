@@ -116,6 +116,15 @@ const Today = () => {
   return (
       <div className="today">
         <div className="today_top">
+          <div className="today_text">오늘의 문제를 생성하면 복습 문제를 풀 수 있어요!</div>
+          <div className="button-group">
+
+          <button className="button button--winona button--border-thin button--round-s" data-text="오늘 복습 문제" onClick={onClickTodayQuestion}>
+            <span>오늘 복습 문제</span>
+          </button>
+          <button className="button button--winona button--border-thin button--round-s" data-text="복습 주기 문제 확인하기" onClick={onClickReviewQuestion}>
+            <span>복습 주기 문제 확인하기</span>
+          </button>
           <button
               className="create_button"
               onClick={onClickCreate}
@@ -123,30 +132,24 @@ const Today = () => {
           >
             {isCreating ? "Creating..." : "문제 생성"}
           </button>
+          </div>
         </div>
-        <div className="today_mid">
-          <button className="today_question" onClick={onClickTodayQuestion}>
-            오늘 복습 문제
-          </button>
-          <button className="review_question" onClick={onClickReviewQuestion}>
-            복습 주기 문제 확인하기
-          </button>
-        </div>
-        <TodayQuestion
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            questions={todayQuestions}
-            setQuestions={setTodayQuestions} // Pass setQuestions to update the state
-            onSubmitToday={onSubmitToday} // Pass onSubmitToday function
+          <TodayQuestion
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              questions={todayQuestions}
+              setQuestions={setTodayQuestions} // Pass setQuestions to update the state
+              onSubmitToday={onSubmitToday} // Pass onSubmitToday function
 
-        />
-        <ReviewQuestion
-            isOpen={isQuestion}
-            onClose={() => setIsQuestion(false)}
-            questions={reviewQuestions}
-            setQuestions={setReviewQuestions} // Pass setQuestions to update the state
-            onSubmitReview={onSubmitReview} // Pass onSubmitReview function
-        />
+          />
+          <ReviewQuestion
+              isOpen={isQuestion}
+              onClose={() => setIsQuestion(false)}
+              questions={reviewQuestions}
+              setQuestions={setReviewQuestions} // Pass setQuestions to update the state
+              onSubmitReview={onSubmitReview} // Pass onSubmitReview function
+          />
+
       </div>
   );
 };

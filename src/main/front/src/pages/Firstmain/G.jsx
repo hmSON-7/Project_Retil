@@ -5,25 +5,25 @@ import "./G.css";
 
 const G = () => {
   useEffect(() => {
-    const steps = document.querySelectorAll(".step");
-    const progressBar = document.querySelector(".indicator");
-    let currentStep = 1;
+    const first_steps = document.querySelectorAll(".first_step");
+    const first_progressBar = document.querySelector(".first_indicator");
+    let first_currentStep = 1;
 
-    const updateSteps = () => {
-      currentStep = currentStep < steps.length ? currentStep + 1 : 1;
+    const updateFirstSteps = () => {
+      first_currentStep = first_currentStep < first_steps.length ? first_currentStep + 1 : 1;
 
-      steps.forEach((step, index) => {
-        step.classList.toggle("active", index < currentStep);
+      first_steps.forEach((first_step, index) => {
+        first_step.classList.toggle("first_active", index < first_currentStep);
       });
 
-      progressBar.style.width = `${
-          ((currentStep - 1) / (steps.length - 1)) * 100
+      first_progressBar.style.width = `${
+        ((first_currentStep - 1) / (first_steps.length - 1)) * 100
       }%`;
     };
 
-    const intervalId = setInterval(updateSteps, 570);
+    const first_intervalId = setInterval(updateFirstSteps, 570);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(first_intervalId);
   }, []);
 
   const defaultOptions = {
@@ -36,51 +36,51 @@ const G = () => {
   };
 
   return (
-      <>
-        <div className="lottie-container">
-          <Lottie
-              isClickToPauseDisabled={true}
-              options={defaultOptions}
-              height={"100%"}
-              width={"100%"}
-          />
-        </div>
-        <div className="gcontainer">
-          <div className="steps">
-            <div className="step">
-              <span className="circle active">1</span>
-              <span className="progress-label">1일</span>
-            </div>
-            <div className="step">
-              <span className="circle">3</span>
-              <span className="progress-label">3일</span>
-            </div>
-            <div className="step">
-              <span className="circle">7</span>
-              <span className="progress-label">7일</span>
-            </div>
-            <div className="step">
-              <span className="circle">15</span>
-              <span className="progress-label">15일</span>
-            </div>
-            <div className="step">
-              <span className="circle">30</span>
-              <span className="progress-label">30일</span>
-            </div>
-            <div className="step">
-              <span className="circle">60</span>
-              <span className="progress-label">60일</span>
-            </div>
-            <div className="step">
-              <span className="circle">180</span>
-              <span className="progress-label">180일</span>
-            </div>
-            <div className="progress-bar">
-              <span className="indicator"></span>
-            </div>
+    <>
+      <div className="lottie-container">
+        <Lottie
+          isClickToPauseDisabled={true}
+          options={defaultOptions}
+          height={"100%"}
+          width={"100%"}
+        />
+      </div>
+      <div className="gcontainer">
+        <div className="first_steps">
+          <div className="first_step">
+            <span className="first_circle first_active">1</span>
+            <span className="first_progress-label">1일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">3</span>
+            <span className="first_progress-label">3일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">7</span>
+            <span className="first_progress-label">7일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">15</span>
+            <span className="first_progress-label">15일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">30</span>
+            <span className="first_progress-label">30일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">60</span>
+            <span className="first_progress-label">60일</span>
+          </div>
+          <div className="first_step">
+            <span className="first_circle">180</span>
+            <span className="first_progress-label">180일</span>
+          </div>
+          <div className="first_progress-bar">
+            <span className="first_indicator"></span>
           </div>
         </div>
-      </>
+      </div>
+    </>
   );
 };
 

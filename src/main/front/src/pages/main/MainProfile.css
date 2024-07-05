@@ -60,7 +60,7 @@
     width: 50px;
     position: relative;
     height: 20px;
-    z-index: 3;
+    z-index: 1;
     text-align: end;
     background-color: rgb(77, 173, 228);
     color: white;
@@ -144,6 +144,4 @@
 
 .next_button {
     background-image: url('../../assets/nextbuttongroup.png');
-}
-.main_today{
 }

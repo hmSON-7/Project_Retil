@@ -10,22 +10,22 @@
   margin: 0 auto;
 }
 
-.gcontainer .steps {
+.gcontainer .first_steps {
   display: flex;
   width: 130%;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  margin-top: -50px;
+  margin-top: -125px;
 }
 
-.steps .step {
+.first_steps .first_step {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.steps .circle {
+.first_steps .first_circle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,23 +41,23 @@
   font-family: "Poppins", sans-serif;
 }
 
-.steps .progress-label {
+.first_steps .first_progress-label {
   margin-top: 10px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #999;
 }
 
-.steps .step.active .circle {
+.first_steps .first_active .first_circle {
   border-color: #4070f4;
   color: #4070f4;
 }
 
-.steps .step.active .progress-label {
+.first_steps .first_active .first_progress-label {
   color: #4070f4;
 }
 
-.steps .progress-bar {
+.first_steps .first_progress-bar {
   position: absolute;
   height: 4px;
   width: 100%;
@@ -66,7 +66,7 @@
   margin-bottom: 30px;
 }
 
-.progress-bar .indicator {
+.first_progress-bar .first_indicator {
   position: absolute;
   left: 0%;
   height: 100%;
@@ -82,18 +82,17 @@
   margin-top: -140px;
 }
 
-
 @media (max-width: 768px) {
-  .steps {
+  .first_steps {
     flex-direction: column;
     align-items: center;
   }
 
-  .steps .step {
+  .first_steps .first_step {
     margin-bottom: 20px;
   }
 
-  .steps .progress-bar {
+  .first_steps .first_progress-bar {
     width: 100%;
   }
 

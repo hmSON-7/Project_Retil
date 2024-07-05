@@ -15,8 +15,7 @@ const LogoutModal = ({ isOpen, onRequestClose, onConfirm }) => {
         ariaHideApp={false}
       >
         <div className="logout-modal-content">
-          <h2>로그아웃</h2>
-          <span>정말 로그아웃 하시겠습니까?</span>
+          <h2>로그아웃 하시겠습니까?</h2>
           <button onClick={onConfirm} className="Lconfirm-button">
             확인
           </button>

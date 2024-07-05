@@ -24,17 +24,23 @@
   border: 2px solid #ccc;
   border-radius: 50%;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #8fa9f1; /* 기본 step 배경색 */
+  color: #fff;
   z-index: 1; /* step이 progress-line 위에 나타나도록 z-index 설정 */
 }
 
-.step.current {
+.step.current.missed {
   background-color: #8fa9f1; /* 현재 스텝 배경색 */
   color: #fff;
 }
 
 .step.missed {
   background-color: red; /* 놓친 스텝 배경색 */
+  color: #fff;
+}
+
+.step.completed {
+  background-color: #8fa9f1; /* 완료된 스텝 배경색 */
   color: #fff;
 }
 
@@ -48,29 +54,10 @@
   z-index: 0; /* progress-line이 step 아래에 나타나도록 z-index 설정 */
 }
 
-.navigation-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.navigation-buttons button {
-  padding: 10px 20px;
-  background-color: #8fa9f1;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.navigation-buttons button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
 /* 각 단계에 대한 스타일 설정 */
 .step.step-0 {
-  left: 0;
+  position: relative;
+  left: -5px;
 }
 
 .step.step-1 {

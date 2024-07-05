@@ -6,6 +6,7 @@ import {
     Legend, ResponsiveContainer
 } from 'recharts';
 import axiosInstance from "../../api/axiosInstance.js";
+
 const token = localStorage.getItem("token");
 const user_id = localStorage.getItem("user_id");
 
@@ -49,7 +50,7 @@ function MainGraph() {
     }, []);
 
     return (
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={470}>
             <BarChart
                 width={500}
                 height={300}
@@ -57,9 +58,10 @@ function MainGraph() {
                 margin={{
                     top: 20, right: 30, left: -10, bottom: 5,
                 }}
+                barCategoryGap="20%" // 막대 사이의 간격 조정
             >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="name" interval={0} /> {/* 모든 축 레이블을 표시 */}
                 <YAxis domain={[0, 100]} />
                 <Tooltip />
                 <Legend />

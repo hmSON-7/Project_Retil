@@ -56,6 +56,7 @@ const Question = () => {
             <Mainp />
             <div className="questionTitle_div">
                 <span>Today Question</span>
+                <h6>오늘의 문제를 확인해보세요!</h6>
             </div>
             <div className="question_div">
                 <div className="question_top">

@@ -1,10 +1,13 @@
-//초기 로그인 전 화면
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import G from "../Firstmain/G"; // G 컴포넌트 import
 import "./Firstmain.css";
-import AnimationContainer from "./AnimationContainer.jsx";
 import Todayquestion from "./Todayquestion";
+import FirstTier from './FirstTier'; // FirstTier 컴포넌트 import
+import ListIntroduce from './ListIntroduce'; // ListIntroduce 컴포넌트 import
+import "./FirstTier.css"; // FirstTier 컴포넌트의 CSS 파일 import
+import "./ListIntroduce.css"; // ListIntroduce 컴포넌트의 CSS 파일 import
+import galogo from "../../assets/galogo.png";
 
 function Firstmain() {
   const marker = useRef(null);
@@ -92,76 +95,63 @@ function Firstmain() {
   }, []);
 
   return (
-    <div>
-{/*전체 메뉴바 박스 */}
-      <nav id="nav" className="fnav">
-        <div className="Flogo">
-          <img className="Flogo-image" src="/images/ico/galogo.png" alt="로고" />
-        </div>
-{/* 색션 */}
-        <ul className="fnav__menu">
-          <li>
-            <a href="#retil" className="fnav__menu--focused">
-              Introduce
-            </a>
-          </li>
-          <li>
-            <a href="#list">List</a>
-          </li>
-          <li>
-            <a href="#todaymoon">TodayQuestion</a>
-          </li>
-          <li>
-            <a href="#four">Tier</a>
-          </li>
-        </ul>
-        
-{/**로그인 로고 */}
-        <Link to="/login">
-        <button className="floginbutton">
-            <img src="src/assets/loginIcon.png" alt="로그인" />
-        </button>
-
-        </Link>
-        <div ref={marker} className="fmarker"></div>
-      </nav>
-{/** 여기부터 색션 시작 */}
-{/**introduce */}
-      <section id="retil">
-        <span className="flist-retiltitle">RE:TIL</span>
-        <span className="flist-retilintroduce">당신의 미래, 저희 retil이 도와드리겠습니다</span>
-        <div className="main_gragh">
-          <G />
-        </div>
-      </section>
-
-{/**list */}
-      <section id="list">
-        <div className="list-content">
-          <div className="list-left">
-            <div className="list-text">List</div>
-            <div ref={targetRef1} className="additional-text1">
-              당신의 학습을 체계적으로 관리하세요! 카테고리를 색상을 지정하여 학습한 내용을 시각적으로 구분하세요.
-            </div>
-            <div ref={targetRef2} className="additional-text2">
-              에빙하우스의 망각곡선을 이용하여, 학습한 내용을 잊지 않고 기억하세요! 복습 일정을 설정하고 단기기억을 장기기억으로 변환하세요.
+      <div>
+        {/* 전체 메뉴바 박스 */}
+        <nav id="nav" className="fnav">
+          <div className="Flogo">
+            <img className="Flogo-image" src={galogo} alt="로고" />
+          </div>
+          {/* 색션 */}
+          <ul className="fnav__menu">
+            <li>
+              <a href="#retil" className="fnav__menu--focused">
+                Introduce
+              </a>
+            </li>
+            <li>
+              <a href="#list">List</a>
+            </li>
+            <li>
+              <a href="#todaymoon">TodayQuestion</a>
+            </li>
+            <li>
+              <a href="#four">Tier</a>
+            </li>
+          </ul>
+          {/* 로그인 로고 */}
+          <Link to="/login">
+            <button className="floginbutton">
+              <img src="src/assets/loginIcon.png" alt="로그인" />
+            </button>
+          </Link>
+          <div ref={marker} className="fmarker"></div>
+        </nav>
+        {/* 여기부터 색션 시작 */}
+        {/* introduce */}
+        <section id="retil">
+          <span className="flist-retiltitle">RE:TIL</span>
+          <span className="flist-retilintroduce">당신의 미래, 저희 retil이 도와드리겠습니다</span>
+          <div className="main_gragh">
+            <G />
+          </div>
+        </section>
+        {/* list */}
+        <section id="list">
+          <div className="list-content">
+            <div className="list-left">
             </div>
           </div>
-          <div className="list-right">
-            <AnimationContainer />
+          <ListIntroduce /> {/* ListIntroduce 컴포넌트 추가 */}
+        </section>
+        {/* todayQuestion */}
+        <Todayquestion />
+        {/* tier */}
+        <section id="four">
+          <div className="tier-content">
+            <FirstTier />
           </div>
-        </div>
-      </section>
-
-{/**todayQuestion */}
-      
-      
-       <Todayquestion />
-      
-
-{/**tier */}
-      <section id="four">순위</section>
-    </div>
+        </section>
+      </div>
   );
 }
 

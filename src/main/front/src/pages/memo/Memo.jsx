@@ -2,7 +2,7 @@ import "./Memo.css";
 import { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import M_Category from "./M_Category";
 import M_CategorySelect from "./M_CategorySelect";
 import M_TitleInput from "./M_TitleInput";
@@ -19,7 +19,7 @@ function Memo() {
   const [studyTime, setStudyTime] = useState(0); // 밀리초 단위로 변경
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState(""); // 단일 문자열로 변경
-
+  const nav = useNavigate();
   let timer;
 
   const formatTime = (seconds) => {
@@ -90,6 +90,7 @@ function Memo() {
       );
 
       if (response.status === 200) {
+        nav("/headlist");
         setStatusMessage("Successfully saved");
         setStudyTime(0); // 저장 후 타이머 초기화
       } else {
@@ -157,7 +158,7 @@ function Memo() {
             />
             <div className="limit">
               <span>{inputCount}</span>
-              <span>/2048 자</span>
+              <span>/5000 자</span>
             </div>
           </div>
           {statusMessage && <div className="statusMessage">{statusMessage}</div>}

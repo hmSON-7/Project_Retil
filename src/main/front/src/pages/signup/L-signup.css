@@ -14,8 +14,9 @@
 
 /* 로고 이미지 설정 */
 .logo-image {
-  width: 60px;
-  height: 50px;
+  width: 80px;
+  height: 70px;
+  margin-top: 30px;
 }
 /* 에러 및 일치 메시지 */
 .password-match, .password-mismatch, .input-error, .input-Emailerror {

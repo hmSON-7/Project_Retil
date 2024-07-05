@@ -9,7 +9,7 @@ function Progressbar({ progressPercentage }) {
                     style={{
                         height: "100%",
                         width: `${progressPercentage}%`,
-                        background: "#a66cff",
+                        background: "gray",
                         transition: "width 0.1s",
                     }}
                 ></div>
