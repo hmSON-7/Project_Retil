@@ -1,0 +1,288 @@
+.List-talltotal{
+    position: relative;
+    background-color: #f2f2f2;
+}
+/*첫번째 문구*/
+.listmoongu{
+    width: 500px;
+
+    margin-left: 640px;
+    font-weight: bold;
+    font-size: 32px;
+}
+.listmoongu > span{
+  position:relative;
+  top: 110px;
+}
+/*두번째 문구*/
+.listsecondmoongu{
+    width: 900px;
+    margin-left: 560px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.listsecondmoongu > span {
+    position: relative;
+    top: 120px;
+}
+
+/*리스트 전체 창*/
+.List-container{
+    width: 1200px;
+    height: 300vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    
+    margin: auto;
+    margin-top: 150px;
+    border-style: solid;
+}
+
+/*리스트 메뉴바 공간*/
+.List-header{
+    width: 700px;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap; /* 넘치면 다음 줄로 넘어가도록 설정 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    overflow: hidden; /* 넘치는 요소를 숨김 처리 */
+    padding: 0 20px; /* 좌우 여백 설정 */
+    position: relative; /* 상대적 위치 설정 */
+    margin-left: 220px;
+
+}
+/*전체보기버튼*/
+.Tab-Totalbutton {
+    width: 80px;
+    height: 40px;
+    font-size: 13px;
+    margin-top: 18px;
+    margin-left: 60px;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(198, 198, 198);
+    background-color: #fff;
+}
+
+  
+.Tab-Totalbutton:hover{
+    cursor: pointer;
+    background-color: beige;
+}
+
+
+/*추가하기버튼*/
+.Tab-addbutton {
+    
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+    margin-top: 23px;
+    margin-left: 110px;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: rgb(198, 198, 198);
+    margin-top: 20px;
+}
+.Tab-addbutton:hover{
+    cursor: pointer;
+    background-color: rgb(250, 209, 2);
+    border-style: solid;
+    border-radius: 25px;
+}
+
+
+
+/*추가된 카테고리 버튼들*/
+.AddSubjectbutton {
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 15px; /* 적당한 라디우스 */
+    border-style: solid;
+    border-color: var(--border-color); /* CSS 변수 사용 */
+    background-color: #fff;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 넘치는 텍스트를 줄임표로 표시 */
+    opacity: 30;
+    transition: 0.25s; /* 애니메이션 트랜지션 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+}
+
+.AddSubjectbutton:hover {
+    letter-spacing: 2px; /* 글자 너비 조금 넓히기 */
+    transform: scale(1.1); /* 스케일 키우기 */
+    cursor: pointer;
+    background-color: var(--border-color); /* 테두리 색을 배경색으로 */
+    color: white; /* 텍스트 색 변경 */
+}
+
+.AddSubjectbutton:active {
+    transform: scale(1.2); /* 클릭 시 스케일 키우기 */
+}
+
+
+
+
+
+/*더보기*/
+.ShowMoreButton{
+    font-size: 10px;
+    width: 50px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid antiquewhite;
+    align-self: flex-end; /* Flexbox에서 자신을 아래쪽 끝으로 배치 */
+    position: absolute; /* 절대 위치 설정 */
+    top: 20px;
+    margin-left: 45px;
+  
+}
+
+.list-searchmocklist{
+    height: 50px;
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
+}
+/*검색창*/
+.ListSerachinput{
+    width: 150px;
+    height: 27px;
+    margin-left: 860px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #d1d1d1;
+}
+.List-okSerchbutton {
+    cursor: pointer;
+    width: 40px;
+    height: 27px;
+    background-color: #ffffff;
+    border-style: solid;
+    border-radius: 10px;
+    margin-left: 3px;
+    font-size: 10px;
+}
+
+
+
+/*즐겨찾기, 번호, 제목, 작성날짜*/
+.List-moklocklist{
+    display: flex;
+    width: 950px;
+    height: 30px;
+    background-color: rgb(2, 2, 2);
+    color: #fff;
+    margin-top: -10px;
+    margin-left: 120px;
+    border-style: solid;
+    border-color: #b4b3b3;
+    font-size: 10px;
+    align-items: center; /*위아래 수평*/
+}
+.Listfavorite-icon{
+    margin-left: 50px;
+}
+.Listitem-number{
+    margin-left: 30px;
+}
+.Listitem-title{
+    margin-left: 300px;
+}
+.Listitem-date{
+    margin-left: 300px;
+}
+
+
+
+
+/*리스트 띄우는 공간*/
+.List-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 자식 요소들을 수평 중앙 정렬 */
+    margin-top: 3px;
+  }
+  
+  .categorcontenet-box {
+    position: relative;
+    width: 600px;
+    height: 100px;
+    margin: 0 auto; /* 수평 중앙 정렬 */
+    bottom: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .listtitle-box {
+    width: 200px;
+    border: none;
+    outline: none;
+    margin-left: 30px;
+  }
+ .listsavetime-box {
+    width: 100px;
+    border: none;
+    outline: none;
+  }
+  
+  .category-separator {
+    width: 100%;
+    border-top: 1px solid #ccc;
+  }
+  
+/*망각 프로그래스바*/
+.addprogress{
+    position: relative;
+    width: 600px;
+    border-style: solid;
+    border-color: antiquewhite;
+}
+
+
+
+
+/*제목*/
+.listtitle-box{
+    font-size: 18px;
+    margin-left: 0px;
+    height: 34px;
+    width: 350px;
+    margin-left: 20px;
+    margin-top: 8px;
+}
+/*작성날짜*/
+.listsavetime-box{
+    font-size: 14px;
+    margin-left: 90px;
+}
+
+/*즐겨찾기*/
+
+.list_checkbox > input[type="checkbox"]{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.list_checkbox > label{
+    position: relative;
+    top: 70px;
+    right: 135px;
+    padding-top:18px ;
+    padding-left: 24px;
+}
+
+.list_checkbox > input[type="checkbox"] + label::before{
+    content: "☆"; /* 빈 별 모양 아이콘 */
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 30px; /* 아이콘 크기 조절 */
+}
+.list_checkbox > input[type="checkbox"]:checked + label::before{
+    content: "★"; /* 꽉찬 별 모양 아이콘 */
+    color: #ffcc00; /* 체크된 별 색상 */
+}

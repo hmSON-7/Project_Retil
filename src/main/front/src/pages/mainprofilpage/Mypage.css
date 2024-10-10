@@ -1,0 +1,350 @@
+
+.account {
+  color: #000000;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  left: 550px;
+  top: 135px;
+  width: 280px;
+  height: 63px;
+  box-sizing: border-box;
+}
+
+.p-box {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 600px;
+  height: 80px;
+  position: relative;
+  left: 0px;
+  top: 350px;
+}
+
+.p-button {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 130px;
+  height: 45px;
+  position: absolute;
+  left: 445px;
+  top: 365px;
+}
+
+.p-change {
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 440px;
+  top: 362px;
+  width: 140px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.update {
+  color: #565656;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 30px;
+  top: 378px;
+  width: 497.61px;
+  height: 50px;
+}
+
+.myp {
+  color: #000000;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  left: 10px;
+  top: 300px;
+  width: 144.18px;
+  height: 44px;
+}
+
+.accountbox {
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-radius: 10px;
+  border-width: 1px;
+  width: 600px;
+  height: 250px;
+  position: relative;
+  left: 550px;
+  top: 180px;
+}
+
+.picon {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  left: 240px;
+  top: 15px;
+  object-fit: cover;
+}
+
+.a-check {
+  color: #4b9428;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 370px;
+  top: 180px;
+  width: 161px;
+  height: 37px;
+}
+
+.check {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: 345px;
+  top: 180px;
+  object-fit: cover;
+}
+
+
+.name {
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 240px; /* �꾩씠肄섍낵 �쇱튂�섎룄濡� �쇱そ �꾩튂 議곗젙 */
+  top: 150px; /* �꾩씠肄� �꾨옒�� �꾩튂�섎룄濡� �꾩そ �꾩튂 議곗젙 */
+  width: 120px; /* �꾩씠肄섏쓽 �덈퉬�� �쇱튂�섎룄濡� �ㅼ젙 */
+  height: 50px;
+}
+
+
+.email {
+  color: #757575;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 400;
+  position: absolute;
+  left: 150px;
+  top: 180px;
+  width: 440px;
+  height: 76px;
+}
+
+.a-button {
+  background: #028ef3;
+  border-radius: 10px;
+  width: 70px;
+  height: 40px;
+  position: absolute;
+  left: 495px;
+  top: 195px;
+}
+
+.a-buttontext {
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  position: absolute;
+  left: 495px;
+  top: 194px;
+  width: 70px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.info {
+  color: #000000;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  left: 550px;
+  top:100px;
+  width: 144px;
+  height: 44px;
+}
+
+.deletebox {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 600px;
+  height: 80px;
+  position: absolute;
+  left: 0px;
+  top: 550px;
+}
+
+.deletebutton {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 130px;
+  height: 45px;
+  position: absolute;
+  left: 440px;
+  top: 15px;
+}
+
+.deletem {
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 440px;
+  top: 14px;
+  width: 132px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.deletemessage {
+  color: #565656;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left:-80px;
+  top: 12px;
+  width: 562px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a-delete {
+  color: #000000;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  position: absolute;
+  left: 2px;
+  top:-50px;
+  width: 144px;
+  height: 44px;
+}
+
+.m-menubox {
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #d9d9d9;
+  border-width: 1px;
+  width: 170px;
+  height: 210px;
+  position: absolute;
+  left: 200px;
+  top: 80px;
+}
+
+.m-menu1,
+.m-menu2,
+.m-menu3,
+.m-menu4 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 48px;
+  top: 60px;
+  width: 110px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+}
+
+.m-menu2 {
+  top: 100px;
+}
+
+.m-menu3 {
+  top: 140px;
+}
+
+.m-menu4 {
+  top: 180px;
+}
+
+.m-account {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  position: absolute;
+  left: 36px;
+  top: 20px;
+  width: 265px;
+  height: 23px;
+}
+
+.m-menu1:hover,
+.m-menu2:hover,
+.m-menu3:hover,
+.m-menu4:hover {
+  color: #028ef3;
+  background-color: #d9d9d9;
+}
+
+.p-change:hover {
+  background-color: #f0f0f0;
+  color: #028ef3;
+  cursor: pointer;
+}
+
+.a-buttontext:hover {
+  background-color: #f0f0f0;
+  color: #028ef3;
+  cursor: pointer;
+}
+
+.deletem:hover {
+  background-color: #f0f0f0;
+  color: #028ef3;
+  cursor: pointer;
+}
+
+.nickname-input {
+  color: #000000;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 190px;
+  top: 140px;
+  width: 230px;
+  height: 30px;
+  padding: 0px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+}

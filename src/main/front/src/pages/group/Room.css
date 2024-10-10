@@ -1,0 +1,45 @@
+.group_item{
+    display : flex;
+    align-items : center;
+    gap : 20px;
+    padding-bottom : 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+
+}
+
+.group_item .item_name {
+    font-size: 17px;
+    margin-left: 50px;
+    width: 100px;
+}
+.group_item .item_ex {
+    font-size: 20px;
+    margin-left: 50px;
+    width: 710px;
+}
+.group_item .item_user {
+    font-size: 17px;
+    margin-left: 30px;
+    width: 100px;
+}
+.group_item .item_limit {
+    font-size: 17px;
+    margin-left: 30px;
+    width: 120px;
+}
+
+/*참여하기 참여중 버튼*/
+.group_item > button{
+    width: 100px;
+    height: 40px;
+
+    border-radius: 16px;
+    border-style: solid;
+    background-color: #fff;
+    cursor: pointer;
+}
+.group_item > button:hover {
+    background-color: rgb(0, 162, 255);
+    color: #fff;
+}

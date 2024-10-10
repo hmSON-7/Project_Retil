@@ -1,0 +1,131 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 박스 모델 설정 */
+}
+.mainnav {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 70px;
+  background-color: #ffffff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
+  rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  align-items: center; /* 세로 중앙 정렬 */
+  font-family: 'Chosunilbo_myungjo'; /* 새로운 폰트 적용 */
+  border-bottom: none; /* 하단 테두리 제거 */
+  z-index: 3;
+}
+
+
+/*메뉴바 안에 메뉴들디브*/
+.nav__mainmenu {
+  display: flex;
+  margin: 0 auto; /* margin-top 제거 */
+  height: 60px;
+  margin-bottom: 30px;
+  justify-content: center;
+  list-style-type: none; /* 점 없애는 코드 */
+
+}
+
+/* 메뉴바 링크 */
+.nav__mainmenu > li {
+  padding: 4.0rem;
+  border-bottom: none;
+  font-family: Arial, Helvetica, sans-serif; /* 새로운 폰트 적용 */
+  font-size: 22px;
+  font-weight: bold;
+  font-weight: 500;
+  margin-top: -30px;
+}
+
+/* 활성화된 링크의 글자 색상 설정 */
+.nav__mainmenu > li > a.nav__menu--focused {
+  color: #4070f4;
+}
+
+/* 링크에 마우스를 가져갔을 때 색상 변경 */
+.nav__mainmenu > li > a:hover {
+  color: #4070f4;
+}
+
+/*리틸 로고*/
+.mlogo {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+}
+.mlogo-image{
+  width: 160px;
+  margin-left: 140px;
+
+}
+
+
+
+/*작성하기 버튼*/
+.nav_writebutton {
+  color: black;
+  height: 40px;
+  font-weight: 600;
+  font-size: 18px;
+  width: 90px;
+  margin-top: 0px;
+  margin-right: 100px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border-color: #4070f4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav_writebutton:hover {
+  background-color: #dfedff;
+}
+
+/* 마이페이지 아이콘 버튼 */
+.nav_mypagebutton {
+  width: 40px;
+  border: none; /* 기본 테두리 제거 */
+  padding: 0; /* 내부 여백 제거 */
+  background: none; /* 배경 없음 */
+  cursor: pointer; /* 클릭 가능한 커서 모양 */
+  margin-left: 25px;
+}
+
+.nav_mypagebutton img {
+  display: block; /* 이미지를 블록 요소로 설정하여 버튼 영역 전체를 차지하게 함 */
+  width: 100%; /* 이미지를 버튼의 너비에 맞게 설정 */
+  height: auto; /* 이미지 비율 유지 */
+  margin-left: -110px;
+}
+
+/*로그아웃 버튼*/
+.logout-icon {
+  width: 40px;
+  cursor: pointer;
+  border: none; /* 기본 테두리 제거 */
+  padding: 0; /* 내부 여백 제거 */
+  background: none; /* 배경 없음 */
+  cursor: pointer; /* 클릭 가능한 커서 모양 */
+}
+.logout-icon img {
+  display: block; /* 이미지를 블록 요소로 설정하여 버튼 영역 전체를 차지하게 함 */
+  width: 100%; /* 이미지를 버튼의 너비에 맞게 설정 */
+  height: 50px; /* 이미지 비율 유지 */
+  margin-left: -100px;
+}
+
+@font-face {
+  font-family: 'Chosunilbo_myungjo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+

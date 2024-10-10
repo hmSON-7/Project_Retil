@@ -1,0 +1,207 @@
+.tier{
+    display: flex;
+    flex-direction: column;
+    margin : 0 auto;
+    justify-content:center ;
+    width: 100%;
+}
+.aaaa >span {
+    padding: 10px;
+}
+.aaaa {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid gray;
+    top: 60px;
+}
+
+/*순위*/
+.aaaa .sun{
+    position: relative;
+    left: 70px;
+    font-size: 20px;
+}
+
+/*최근 업데이트 날짜*/
+.aaaa .date {
+    font-size: 20px;
+    position: relative;
+    left: 500px;
+
+}
+.myTier{
+    width: 850px; /* 원하는 너비로 설정 */
+    height: 370px; /* 원하는 높이로 설정 */
+    margin: 0 auto;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: gray;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 100px;
+    border-color: #dedede;
+    box-shadow: 0 0 5px gray;
+    position: relative;
+}
+/* 1등 */
+.my_rank{
+    text-align: left;
+    font-size: 22px;
+    font-weight: 400;
+    position: relative;
+    left: 155px;
+    top: -100px;
+    width: 176px;
+    height: 58px;
+    border-color: #a7a7a7;
+
+}
+.myTier .myTier{
+    display: flex;
+}
+.myTier .my_progress{
+    position: relative;
+    top: 30%;
+}
+.rank_wrapper{
+    display : flex;
+    margin: 0 auto;
+    width: 700px;
+    height: 300px;
+    flex-direction : column;
+    margin-top: 90px;
+
+    gap : 20px;
+}
+
+.tierbox {
+    background: #ffffff;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #a7a7a7;
+    border-width: 1px;
+    width: 1186px;
+    height: 514px;
+    position: relative;
+    left: 271px;
+    top: 155px;
+}
+
+/* 티어 이미지*/
+.Tiericon {
+    width: 183px;
+    height: 187px;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    left: 60px;
+    top: -110px;
+    object-fit: cover;
+}
+
+/*000님!*/
+.Tname {
+    color: #000000;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    position: relative;
+    left: 390px;
+    top: 30px;
+    width: 200px;
+    height: 39px;
+}
+
+/*다음레벨까지 00 남았습니다*/
+.oo {
+    color: #000000;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+    left: 400px;
+    top: 50px;
+    width: 383px;
+}
+/*프로그래스바 공부 시간*/
+.rank_time {
+    color: #000000;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 400;
+    position: relative;
+    left: 680px;
+    top: 100px;
+    width: 245px;
+    height: 47px;
+}
+/*총 공부량 글자*/
+.my_studyTime{
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 400;
+    position: relative;
+    left: 450px;
+    top: -110px;
+    width: 300px;
+    height: 50px;
+}
+/*총 공부량 시간*/
+.my_studyTimesecond{
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    width: 120px;
+    height: 50px;
+    left: 740px;
+    top: -160px;
+    font-size: 30px;
+}
+.tierdivision_line{
+    border-top: 1.5px solid rgb(93, 92, 92);
+    border-style: solid;
+    position: relative;
+    top: -130px;
+    margin: auto;
+    width: 100%;
+}
+.aaaa{
+    width: 700px;
+    height: 60%;
+    position: relative;
+    min-width: 800px;
+    margin: 0 auto;
+}
+
+/*검색창*/
+.bb {
+    width: 100%;
+    height: 40%;
+    right: 40px;
+    top: 70px;
+    text-align: end;
+    position: relative;
+    right: 400px;
+}
+
+.bb > input {
+    height: 30px;
+    padding: 5px 5px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 15px;
+}
+/* Tier.css */
+@keyframes flash {
+    0% { color: rgb(0, 195, 255); }
+    50% { color: rgb(1, 101, 131); } /* 원하는 색상으로 변경 가능 */
+    100% { color: initial; }
+}
+
+.flash-text {
+    animation: flash 7s ease-in-out; /* 1초 동안 애니메이션 수행 */
+}

@@ -1,0 +1,40 @@
+.reviewItem {
+    margin-bottom: 20px;
+}
+
+
+.reviewItem p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.reviewItem > input {
+    width: calc(90% - 100px);
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.reviewItem .review_answer {
+    width: calc(100% - 120px); /* 조정 필요 */
+    background-color: rgb(233, 251, 254);
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.reviewItem button {
+    background-color: rgb(233, 251, 254);
+    position: relative;
+    border: none;
+    bottom: 28px;
+    right: 50px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.review_button{
+    position: relative;
+
+    left: 630px;
+    top: -53.5px;
+}

@@ -1,0 +1,166 @@
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color: inherit;
+    text-decoration: none; /* 글 밑에 언더바 없앰 */
+}
+
+/* 메뉴바 */
+.fnav {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 8px 13px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    align-items: center; /* 세로 중앙 정렬 */
+    border-bottom: none; /* 하단 테두리 제거 */
+}
+
+/* 메뉴바 안에 div */
+.fnav__menu {
+    display: flex;
+    margin: 0 auto; /* margin-top 제거 */
+    height: 60px;
+    margin-bottom: 40px;
+    justify-content: center;
+    list-style-type: none; /* 점 없애는 코드 */
+
+}
+
+/* 메뉴바 - 글 간격 */
+.fnav__menu > li {
+    padding: 2.5rem;
+    border-bottom: none;
+    font-family: Arial, Helvetica, sans-serif; /* 새로운 폰트 적용 */
+    font-size: 26px;
+    font-weight: bold;
+    font-weight: 500;
+    margin-top: -7px;
+}
+
+/* 메뉴바 - 글 색상 */
+.fnav__menu--focused {
+    color: rgb(163, 175, 226);
+}
+
+/* 메뉴바 - 밑에 마커 색상 */
+.fmarker {
+    content: "";
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background-color: #4070f4;
+    transition: 0.2s;
+}
+
+/*리틸 로고*/
+.Flogo {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Flogo > .Flogo-image{
+    width: 160px;
+    margin-left: 250px;
+}
+
+/*로그인 버튼*/
+.floginbutton {
+    border: none; /* 기본 테두리 제거 */
+    padding: 0; /* 내부 여백 제거 */
+    background: none; /* 배경 없음 */
+    cursor: pointer; /* 클릭 가능한 커서 모양 */
+    margin-right: 80px;
+  }
+
+  .floginbutton img {
+    display: block; /* 이미지를 블록 요소로 설정하여 버튼 영역 전체를 차지하게 함 */
+    width: 100%; /* 이미지를 버튼의 너비에 맞게 설정 */
+    height: auto; /* 이미지 비율 유지 */
+
+  }
+
+/*전체 색션 */
+.section {
+    text-align: center;
+    font-size: 20rem;
+    height: 200vh;
+    color: white;
+}
+
+#retil {
+    position: relative; /* 위치 지정 */
+    margin-top: 80px;
+    height: 900px;
+    color: #000000;
+    background: rgba(0, 0, 0, 0); /* 검정색 불투명 배경 */
+    display: flex;
+    flex-direction: column;
+}
+/*introduce- 리틸 글자 */
+.flist-retiltitle{
+    margin-top: 160px;
+    font-size: 64px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.flist-retilintroduce{
+    margin-top: 15px;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main_gragh {
+    margin-top: 15px;
+    z-index: 0;
+}
+
+
+#list {
+    background: linear-gradient(to right, #ffffff 50%, #d2f7ff 50%);
+    height: 1000px;
+}
+
+/* list text */
+.list-content {
+    display: flex; /* 플렉스 레이아웃 설정 */
+    align-items: flex-start; /* 세로 정렬을 위해 추가 */
+    text-align: left; /* 수직 중앙 정렬 */
+    padding-left: 250px;
+    padding-top: 100px; /* padding-top 수정 */
+    font-size: 180px;
+    color: black;
+}
+
+#four {
+    background: rgb(255, 254, 253);
+    height: 1000px;
+    font-size: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:black;
+}
+
+.tier-content {
+    margin-top: 200px; /* 순위 텍스트와 카드 사이의 거리 조정 */
+}
+
+
+
+@font-face {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}

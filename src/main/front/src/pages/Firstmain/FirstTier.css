@@ -1,0 +1,100 @@
+.first-tier-container {
+    display: flex;
+    height: 100px;
+    flex-direction: column; /* 세로 방향 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.highlight-text {
+    font-size: 24px; /* 원하는 크기로 조정하세요 */
+    margin-top: 20px; /* 원하는 간격으로 조정하세요 */
+    display: block; /* 줄바꿈을 위해 block 요소로 변경 */
+}
+
+.typing-style {
+
+    font-size: 42px; /* 원하는 글씨 크기로 조정 */
+    line-height: 2; /* 원하는 줄 간격으로 조정 */
+    margin-top: 20px; /* 원하는 여백으로 조정 */
+    padding :5px; /* 원하는 여백으로 조정 */
+    text-align: center; /* 텍스트 왼쪽 정렬 */
+    position: relative;
+    bottom:140px;
+}
+
+.first-tier-description{
+    background-color: #ffffff;
+}
+
+.additional-description {
+    font-size: 26px; /* 텍스트 크기를 20픽셀로 설정 (원하는 크기로 조정하세요) */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    margin-top: 20px; /* 위쪽 여백 설정 (원하는 값으로 조정하세요) */
+    color: #333; /* 텍스트 색상 설정 (원하는 색상으로 조정하세요) */
+    line-height: 1.5; /* 줄 간격 설정 (원하는 값으로 조정하세요) */
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center; /* 카드 가운데 정렬 */
+    flex-wrap: wrap; /* 줄바꿈 없이 가로로 배치 */
+    position: relative;
+    top: -60px;
+}
+
+.card-container {
+    perspective: 800px; /* 원근감 적용 */
+    margin: 25px; /* 카드 컨테이너 사이의 간격을 벌리기 위해 마진을 늘림 */
+    display: inline-block;
+    width: 220px; /* 카드 컨테이너의 너비 */
+    height: 220px; /* 카드 컨테이너의 높이 */
+    position: relative; /* 추가 */
+    bottom: 30px;
+}
+
+.card {
+    width: 100%; /* 부모 요소의 너비에 맞춤 */
+    height: 100%; /* 부모 요소의 높이에 맞춤 */
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 트랜지션 시간 설정 */
+    transform-style: preserve-3d; /* 3D 변환 효과 유지 */
+    position: absolute; /* 수정 */
+    box-shadow: 10px 10px black; /* 카드 그림자 효과 추가 */
+}
+
+.card-container:hover .card { /* 카드 컨테이너에 호버할 때 카드 뒤집기 */
+    transform: rotateY(180deg); /* 180도 회전 */
+    box-shadow: 10px 10px black; /* 호버 시 그림자 효과 */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%; /* 카드의 너비 */
+    height: 100%; /* 카드의 높이 */
+    backface-visibility: hidden; /* 뒷면 숨기기 */
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px gray;
+}
+
+.card-front {
+    background: #ababab; /* 앞면 배경색 */
+    color: #ffffff;
+    font-size: 20px; /* 텍스트 크기 조정 */
+    box-shadow: 0 0 5px gray;
+}
+
+.card-back {
+    transform: rotateY(180deg); /* 180도 회전 */
+    box-shadow: 0 0 5px gray;}
+
+.card-back img {
+    max-width: 110%; /* 이미지의 최대 너비 조정 */
+    max-height: 110%; /* 이미지의 최대 높이 조정 */
+    object-fit: contain; /* 이미지를 박스 안에 맞추어 왜곡 없이 채움 */
+    border-radius: 8px; /* 이미지의 모서리를 둥글게 설정 */
+}

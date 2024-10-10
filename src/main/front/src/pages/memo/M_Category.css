@@ -1,0 +1,25 @@
+
+
+.mecategory, .meTitle {
+
+    width: 130px; /* 예시로 고정 너비를 설정하였으니 필요에 따라 조절해주세요. */
+    height: 1rem;
+    margin-bottom: 0px; /* 각 요소 사이의 간격 조절 */
+    background: #F0FBFF;
+    border: 1px solid gray;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.mecategory {
+    border-radius: 5px 0px 0 0; /* 상단의 border-radius만 적용 */
+
+}
+
+.meTitle {
+    border-top: 0px;
+    border-radius: 0 0 0px 5px; /* 하단의 border-radius만 적용 */
+}

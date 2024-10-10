@@ -1,0 +1,111 @@
+#todaymoon {
+    position: relative; /* 위치 지정 */
+    margin-top: 60px;
+    height: 2000px;
+    color: #895d00; /* 글자 색상 */
+    background: #FFFAE6; /* 배경 색상 */
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif; /* 폰트 적용 */
+    padding: 20px; /* 내부 여백 추가 */
+}
+
+#todaymoon h1 {
+    font-size: 30px;
+    margin-bottom: 5px; /* h1과 hr 사이 간격 조정 */
+    padding-top: 80px;
+}
+
+#todaymoon hr {
+    border: 1px solid #000;
+    width: 100%;
+    margin-top: 5px; /* h1과 hr 사이 간격 조정 */
+    margin-bottom: 10px;
+}
+
+#todaymoon .subheading {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 10px; /* subheading과 subsubheading 사이의 간격 조정 */
+}
+
+#todaymoon .subsubheading {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 20px; /* subsubheading과 이미지 사이의 간격 조정 */
+}
+
+.todoreview-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.todoreview1-image {
+    width: 470px;
+    height: 400px;
+    margin-right: 700px; 
+    margin-top: 100px;
+}
+.todoreview2-image{
+    width: 470px;
+    height: 400px;
+    margin-left: 700px;
+    margin-top: 170px;
+   
+}
+
+.todoreview3-image{
+    width: 700px;
+    margin-top: 80px;
+    height: 400px;
+    margin-right: 700px;
+    margin-top: 200px;
+}
+.hr-sect::before,
+.hr-sect::after {
+    content: "";
+    flex-grow: 1;
+    background: #624300;
+    height: 3.5px;
+    margin: 0 16px;
+}
+.hr-sect {display: flex; 
+    flex-basis: 100%; 
+    align-items: baseline; 
+    color: #624300; 
+    font-size: 12px; 
+    margin: 8px 0px;
+}
+
+.sub-context {
+    position: relative;
+    bottom: 0px;
+}
+.image-text1{
+    margin-left: 650px;
+    margin-top: -300px;
+    font-size: 24px;
+    position: relative;
+    top: -30px;
+}
+.image-text2{   
+    margin-right: 600px;
+    margin-top:-250px;
+    font-size: 24px;
+    position: relative;
+    top: -40px;
+}
+.image-text3{   
+    margin-left: 600px;
+    margin-top:-300px;
+    font-size: 24px;
+    position: relative;
+    top: -30px;
+}
+.Today_box{
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    position: relative;
+}

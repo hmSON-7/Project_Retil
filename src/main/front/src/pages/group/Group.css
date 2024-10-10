@@ -1,0 +1,120 @@
+.group_divname{
+    position: relative;
+    top: 120px;
+    left: 540px;
+}
+.group_divname > span{
+    font-size: 36px;
+}
+.group_div{
+    width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color: gray;
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin-top: 200px;
+    box-shadow: 0 0 5px gray;
+}
+.group_top{
+    width: 100%;
+    border-bottom: 1px solid gray;
+    display: flex; /* 추가된 부분: 버튼들을 한 줄로 정렬 */
+    flex-wrap: wrap;
+    align-items: center; /* 추가된 부분: 버튼들이 수직 중앙에 정렬되도록 함 */
+}
+.group_divsecondname {
+    position: relative;
+    top: 140px;
+    left: 570px;
+}
+.group_divsecondname >span {
+    font-size: 18px;
+}
+
+.group_top > button{
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+    margin-left: 40px;
+    margin-bottom: 10px;
+
+    /* border: 2px solid gray; */
+    border-radius: 40px;
+    white-space: nowrap; /* 추가된 부분: 줄바꿈 방지 */
+    text-overflow: ellipsis; /* 추가된 부분: 넘치는 텍스트를 줄임표로 표시 */
+    display: inline-flex; /* 추가된 부분: 버튼 내 텍스트가 중앙에 오도록 함 */
+    align-items: center; /* 추가된 부분: 버튼 내 텍스트가 수직 중앙에 오도록 함 */
+    justify-content: center; /* 추가된 부분: 버튼 내 텍스트가 수평 중앙에 오도록 함 */
+    box-sizing: border-box; /* 추가된 부분: padding과 border를 포함한 크기 계산 */
+    /* box-shadow: 0 4px 6px gray; */
+    cursor: pointer; /* 커서 스타일 변경 */
+
+}
+.group_top .group_add {
+    width: 30px; /* 원하는 너비로 설정 */
+    height: 30px; /* 원하는 높이로 설정 */
+    border-radius: 50%; /* 원형 버튼으로 설정 */
+
+
+    cursor: pointer; /* 커서 스타일 변경 */
+    font-size: 24px; /* 텍스트 크기 설정 */
+    margin-left: 20px; /* 원하는 마진 설정 */
+}
+
+/*전체보기*/
+.group_top .grouptotalbutton {
+    width: 100px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(69, 168, 255);
+    border-style: solid;
+}
+
+.group_top .myinbutton{
+    width: 110px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    margin-left: 15px;
+}
+
+.group_top > input{
+    padding: 10px 20px;
+    width: 120px;
+    height: 10px;
+    border-radius:40px ;
+    margin-left: auto;
+}
+.group_span{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid gray;
+    font-size: 17px;
+}
+.group_span > span{
+    padding: 10px;
+}
+.group_span .group_name{
+    margin-left: 40px;
+}
+.group_span .group_ex{
+    margin-left: 250px;
+}
+
+.group_span .group_user{
+    margin-left: 250px;
+}
+
+.group_span .group_limit{
+    margin-left: 40px;
+}
+
+
+.group_span .group_invite{
+    margin-left: 3px;
+}
